@@ -1,0 +1,150 @@
+---
+title: "Model_4_Report"
+author: "SM"
+date: "2023-10-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Nutrition Needs for football players 
+
+### Carbohydrate
+
+Carbohydrates are stored as glycogen in the muscles and liver, and also found in the bloodstream as blood glucose. Carbohydrates are the major energy source. As the duration of training increases, muscle glycogen level decreases, causing muscles to take up glycogen from the bloodstream. Liver will then releases stored glycogen to the bloodstream to prevent low blood sugar level. If the carbohydrate intake is not enough, the body will convert protein and fat for energy. Thus, care should be exercised in managing appropriate carbohydrate intake and timing for atheletes (Skolnik and Chernus, 2010). 
+
+Pre-exercise meals should be taken approximately 4 to 6 hours before exercise, as carbohydrates need at least 4 hours to be digested and stored in the liver and muscle as glycogen (Kreider et al., 2009). A light protein and carbohydrate snacks should be consumed 30 to 60 minutes before exercise to maintain carbohydrate availability throughout the exercise and to increase the anaerobic capacity (Siegel, 2007), and 1-1.5g/kg body weight of high GI carbohydrate foods should be consumed immediately after exercise to replenish glycogen storage (Skolnik and Chernus, 2010).
+
+Consumption of a mixture of various carbohydrates rather than glucose alone can enhance absorption and improve energy availability for muscles (Jentjens et al, 2006).
+
+### Protein	 
+	
+It is important to choose high quality proteins- fish, egg, low fat milk, and skinless chicken- to improve training, recovery and increase protein synthesis (Driskell and Wolinsky, 2000). Both fast-acting and slow-acting amino acids are required for post-exercise muscle repair (Skolnik and Chernus, 2010). 
+
+According to 2012 strength training recommendations, 6 grams of protein should be consumed with 35 grams of carbohydrate prior to exercise, followed by 40 grams of protein with 6 grams of EAA during exercise. The recommendation also mentions that 20 grams of protein with 1.5g/kg body weight of carbohydrate should be ingested within 30 minutes after exercise to improve recovery (Szedlak and Robins, 2012).
+
+Whey and casein proteins are also beneficial for protein synthesis. Whey protein enhances initial protein synthesis due to faster absorption rates, whereas casein protein enhances protein synthesis for longer duration (Hoffman, J.R., and Falvo, M. J., 2004).
+
+### Fat
+	
+Athletes are advised to consume adequate amount of essential fatty acids to maintain energy balance and replenish intramuscular triacylglycerol stores (Venkatraman, Leddy and Pendergast, 2000).
+
+### Fluid and electrolyte intake
+
+Body fluid loss from sweat should be limited to 2% of the body weight. Urine output should be monitored for frequency (urination every 2 to 4 hours), clear color and sizable quantity. Fluid intake requirement during exercise can be assessed by measuring body weight pre- and post- exercise, and keeping track of fluid intake throughout the duration of exercise (Averbuch, 2015).
+
+Adequate fluid intake helps to cool down the body during intense training in hot weather, and prevent dehydration. Every 1 percent loss of body fluid is accompanied with increased heart rate by 5 to 8 beats per minute, and core body temperature by 0.4 to 0.5 degrees Fahrenheit (Skolnik and Chernus, 2010). Fluid intake in the morning is also important to ensure athletes stay hydrated throughout an early workout session (Stover et al., 2006). 
+
+If the training lasts more than 60 minutes, glucose/electrolyte solution or sport drinks should be consumed to prevent dehydration and regulate blood glucose levels (Burke, 2001). Fluid breaks should be taken every 15 to 20 minutes during training. Drinking 4 to 8 gulps of fluid per break can effectively prevent dehydration, improve performance and recovery time (Averbuch, 2015). 
+
+Water, diluted juices, and sport drinks can be consumed as pre- and during- exercise drinks to optimize energy and carbohydrate levels. Coffee or tea can also be taken before exercise to have a caffeine-boost. Electrolytes, instant breakfast drinks, fruit smoothies and chocolate milk should be consumed after exercise to reboot protein-carbohydrate combination (Averbuch, 2015). 
+
+### Micronutrient intake and supplementation
+
+Adequate intake of vitamins and minerals is also crucial to enhance strength training performance, as micronutrient deficiency in athletes significantly affect exercise capacity (Kreider et al., 2010). Fiber-rich foods (fruits, vegetables) and fiber-containing supplements (e.g. Glucomannan) can help to restrict calorie intake by promoting the feeling of satiety, which is particularly helpful for weight conscious athletes on training program (Anderson et al., 2009). 
+	
+Study suggests that carbohydrate supplementation before, during and after training can enhance training performance, and re-synthesis of muscle glycogen leading to reduce recovery time and greater training volume (Haff et al., 2003). 
+	
+### Current nutrition management in local football teams
+
+#### Myanmar National Football Team (U-16)
+
+Myanmar National Football Team (U-16) consists of 27 athletes between ages 15 to 16. All the athletes are within healthy BMI range. For U-16, strength training programs are scheduled on Tuesday and Thursday of each week. 
+
+![](./data_png/U-16_1.png)
+![](./data_png/U-16_2.png)
+
+#### Yangon United FC
+
+Yangon United FC consists of 30 athletes between ages 20 to 31. All the athletes are within healthy BMI range. For Yangon United FC, strength training programs are scheduled on the morning of each day of the week. 
+
+![](./data_png/YFC.png)
+
+
+
+### Discussion on possible interventions 
+
+1.	**Body composition assessment**: Both Myanmar National Football Team and Yangon United FC do not assess the body composition, muscle and fat mass of the players. Hence, daily calorie requirement for each player cannot be effectively determined. This can lead to consumption of higher or lower than recommended calorie intake. Thus, body composition assessment should be the first intervention plan towards effective nutrition management.
+
+2.	**Diet management**: Force feeding is reported in Myanmar National Football Team, as players are forced to finish all the food prepared for buffet-style meals. There have been incidences that players vomit after high calorie meals. On the contrary, the meal plan for Yangon United FC is insufficient with inadequate amount of complex carbohydrates. Yangon United FC players report they feel hungry throughout the day, especially after training, and the players resort to eating instant noodle cups in between meals and snacks. Therefore, individual calorie requirement should be evaluated, and the meal plans should be designed as per the latest nutrition recommendations.
+
+3.	**Fluid intake management**: Daily fluid requirement is not calculated for the players from both teams. The players are not sure of how much water they drink each day, and admit forgetting to drink water sometimes. In addition to this, players are not given sport drinks or carbohydrate drinks during the long training of duration more than an hour, which calls for immediate intervention. Sponsorship by 100 plus sports drink is currently ongoing, so possible negotiations to provide free/ subsidized sports drink for players?
+
+4.	[**Nutrition education/ training**]{.underline}: The Myanmar National Football Team U-16 coach is convinced that the current nutrition practice is sufficient for his team players. The coaches from both teams refuse to modify the current nutrition management practice. Therefore, nutrition training should be provided for the football coaches and players.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### References
+
+Anderson, J., Baird, P., Davis Jr, R., Ferreri, S., Knudtson, M., Koraym, A., Waters, V. and Williams, C. (2009). Health benefits of dietary fiber. Nutrition Reviews, 67(4), pp.188-205.
+
+Averbuch, G. (2015). Food guide for soccer. United Kingdom: Meyer & Meyer Sport.
+
+Burke, L. (2001). Nutritional needs for exercise in the heat. Comparative Biochemistry and Physiology Part A: Molecular & Integrative Physiology, [online] 128(4), pp.735-748. Available at: <https://www.ncbi.nlm.nih.gov/pubmed/11282317>
+
+Driskell, J. and Wolinsky, I. (2000). Energy-yielding macronutrients and energy metabolism in sports nutrition. Boca Raton: CRC Press, pp.191-212.
+
+Haff, G., LEHMKUHL, M., MCCOY, L. and STONE, M. (2003). Carbohydrate Supplementation and Resistance Training. Journal of Strength and Conditioning Research, [online] 17(1), pp.187-196. Available at: <https://www.ncbi.nlm.nih.gov/pubmed/12580676.>
+
+Hoffman, J. R., & Falvo, M. J. (2004). Protein – Which is Best? Journal of Sports Science & Medicine, 3(3), 118–130.
+
+Jentjens, R., Underwood, K., Achten, J., Currell, K., Mann, C. and Jeukendrup, A. (2006). Exogenous carbohydrate oxidation rates are elevated after combined ingestion of glucose and fructose during exercise in the heat. Journal of Applied Physiology, 100(3), pp.807-816.
+
+Kreider, R. B., Wilborn, C. D., Taylor, L., Campbell, B., Almada, A. L., Collins, R., … Antonio, J. (2010). ISSN exercise & sport nutrition review: research & recommendations. Journal of the International Society of Sports Nutrition, 7, 7. <http://doi.org/10.1186/1550-2783-7-7>
+
+Kreider, R., Leutholtz, B., Katch, F. and Katch, V. (2009). Exercise & Sport Nutrition: Principles, Promises, Science & Recommendations. California: Fitness Technologies Press, pp.207-239.
+
+Siegel, D. (2007). Effects of Creatine, Amino Acid, and Protein Supplementation on Performance. Journal of Physical Education, Recreation & Dance, [online] 78(6), pp.10-10. Available at: <http://www.tandfonline.com/doi/abs/10.1080/07303084.2007.10598031>
+
+Skolnik, H. and Chernus, A. (2010). Nutrient timing for peak performance
+
+Stover EA, Petrie HJ, Passe D, Horswill CA, Murray B, Wildman R. Urine specific gravity in exercisers prior to physical training. Appl Physiol Nutr Metab. 2006 Jun;31(3):320-7.
+
+Szedlak, C. and Robins, A. (2012). Protein Requirements for Strength Training. Strength and Conditioning Journal, [online] 34(5), pp.85-91. Available at: <https://journals.lww.com/nsca-scj/Fulltext/2012/10000/Protein_Requirements_for_Strength_Training.14.aspx#H11-14>
+
+Venkatraman, J., Leddy, J. and Pendergast, D. (2000). Dietary fats and immune status in athletes: clinical implications. Medicine & Science in Sports & Exercise, 32(Supplement), pp.S389-S395.
+
+
+
+
+
+
+
+
