@@ -9,19 +9,31 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Nutrition Intervention for Myanmar Football Players
 
+## Background
 
+Myanmar Football Federation (MFF) is the governing body of football in Myanmar. MFF headquarter and the main academy are located in Yangon, where national team players and young talents are trained. 
 
+In 2019, the MFF technical director hired two nutritionist interns to improve diet and nutrition status of MFF players. It was the first nutrition intervention done at MFF where nutritional care was previously unprovided. As the first stage of the initial action plan, the interns were tasked to work closely with the deputy head of sports science department to figure out the adequacy of meals provided at MFF based on the training regimen. The second stage involved deciding on the suitable interventions and taking action. The interns were to accomplish the action plan within 2 months of the internship period. 
 
+After the first two weeks of initial observations, the interns submitted a report on meal situations, nutritional adequacy, and overall food service related conditions and attitudes at MFF. The main problem faced by the interns during the initial phase was the nonacceptance of coaches regarding the nutrition intervention. To solve this problem, the technical director arranged a meeting with MFF senior management officers and head coaches. The interns presented the current nutrition-related problems at MFF, and proposed possible interventions at the meeting. The proposed interventions were accepted by the director and management staff, and the interns were given free access to kitchen and food storage to conduct additional food safety assessment. Coaches and other staff were more cooperative after the meeting, and the interns were able to continue to the phase 2 of action plan- the implementation.
 
+The interventions were divided into two levels: 
 
+Level 1- a series of much-needed immediate interventions to be done by the interns within two months
 
+Level 2- a long-term intervention to ensure good and systematic nutritional care at MFF
 
+For the level 2, the interns proposed improving the nutritional self-reliance of MFF players by means of nutrition education. A nutrition guide was to be developed by the intern, and to be translated by MFF staff after approval from technical director and sports science team. The MFF medical team was to collaborate with the intern remotely (after internship ended) to give nutrition lessons to players and coaches based on the guide developed. 
 
+However, the MFF management and coaches proposed to hire a permanent nutritionist, rather than improving the players' nutritional self-reliance. Their reasoning was the players' schedule were already too tight with training and school, and they would not be able to spare extra time or energy on learning about nutrition. On the other hand, the interns insisted nutrition education was important since the players only resided at the academy during the training period (around 6 months before international competition), and they would go back to their respective clubs- where they wouldn't get nutritional care- after the competitions. 
 
+The director decided a guide book would serve as a bridge before a nutritionist can be hired, since the interns will be leaving in 2 months for further clinical training. The interns continued with the action plan without change. The nutrition guide was finished and passed over to the medical team but no follow up was done due to nonacceptance by the players and coaches. Thus, the decision was left unmade in 2019, and the level 2 action plan was not achieved.  
 
+Now, I plan to use the decision analysis method to clearly identify the best intervention option- improve nutritional self-reliance of the MFF players or hire a sports nutritionist to do personalized nutritional care in a way that no self-effort from players will be needed. 
 
-
+## Part 1: The initial observation of nutrition-related conditions at MFF
 
 ## Nutrition Needs for football players 
 
@@ -66,6 +78,8 @@ Study suggests that carbohydrate supplementation before, during and after traini
 #### Myanmar National Football Team (U-16)
 
 Myanmar National Football Team (U-16) consists of 27 athletes between ages 15 to 16. All the athletes are within healthy BMI range. For U-16, strength training programs are scheduled on Tuesday and Thursday of each week. 
+
+*Note: Fried bread dipped in egg is French toast. Meal plans for two days was copied from record provided by MFF medical team and serving size was obtained after talking to kitchen staff.*
 
 ![](./data_png/U-16_1.png)
 ![](./data_png/U-16_2.png)
