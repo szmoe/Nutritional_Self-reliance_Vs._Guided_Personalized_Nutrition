@@ -33,7 +33,11 @@ The director decided a guide book would serve as a bridge before a nutritionist 
 
 Now, I plan to use the decision analysis method to clearly identify the best intervention option- improve nutritional self-reliance of the MFF players or hire a sports nutritionist to do personalized nutritional care in a way that no self-effort from players will be needed. 
 
-## Part 1: The initial observation of nutrition-related conditions at MFF
+## Part 1: The initial observation of nutrition-related conditions and interventions at MFF
+
+The overall nutrition situations at MFF and initial interventions done are discussed in this section. These situations and interventions will form input parameters for the decision analysis in Part 2. The understanding of nutrition problems and relevant interventions will also justify why I set certain estimate ranges for some input variables of the decision model. 
+
+We will look at the general nutrition needs for football players and see if the football players at MFF received adequate nutrition as per the guidelines. 
 
 ## Nutrition Needs for football players 
 
@@ -73,7 +77,10 @@ Adequate intake of vitamins and minerals is also crucial to enhance strength tra
 	
 Study suggests that carbohydrate supplementation before, during and after training can enhance training performance, and re-synthesis of muscle glycogen leading to reduce recovery time and greater training volume (Haff et al., 2003). 
 	
-### Current nutrition management in local football teams
+### Daily food intake of two MFF football teams and nutrition arrangement for other teams
+
+
+
 
 #### Myanmar National Football Team (U-16)
 
@@ -92,16 +99,34 @@ Yangon United FC consists of 30 athletes between ages 20 to 31. All the athletes
 
 
 
-### Discussion on possible interventions 
+### Proposed interventions 
 
-1.	**Body composition assessment**: Both Myanmar National Football Team and Yangon United FC do not assess the body composition, muscle and fat mass of the players. Hence, daily calorie requirement for each player cannot be effectively determined. This can lead to consumption of higher or lower than recommended calorie intake. Thus, body composition assessment should be the first intervention plan towards effective nutrition management.
+1.	**Body composition assessment**: Assessment of body composition, muscle and fat mass of the players are not done. Hence, daily calorie requirement for each player cannot be effectively determined. This can lead to consumption of higher or lower than recommended calorie intake. Thus, body composition assessment should be the first intervention plan towards effective nutrition management.
 
-2.	**Diet management**: Force feeding is reported in Myanmar National Football Team, as players are forced to finish all the food prepared for buffet-style meals. There have been incidences that players vomit after high calorie meals. On the contrary, the meal plan for Yangon United FC is insufficient with inadequate amount of complex carbohydrates. Yangon United FC players report they feel hungry throughout the day, especially after training, and the players resort to eating instant noodle cups in between meals and snacks. Therefore, individual calorie requirement should be evaluated, and the meal plans should be designed as per the latest nutrition recommendations.
+2.	**Diet management**: Individual calorie requirement should be evaluated, and the meal plans should be designed as per the latest nutrition recommendations.
 
-3.	**Fluid intake management**: Daily fluid requirement is not calculated for the players from both teams. The players are not sure of how much water they drink each day, and admit forgetting to drink water sometimes. In addition to this, players are not given sport drinks or carbohydrate drinks during the long training of duration more than an hour, which calls for immediate intervention. Sponsorship by 100 plus sports drink is currently ongoing, so possible negotiations to provide free/ subsidized sports drink for players?
+3.	**Fluid intake management**: Daily fluid requirement is not calculated for the players. The players are not sure of how much water they drink each day, and admit forgetting to drink water sometimes. In addition to this, players are not given sport drinks or carbohydrate drinks during the long training of duration more than an hour, which calls for immediate intervention. 
 
-4.	[**Nutrition education/ training**]{.underline}: The Myanmar National Football Team U-16 coach is convinced that the current nutrition practice is sufficient for his team players. The coaches from both teams refuse to modify the current nutrition management practice. Therefore, nutrition training should be provided for the football coaches and players.
+4.	[**Nutrition education/ training**]{.underline}: The coaches from both teams refuse to modify the current nutrition management practice. Therefore, nutrition training should be provided for the football coaches and players.
 
+5. **Improve food safety, hygiene and sanitation at kitchen and food storage area**: Training on food safety, hygiene and sanitation is required for all kitchen staff. Deep cleaning and disinfecting services are required. Roster for daily cleaning should be done, with a checklist for regular temperature monitoring and other special considerations. Audit should be done by a supervisor (possibly medical team)-> once a week at first, then once in two weeks or once a month or as the supervisor sees fit when things get better. 
+
+Food preparation at the hotel is clean and proper. Food safety intervention is not needed at the hotel.
+
+6. **Improve taste and recipe development**: Interns did the taste test at the hotel and academy. Hotel meals taste good and has a variety of buffet options. The amount is ample and food choices are suitable. But they are typical hotel meals. Slight modification of recipe is recommended. For example, instead of serving stir-fry noodle with all ingredients mixed, it can be prepared separately. One tray for noodle, one for meat, one for egg, one for vegetables. Then, the players can easily take required amount of protein or veggie. It will save cost as well-  veggie or meat will also be good to pair with rice- reduce number of dishes. And they give too much spicy fish sauce to academy kids. Need to cut down salt intake- sports science team agrees. 
+
+The meals at academy kitchen are not good quality. Meal taste and quality needs improvement. 
+
+7. **Proper meals for sick players**: players do not receive appropriate meals when they are sick. This can interfere with their recovery and affect performance.
+
+#### Interventions done
+
+
+
+
+
+
+## Part 2: The Decision Analysis of the Intervention Options
 
 
 
