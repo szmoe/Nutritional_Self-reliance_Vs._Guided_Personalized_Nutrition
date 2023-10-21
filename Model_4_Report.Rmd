@@ -79,8 +79,13 @@ Study suggests that carbohydrate supplementation before, during and after traini
 	
 ### Daily food intake of two MFF football teams and nutrition arrangement for other teams
 
+Meals for football players and trainees at MFF were prepared by a hotel and a catering service. The hotel provided accommodation and meals for national men's teams during "camp" (training before international match). The duration for camp was around 6 months, and the players returned to their respective clubs (either MFF or regional clubs across country) after the matches. MFF players would then move back to their dormitory where meals are provided by a catering service. The allocated daily budget for meal at hotel was 20000 mmk (≈10 USD) per pax. The hotel also catered for MFF young male talents (age 12-16) at a lower budget. The meals were served in buffet style.
 
+The catering service prepared meals at the academy kitchen (inside MFF compound). The service provided meals for women's national teams and other young trainees at 7000 mmk (≈3 USD) per pax per day. Meat/ fish dishes were rationed (2 pcs per pax). Rice and side dishes (usually fish sauce and thin soup) were unlimited. Women's national teams did not get to train at the hotel camp before matches. So, their intake were more or less the same before international matches. 
 
+There were no arrangements for pre- and post-training snacks. Protein powder was requested by the sports science team, but the allocated quantity was not enough to share among the players sufficiently. Sports scientist would sometimes provide some chocolates or watermelon to the players after training. Normally, they would get water and wait for mealtime (or they would buy some fast food and soda from vending machine)
+
+Below are the sample daily menu provided by hotel (meal plan for U-16) and the catering service (meal plan for Yangon United FC). These meal plans were obtained from the medical department, and did not really match the actual menu for the hotel. Interns saw the hotel provided both Burmese and western dishes and a salad bar for the players at every meal. 
 
 #### Myanmar National Football Team (U-16)
 
@@ -97,7 +102,7 @@ Yangon United FC consists of 30 athletes between ages 20 to 31. All the athletes
 
 ![](./data_png/YFC.png)
 
-
+Based on the sample meal plans, it is clear that the nutrition intake of MFF players was not adequate as per the guidelines. The hotel provides a variety of food choices but the interns were not able to estimate the average protein and carb intakes of players due to time constraints. Players did not know the amount of carb, protein, fruit and veggie they should consume each meal. The catering service did not provide enough food options and amount for the players. 
 
 ### Proposed interventions 
 
@@ -119,11 +124,29 @@ The meals at academy kitchen are not good quality. Meal taste and quality needs 
 
 7. **Proper meals for sick players**: players do not receive appropriate meals when they are sick. This can interfere with their recovery and affect performance.
 
-#### Interventions done
+8. **Hire a nutritionist**: This intervention is proposed by the MFF management. 
 
+#### Progress on interventions after 2 months of internship
 
+1.	**Body composition assessment**: Not done. MFF does not have a body composition analyzer. The players need to go to a gym downtown where there's a machine. They could not spare time due to training schedule (need coaches' approval) and interns decided it was not urgent.
 
+2.	**Diet management**: Not done. Need the body composition assessment first. The medical team provided their BMI records but BMI could not tell much. 
 
+3.	**Fluid intake management**: Not done. Need coaches' approval and assessment first. 
+
+4.	[**Nutrition education/ training**]{.underline}: Partially done. Intern provided basic nutrition training and the importance of nutrition for sports performance to the coaches, chefs, cooks and kitchen staffs at MFF headquarter (Yangon) and its branches (Mandalay and Pathein). Level 2 intervention was not accomplished. 
+
+5. **Improve food safety, hygiene and sanitation at kitchen and food storage area**: Done. Deep cleaning and disinfection were done using proper chemicals. Intern developed forms for daily temperature record, cleaning roster, and food safety checklists for academy kitchen. The forms were passed to the medical team, and the intern got an agreement from the medical team that they would handle the audit before a nutritionist was hired. Intern also did safety check at kitchens in Mandalay and Pathein. Requests on necessary modifications (install fly screen etc) were made to the management. 
+
+6. **Improve taste and recipe development**: Done. Hotel's menu plan was revised by intern. Spicy fish sauce was replaced with a chilly dish (chef will develop more dishes) and intern requested the chef to cut down salt. (Intern did a survey- most kids answer they need something spicy and they don't really care about fish sauce)
+
+Intern also did a presentation on food waste at MFF (both at hotel and academy kitchen) and provided solutions to reduce food waste. Interns proposed to reduce foodwaste and dishes (revised menu) to gain extra money for training snacks (and protein powder). The catering service resisted they could only make changes if daily meal allowance was increased, but the MFF management refused. They were also not happy with cleaning and food safety arrangement. MFF terminated their service and called for tenders. (The quality of the new catering service is not known- interns left before that)
+
+7. **Proper meals for sick players**: Done (but not satisfactory). After much negotiations, interns reached an agreement with hotel manager and catering service (not with the new one) that they would provide a bowl of soup (chicken usually) and some fruits for sick players in addition to their usual meals. 
+
+8. **Hire a nutritionist**: This intervention is proposed by the MFF management. 
+
+For model building in Part 2, we need to consider how easy for MFF to hire a nutritionist. The nutrition and dietetic course was newly established at a private university in Myanmar. The interns were the graduates of second batch in 2019. There were about 20 graduates both first and second batches combined, and they were quickly hired by private hospitals to form nutrition departments to meet standards. So, all graduates had job offers and some were already working in public health during the course. Even if MFF could offer higher pay, it was unlikely that the graduates would work as sports nutritionist because the course mainly focus on clinical nutrition with four days on training on sports nutrition and two weeks on food service management- needs self-study on sports nutrition and management. 
 
 
 ## Part 2: The Decision Analysis of the Intervention Options
