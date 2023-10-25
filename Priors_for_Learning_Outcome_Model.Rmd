@@ -74,15 +74,45 @@ knitr::kable((data1), booktabs = TRUE,
 caption = 'Study Population')
 ```
 
-```{r table2, tidy=FALSE, echo=FALSE}
+<style>
+.column-left{
+  float: left;
+  width: 33%;
+  text-align: left;
+}
+.column-center{
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+}
+.column-right{
+  float: right;
+  width: 33%;
+  text-align: right;
+}
+</style>
 
-data2 <- tribble(
-  ~"Variable",         ~"Direction",           ~"Degree",           ~"Value of Outcome",
-  "Interest",          "Positive",              "Strong",            "NA"
+#### Association between Variables and Learning Outcome
+
+<div class="column-left">
+**Variable**
+
+Interest in learning
+
+
+</div>
+
+<div class="column-center">
+**Direction and Degree of Association**
+
+Positive, Strong
+</div>
+
+<div class="column-right">
+**Value of Outcome**
+
+NA
+
+</div>
+
   
-  
-  
-)
-knitr::kable((data2), booktabs = TRUE,
-             caption = 'Association between Variables and Learning Outcome')
-```
