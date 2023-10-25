@@ -1,0 +1,88 @@
+---
+title: "Priors_for_Learning_Outcome_Model"
+author: "SM"
+date: "2023-10-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+Forming Priors
+
+Prior distributions for our model are set based on previous literature and inputs from experts. Experts' inputs are obtained via focused group discussion and survey. 
+
+## Stage 1: Priors from literature
+
+The objectives of collecting prior information from literature:
+
+- To identify variables that have direct association with the targeted outcome
+- To identify the direction and degree of associations between the variables and the outcome
+- To explore the (qualitative) values of outcomes affected by different variables (when         applicable)
+
+### Applicability and generalizability of data on our population 
+
+The applicability and generalizability of data are determined by the extent of similarity between the study population and our population. 
+
+#### Background info of our population
+
++ Location- Yangon, Myanmar
++ Population- Professional football players
++ Gender- Male and Female 
++ Age- 15 to 30
++ Education level- highschool to college level students, older players are university           graduates
+
+#### Intervention 1: Improving Nutritional Self-reliance
+
++ Nutrition education (Nutrition Guide and a series of in-person classes)
+    + Food groups (basic level)
+    + Types of nutrients (basic level)
+    + Healthy plate (basic level)
+    + Macronutrient and fluid requirements (Intermediate to advance level)
+    + Calculation of protein-energy requirements (Advance level)
+    + Food exchange (Advance level)
+
+#### Intervention 2: Guided Personalized Nutrition
+
++ Nutrition education (a 3-hour in-person class)
+    + Food groups (basic level)
+    + Types of nutrients (basic level)
+    + Healthy plate (basic level)
+    + Macronutrient and fluid requirements (Intermediate level)
+    
+### Collecting Priors from Literature Review
+
+> 1. [The influences of interest in learning and learning hours on learning outcomes
+of vocational college students in Taiwan: using a teacher’s instructional attitude
+as the moderator](.http://wiete.com.au/journals/GJEE/Publish/vol13no3/01-Lee-Y-J.pdf)
+
+
+```{r table1, tidy=FALSE, echo=FALSE}
+
+data1 <- tribble(
+  ~"Name",                  ~"Category",                          ~"Match",
+  "Location",                "Taiwan",                              "Low",
+  "Population",              "College students, lecturers",         "Medium",
+  "Gender",                  "Male and Female",                     "High",
+  "Age",                     "18 to 60",                            "Medium",
+  "Education level",         "College studnets to Phd",             "Medium",
+  "**Applicability**",       "**NA**",                              "**Low to Medium**"
+)
+knitr::kable((data1), booktabs = TRUE,
+caption = 'Study Population')
+```
+
+```{r table2, tidy=FALSE, echo=FALSE}
+
+data2 <- tribble(
+  ~"Variable",         ~"Direction",           ~"Degree",           ~"Value of Outcome",
+  "Interest",          "Positive",              "Strong",            "NA"
+  
+  
+  
+)
+knitr::kable((data2), booktabs = TRUE,
+             caption = 'Association between Variables and Learning Outcome')
+```
