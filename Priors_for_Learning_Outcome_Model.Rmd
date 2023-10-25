@@ -59,7 +59,7 @@ of vocational college students in Taiwan: using a teacher’s instructional atti
 as the moderator](.http://wiete.com.au/journals/GJEE/Publish/vol13no3/01-Lee-Y-J.pdf)
 
 
-```{r table1, tidy=FALSE, echo= FALSE}
+```{r table1, tidy=FALSE, include=FALSE} 
 
 data1 <- tribble(
   ~"Name",                  ~"Category",                          ~"Match",
@@ -75,7 +75,7 @@ caption = 'Study Population')
 
 ```
 
-```{r table2, tidy=FALSE, echo=FALSE}
+```{r table2, tidy=FALSE, include=FALSE}
 data2 <- read.table(stringsAsFactors = FALSE, header = TRUE, sep="/", text =
 'Name/Category/Match
  Location/Taiwan/Low
@@ -87,6 +87,8 @@ data2 <- read.table(stringsAsFactors = FALSE, header = TRUE, sep="/", text =
 knitr::kable((data2), booktabs = TRUE,
 caption = 'Study Population')
 ```
+
+<br>
 
 <style>
 .column-left{
@@ -106,15 +108,68 @@ caption = 'Study Population')
 }
 </style>
 
-#### Association between Variables and Learning Outcome
+#### $\color{brown}{\text{Study Population}}$
+
+<div class="column-left">
+**Category**
+
+Location
+
+Population
+
+Age
+
+Education level
+
+*Applicability*
+</div>
+
+<div class="column-center">
+
+**Data**
+
+Taiwan
+
+College students, Acedamic staff
+
+18 to 60
+
+Current students to Phd
+
+*NA*
+</div>
+
+<div class="column-right">
+
+**Match**
+
+Low
+
+Medium
+
+Medium
+
+Medium
+
+*Low to Medium*
+
+</div>
+<br>
+
+#### $\color{brown}{\text{Association between Variables and Learning Outcome}}$
 
 <div class="column-left">
 **Variable**
 
-Interest in learning
+Interest in learning (I)
 
-Learning hours
+Learning hours (T)
 
+Teacher's instructional attitude (Mo)
+
+I*Mo
+
+T*Mo
 
 </div>
 
@@ -123,14 +178,28 @@ Learning hours
 
 Positive, Strong
 
-Positive, 
+Positive, Strong
+
+Positive, Strong
+
+Positive, Significantly strong
+
+Positive, Significantly strong
 </div>
 
 <div class="column-right">
-**Value of Outcome**
+**Path Coefficient Value**
 
-NA
+0.462
 
+0.451
+
+0.442
+
+0.691
+
+0.672
 </div>
 
-  
+<span style="color:blue">When a teacher’s instructional attitude exerts a positive extraneous effect, H1, H2 and H3 appear relatively insignificant, compared with the increased significance of H4 and H5 statistically</span>.
+
