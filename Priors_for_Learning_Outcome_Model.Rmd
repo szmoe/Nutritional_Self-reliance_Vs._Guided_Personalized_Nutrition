@@ -59,7 +59,7 @@ of vocational college students in Taiwan: using a teacher’s instructional atti
 as the moderator](.http://wiete.com.au/journals/GJEE/Publish/vol13no3/01-Lee-Y-J.pdf)
 
 
-```{r table1, tidy=FALSE, echo=FALSE}
+```{r table1, tidy=FALSE, echo= FALSE}
 
 data1 <- tribble(
   ~"Name",                  ~"Category",                          ~"Match",
@@ -71,6 +71,20 @@ data1 <- tribble(
   "**Applicability**",       "**NA**",                              "**Low to Medium**"
 )
 knitr::kable((data1), booktabs = TRUE,
+caption = 'Study Population')
+
+```
+
+```{r table2, tidy=FALSE, echo=FALSE}
+data2 <- read.table(stringsAsFactors = FALSE, header = TRUE, sep="/", text =
+'Name/Category/Match
+ Location/Taiwan/Low
+ Population/College students, Lecturers/Medium
+ Age/ 18 to 60/ Medium
+ Education level/ College students to Phd/ Medium
+ Applicability/ NA/ Low to Medium'
+)
+knitr::kable((data2), booktabs = TRUE,
 caption = 'Study Population')
 ```
 
@@ -99,6 +113,8 @@ caption = 'Study Population')
 
 Interest in learning
 
+Learning hours
+
 
 </div>
 
@@ -106,6 +122,8 @@ Interest in learning
 **Direction and Degree of Association**
 
 Positive, Strong
+
+Positive, 
 </div>
 
 <div class="column-right">
