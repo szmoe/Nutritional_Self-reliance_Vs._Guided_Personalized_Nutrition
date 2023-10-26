@@ -20,7 +20,7 @@ The objectives of collecting prior information from literature:
 
 - To identify variables that have direct association with the targeted outcome
 - To identify the direction and degree of associations between the variables and the outcome
-- To explore the (qualitative) values of outcomes affected by different variables (when         applicable)
+- To explore the changes in values of outcomes affected by different variables (when         applicable)
 
 ### Applicability and generalizability of data on our population 
 
@@ -56,7 +56,7 @@ The applicability and generalizability of data are determined by the extent of s
 
 > 1. [The influences of interest in learning and learning hours on learning outcomes
 of vocational college students in Taiwan: using a teacher’s instructional attitude
-as the moderator](.http://wiete.com.au/journals/GJEE/Publish/vol13no3/01-Lee-Y-J.pdf)
+as the moderator](http://wiete.com.au/journals/GJEE/Publish/vol13no3/01-Lee-Y-J.pdf)
 
 
 ```{r table1, tidy=FALSE, include=FALSE} 
@@ -87,8 +87,6 @@ data2 <- read.table(stringsAsFactors = FALSE, header = TRUE, sep="/", text =
 knitr::kable((data2), booktabs = TRUE,
 caption = 'Study Population')
 ```
-
-<br>
 
 <style>
 .column-left{
@@ -154,7 +152,6 @@ Medium
 *Low to Medium*
 
 </div>
-<br>
 
 #### $\color{brown}{\text{Association between Variables and Learning Outcome}}$
 
@@ -176,15 +173,16 @@ T*Mo
 <div class="column-center">
 **Direction and Degree of Association**
 
-Positive, Strong
+Positive, Significant
 
-Positive, Strong
+Positive, Significant
 
-Positive, Strong
+Positive, Significant
+
+Positive, Significantly strong
 
 Positive, Significantly strong
 
-Positive, Significantly strong
 </div>
 
 <div class="column-right">
@@ -199,7 +197,176 @@ Positive, Significantly strong
 0.691
 
 0.672
+
 </div>
 
 <span style="color:blue">When a teacher’s instructional attitude exerts a positive extraneous effect, H1, H2 and H3 appear relatively insignificant, compared with the increased significance of H4 and H5 statistically</span>.
+
+>2. [THE EFFECT OF TEACHER COMMUNICATION ABILITY AND LEARNING MOTIVATION ON STUDENT LEARNING OUTCOMES IN ECONOMIC LESSONS FOR CLASS XI IPS SMA EKASAKTI IN PADANG ACADEMIC YEAR 2015/2016](https://click.endnote.com/viewer?doi=10.31933%2Fjige.v1i1.532&token=WzM4NzQwODksIjEwLjMxOTMzL2ppZ2UudjFpMS41MzIiXQ.YQ_qIxckhzLvpQEiikE2Iq_-xy4)
+
+
+#### $\color{brown}{\text{Study Population}}$
+
+<div class="column-left">
+**Category**
+
+Location
+
+Population
+
+Age
+
+Education level
+
+*Applicability*
+</div>
+
+<div class="column-center">
+**Data**
+
+Indonesia
+
+High school student
+
+16 to 17
+
+Grade 11 
+
+*NA*
+</div>
+
+<div class="column-right">
+**Match**
+
+Medium
+
+Medium
+
+Medium
+
+Medium
+
+*Medium*
+</div>
+
+#### $\color{brown}{\text{ Association between Variables and Learning Outcome }}$
+
+<div class="column-left">
+**Variable**
+
+Teacher's communication skills (CS)
+
+Student's motivation to learn (LM)
+
+CS*LM
+
+</div>
+
+<div class="column-center">
+**Direction and Degree of Association**
+
+Positive, Significant
+
+Positive, Significant
+
+Positive, Significant
+
+</div>
+
+<div class="column-right">
+**R-square Value**
+
+NA
+
+NA
+
+0.216
+
+</div>
+
+#### $\color{brown}{\text{Changes in Value of Outcome}}$
+
+Every  1  point  increase  in  communication  will  be  followed  by  an  increase  in learning  outcomes  of  0.155  and  every  1  point  increase  in  learning  motivation  will be followed by an increase in learning outcomes of 0.108.
+
+Communication skills and learning motivation contribute  to  the  value  of  student  learning  outcomes  by  21.60%,  while  the  remaining 78.40% is contributed by other factors not examined in this study. Other variables  that  were  not  examined  were  internal  factors  (health,  intelligence,  interests)  and external factors (family and community environment).
+
+
+> 3. [The  Correlation of  Motivation and  Habit with  Learning  Outcomes in New Normal Era](https://click.endnote.com/viewer?doi=10.25217%2Fji.v8i1.2749&token=WzM4NzQwODksIjEwLjI1MjE3L2ppLnY4aTEuMjc0OSJd.4RX3NsJrGDLYnH_KUh446TFrTj4)
+
+
+#### $\color{brown}{\text{Study Population}}$
+
+<div class="column-left">
+**Category**
+
+Location
+
+Population
+
+Age
+
+Education level
+
+*Applicability*
+</div>
+
+<div class="column-center">
+**Data**
+
+Indonesia
+
+High school student
+
+16 to 17
+
+Grade 11 
+
+*NA*
+</div>
+
+<div class="column-right">
+**Match**
+
+Medium
+
+Medium
+
+Medium
+
+Medium
+
+*Medium*
+</div>
+
+#### $\color{brown}{\text{ Association between Variables and Learning Outcome }}$
+
+<div class="column-left">
+**Variable**
+
+Motivation (M) (self/external)
+
+Habit (H)
+
+M*H
+</div>
+
+<div class="column-center">
+**Direction and Degree of Association**
+
+Positive, Significant, Weak
+
+Positive, Significant, Weak
+
+Positive, Significant, Weak
+</div>
+
+<div class="column-right">
+**R-square Value**
+
+0.217
+
+0.235
+
+0.302
+</div>
 
