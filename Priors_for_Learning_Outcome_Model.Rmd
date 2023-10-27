@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(DiagrammeR)
 ```
 
 Forming Priors
@@ -453,5 +454,84 @@ NA
 Student's  creativity, interest, and creativity and interest  have an  effect  of  14%, 41.8% and 50.3%  on  student  achievement  in  economics  subjects  for class  XI  Social  Sciences SMA  Ekasakti  Padang, the remaining 49.7% is influenced by several other  factors. 
 
 
+#### $\color{green}{\text{Generate Initial Model}}$
+
+We chose 4 papers as reference for our initial priors. Our search focused on the papers that studied variables with potential impact on learning outcome in a traditional classroom setting. Intervention studies (novel teaching method, learning environment, hybrid classroom, etc) were excluded. 
+
+None of the selected studies has a population closely matched (high applicability) to our target population. Hence, the papers' findings cannot be applied directly to our model, but they will be useful in building the basic framework of the model. Paper 1, 2 and 4 quantified the relationship between variables (Changes in the Value of Outcome), which could be very useful in coding of our model. Unfortunately due to differences in population and study subject, we were not able to use those results. 
+
+Thus, we summarized the results- usable for our model- of the four papers as follows:
+
+- Student's interest in learning, teacher's attitude and learning hour can improve learning outcome, but if all three exist together (teacher's attitude being significant factor), the impact on learning outcome improves significantly. (beta approx 0.4 to 0.6)
+- Teacher's communication skills and student's motivation to learn- particularly if both are present- can improve learning outcome. (explain 21.6% of variation)
+- Student's motivation and study habit- particularly when coexist- can improve learning outcome (explain 30.2% of variation)
+- Student's creativity and interest in learning- particularly when coexist- can improve learning outcome (explain 50.3% of variation)
+
+
+##### $\color{green}{\text{The Initial Model based on Literature}}$
+
+```{r echo=FALSE}
+DiagrammeR("graph LR
+           A(Latent)--> I 
+           B(Actualised)--> I
+           C(Text-based)--> I
+           D(Task-based)--> I
+           E(Knowledge-based)--> I
+           A1(Value-related belief)--> A
+           A2(Emotional attitude)--> A
+           B1(Degree of participation)--> B
+           B2((Motivation to learn))--> L
+           C1(Learning material)--> C
+           D1(Activities)--> D
+           E1(Prior knowledge/experience)--> E
+           I((Interest in learning))--> L{Learning outcome}
+           H((Learning hour))--> L
+           F(Individual interest)--> H
+           G(Situational interest)--> H
+           A2--> F
+           E1--> F
+           J1--> G
+           J((Teacher's attitude))--> L
+           J--> I
+           J--> H
+           J1(Interaction/Feeling)--> J
+           J2(Performance/Quality)--> J
+           J1--> X2
+           X((Study habit))--> L
+           X1(Self-motivation)-->B2
+           X2(External-motivation)-->B2
+           Z((Student's creativity))--> L
+           Z--> I
+           
+           style A fill: lightpink,  stroke:black, stroke-width:2px;
+           style B fill: lightpink,  stroke:black, stroke-width:2px;
+           style C fill: lightpink,  stroke:black, stroke-width:2px;
+           style D fill: lightpink,  stroke:black, stroke-width:2px;
+           style E fill: lightpink,  stroke:black, stroke-width:2px;
+           style A1 fill: lightgrey,  stroke:black, stroke-width:2px;
+           style A2 fill: lightgrey,  stroke:black, stroke-width:2px;
+           style B1 fill: lightgrey,  stroke:black, stroke-width:2px;
+           style B2 fill: violet, stroke:black, stroke-width:2px;
+           style C1 fill: lightgrey,  stroke:black, stroke-width:2px;
+           style D1 fill: lightgrey,  stroke:black, stroke-width:2px;
+           style E1 fill: lightgrey,  stroke:black, stroke-width:2px;
+           style I fill: pink, stroke:black, stroke-width:2px;
+           style L fill: lightblue, stroke:black, stroke-width:2px
+           style H fill: green, stroke:black, stroke-width:2px
+           style F fill: lightgreen, stroke:black, stroke-width:2px
+           style G fill: lightgreen, stroke:black, stroke-width:2px
+           style J fill: yellow, stroke:black, stroke-width:2px
+           style J1 fill: lightyellow, stroke:black, stroke-width:2px
+           style J2 fill: lightyellow, stroke:black, stroke-width:2px
+           style X fill: violet, stroke:black, stroke-width:2px
+           style X1 fill: lightviolet, stroke:black, stroke-width:2px
+           style X2 fill: lightviolet, stroke:black, stroke-width:2px
+           style Z fill: pink, stroke:black, stroke-width:2px")
+```
+
+#### $\color{green}{\text{Questions for Stage 2: Model Building}}$
+
+1. What are the core variables for learning outcome for our population?
+2. What are the percent contributions of core variables to the outcome?
 
 
