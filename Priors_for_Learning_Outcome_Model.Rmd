@@ -470,7 +470,9 @@ Thus, we summarized the results- usable for our model- of the four papers as fol
 
 ##### $\color{green}{\text{The Initial Model based on Literature}}$
 
-```{r echo=FALSE}
+![Fig.1: Initial Model based on Previous Literature](./Learning_Outcome_Model.png)
+
+```{r include=FALSE}
 DiagrammeR("graph LR
            A(Latent)--> I 
            B(Actualised)--> I
