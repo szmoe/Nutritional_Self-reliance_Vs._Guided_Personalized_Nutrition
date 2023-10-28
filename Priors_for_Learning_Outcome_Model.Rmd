@@ -472,7 +472,7 @@ Thus, we summarized the results- usable for our model- of the four papers as fol
 
 ##### $\color{green}{\text{The Initial Model based on Literature}}$
 
-![Fig.1: Initial Model based on Previous Literature](./Learning_Outcome_Model.png)
+![**Fig.1: Initial Model based on Previous Literature**](./Learning_Outcome_Model.png)
 
 ```{r include=FALSE}
 DiagrammeR("graph LR
@@ -548,9 +548,9 @@ A conceptual model was drafted during focus group discussions with football play
 
 According to MFF management, the main goal or outcome of the intervention was to increase chances of winning the games. However, we need to consider if such outcome is achievable (measurable) with our intervention. To win a football match needs more than a good nutrition, and thus, good nutrition may not have a strong causal effect on "increased chance of winning a game." Hence, we set the outcomes of our intervention as follows:
 
+![**Fig 2: Conceptual Framework**](./Outcome_Pathway.png)
 
-
-```{r graph, echo=FALSE}
+```{r include=FALSE}
 
 mermaid("graph TB
         I(Interventions)-->N(Improved nutrition knowledge and practice)
@@ -573,7 +573,7 @@ mermaid("graph TB
         style B fill: lightbeige, stroke:brown, stroke-width: 3px
         style C fill: lightbeige, stroke:brown, stroke-width: 3px")
 ```
-*Note: The intervention for "Food quality and safety at kitchens" was already done during the 2-month internship. 
+*Note: The intervention for "Food quality and safety at kitchens" was already done during the 2-month internship.* 
 
 For the 
 
