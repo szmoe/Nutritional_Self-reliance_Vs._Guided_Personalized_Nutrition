@@ -548,7 +548,9 @@ A conceptual model was drafted during focus group discussions with football play
 
 According to MFF management, the main goal or outcome of the intervention was to increase chances of winning the games. However, we need to consider if such outcome is achievable (measurable) with our intervention. To win a football match needs more than a good nutrition, and thus, good nutrition may not have a strong causal effect on "increased chance of winning a game." Hence, we set the outcomes of our intervention as follows:
 
-```{r echo=FALSE}
+
+
+```{r graph, echo=FALSE}
 
 mermaid("graph TB
         I(Interventions)-->N(Improved nutrition knowledge and practice)
