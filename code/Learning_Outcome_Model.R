@@ -1,5 +1,6 @@
 library(DiagrammeR)
 
+# Initial Model based on findings in published papers
 DiagrammeR("graph LR
            A(Latent)--> I 
            B(Actualised)--> I
@@ -56,3 +57,28 @@ DiagrammeR("graph LR
            style X1 fill: lightviolet, stroke:black, stroke-width:2px
            style X2 fill: lightviolet, stroke:black, stroke-width:2px
            style Z fill: pink, stroke:black, stroke-width:2px")
+
+# Conceptual Framework of Intervention
+mermaid("graph TB
+        I(Interventions)-->N(Improved nutrition knowledge and practice)
+        I--> R(Right food in right amount at right time)
+        N--> D(Improved diet)
+        R--> D
+        D--> S(Improved sports performance)
+        A(Nutritional self-reliance)--> I
+        B(Guided personalized nutrition)--> I
+        C(Food quality and safety at kitchens)--> I
+        I1(Heavy nutrition education)--> A
+        I2(Light nutrition education & nutritionist)--> B
+      
+        style I fill: lightbeige, stroke:brown, stroke-width: 3px
+        style N fill: lightblue, stroke: brown, stroke-width: 3px
+        style R fill: lightblue, stroke: brown, stroke-width: 3px
+        style D fill: lightgreen, stroke:brown, stroke-width: 3px
+        style S fill: yellow, stroke:brown, stroke-width: 3px
+        style A fill: lightbeige, stroke:brown, stroke-width: 3px
+        style B fill: lightbeige, stroke:brown, stroke-width: 3px
+        style C fill: lightbeige, stroke:brown, stroke-width: 3px")
+
+# Preliminary model for Intervention 1 drafted by the football players
+

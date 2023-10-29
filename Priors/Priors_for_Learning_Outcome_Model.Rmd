@@ -474,64 +474,6 @@ Thus, we summarized the results- usable for our model- of the four papers as fol
 
 ![**Fig.1: Initial Model based on Previous Literature**](./data_png/Learning_Outcome_Model.png)
 
-```{r include=FALSE}
-DiagrammeR("graph LR
-           A(Latent)--> I 
-           B(Actualised)--> I
-           C(Text-based)--> I
-           D(Task-based)--> I
-           E(Knowledge-based)--> I
-           A1(Value-related belief)--> A
-           A2(Emotional attitude)--> A
-           B1(Degree of participation)--> B
-           B2((Motivation to learn))--> L
-           C1(Learning material)--> C
-           D1(Activities)--> D
-           E1(Prior knowledge/experience)--> E
-           I((Interest in learning))--> L{Learning outcome}
-           H((Learning hour))--> L
-           F(Individual interest)--> H
-           G(Situational interest)--> H
-           A2--> F
-           E1--> F
-           J1--> G
-           J((Teacher's attitude))--> L
-           J--> I
-           J--> H
-           J1(Interaction/Feeling)--> J
-           J2(Performance/Quality)--> J
-           J1--> X2
-           X((Study habit))--> L
-           X1(Self-motivation)-->B2
-           X2(External-motivation)-->B2
-           Z((Student's creativity))--> L
-           Z--> I
-           
-           style A fill: lightpink,  stroke:black, stroke-width:2px;
-           style B fill: lightpink,  stroke:black, stroke-width:2px;
-           style C fill: lightpink,  stroke:black, stroke-width:2px;
-           style D fill: lightpink,  stroke:black, stroke-width:2px;
-           style E fill: lightpink,  stroke:black, stroke-width:2px;
-           style A1 fill: lightgrey,  stroke:black, stroke-width:2px;
-           style A2 fill: lightgrey,  stroke:black, stroke-width:2px;
-           style B1 fill: lightgrey,  stroke:black, stroke-width:2px;
-           style B2 fill: violet, stroke:black, stroke-width:2px;
-           style C1 fill: lightgrey,  stroke:black, stroke-width:2px;
-           style D1 fill: lightgrey,  stroke:black, stroke-width:2px;
-           style E1 fill: lightgrey,  stroke:black, stroke-width:2px;
-           style I fill: pink, stroke:black, stroke-width:2px;
-           style L fill: lightblue, stroke:black, stroke-width:2px
-           style H fill: green, stroke:black, stroke-width:2px
-           style F fill: lightgreen, stroke:black, stroke-width:2px
-           style G fill: lightgreen, stroke:black, stroke-width:2px
-           style J fill: yellow, stroke:black, stroke-width:2px
-           style J1 fill: lightyellow, stroke:black, stroke-width:2px
-           style J2 fill: lightyellow, stroke:black, stroke-width:2px
-           style X fill: violet, stroke:black, stroke-width:2px
-           style X1 fill: lightviolet, stroke:black, stroke-width:2px
-           style X2 fill: lightviolet, stroke:black, stroke-width:2px
-           style Z fill: pink, stroke:black, stroke-width:2px")
-```
 
 #### $\color{green}{\text{Questions for Stage 2: Model Building}}$
 
@@ -550,29 +492,6 @@ According to MFF management, the main goal or outcome of the intervention was to
 
 ![**Fig 2: Conceptual Framework**](./data_png/Outcome_Pathway.png)
 
-```{r include=FALSE}
-
-mermaid("graph TB
-        I(Interventions)-->N(Improved nutrition knowledge and practice)
-        I--> R(Right food in right amount at right time)
-        N--> D(Improved diet)
-        R--> D
-        D--> S(Improved sports performance)
-        A(Nutritional self-reliance)--> I
-        B(Guided personalized nutrition)--> I
-        C(Food quality and safety at kitchens)--> I
-        I1(Heavy nutrition education)--> A
-        I2(Light nutrition education & nutritionist)--> B
-      
-        style I fill: lightbeige, stroke:brown, stroke-width: 3px
-        style N fill: lightblue, stroke: brown, stroke-width: 3px
-        style R fill: lightblue, stroke: brown, stroke-width: 3px
-        style D fill: lightgreen, stroke:brown, stroke-width: 3px
-        style S fill: yellow, stroke:brown, stroke-width: 3px
-        style A fill: lightbeige, stroke:brown, stroke-width: 3px
-        style B fill: lightbeige, stroke:brown, stroke-width: 3px
-        style C fill: lightbeige, stroke:brown, stroke-width: 3px")
-```
 *Note: The intervention for "Food quality and safety at kitchens" was already done during the 2-month internship.* 
 
 This document focuses on the first outcome of our multistage model "the learning outcome"- improved nutritional knowledge and practice (eating habit). To achieve the second outcome "improved diet," the MFF football players need to be provided with the right food in ample amount by the kitchens, on top of having good nutrition knowledge and eating habits. Hence, we did the food service intervention (Food quality and safety at kitchens) first. The conditions of food service after the intervention and chances of quality maintenance were considered in our model. 
@@ -618,13 +537,21 @@ The learning outcome was achieved 100 percent if all objectives of nutrition tra
 
 ##### $\color{red}{\text{1-2 Cafe Approach}}$
 
-The players were first asked to list their answers to the questions (encouraged to add more points as needed) individually, and then discussed with their group members to create a new list. Based on the lists, draft models were drawn by the two groups.
+The players were first asked to list their answers to the questions (encouraged to add more points as needed) individually, and then discussed with their group members to create a new list. Based on the lists, model drafts were drawn by the two groups.
 
-The groups presented their model, followed by an open discussion where each group provided additional inputs and suggestions for the other group. We collected the draft models for intervention 1 and 2 after both groups approved the models. We then provided calibration training to the participants. 
+The groups presented their model, followed by an open discussion where each group provided additional inputs and suggestions for the other group. We collected the model drafts for intervention 1 and 2 after both groups approved the models. We then provided calibration training to the participants. 
 
 A [survey questionnaire](https://github.com/szmoe/Nutritional_Self-reliance_Vs._Guided_Personalized_Nutrition/blob/main/Survey_data.xlsx) was developed based on the variables from the draft models and literature review model. A copy of questionnaire was given to the team captain of each team. The captain was asked to bring the questionnaire back to the team and fill in the estimates (lower and upper ranges) together with their team members. The forms were collected after a week. 
 
-<span style="color:blue"> Since we needed inputs from the players for all three models, we developed the questionnaire after drafting all models. Eight new players were requested for each modelling exercise. Thus, a total of 24 players (6 players from each team) were given calibration training after drafting the third and final model. The whole team- with the help of players trained in proper calibration- filled out the estimates for variables in survey questionnaire. After collecting all survey forms, we confirmed the core variables and drew the final multistage model with the help of the draft models. </span>
+<span style="color:blue"> Since we needed inputs from the players for all three models, we developed the questionnaire after drafting all models. Eight new players were requested for each modelling exercise. Thus, a total of 24 players (6 players from each team) were given calibration training after drafting the third and final model. The whole team- with the help of players trained in proper calibration- filled out the estimates for variables in survey questionnaire. After collecting all survey forms, we confirmed the core variables and drew the final multistage model based on the drafts. </span>
+
+#### $\color{red}{\text{Model Drafts for Learning Outcome}}
+
+Eight football players drafted the preliminary models for learning outcome. 
+
+
+
+
 
 
 
