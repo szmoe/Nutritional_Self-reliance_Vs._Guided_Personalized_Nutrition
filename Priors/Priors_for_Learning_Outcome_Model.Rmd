@@ -541,11 +541,11 @@ The players were first asked to list their answers to the questions (encouraged 
 
 The groups presented their model, followed by an open discussion where each group provided additional inputs and suggestions for the other group. We collected the model drafts for intervention 1 and 2 after both groups approved the models. We then provided calibration training to the participants. 
 
-A [survey questionnaire](https://github.com/szmoe/Nutritional_Self-reliance_Vs._Guided_Personalized_Nutrition/blob/main/Survey_data.xlsx) was developed based on the variables from the draft models and literature review model. A copy of questionnaire was given to the team captain of each team. The captain was asked to bring the questionnaire back to the team and fill in the estimates (lower and upper ranges) together with their team members. The forms were collected after a week. 
+A [survey questionnaire](https://github.com/szmoe/Nutritional_Self-reliance_Vs._Guided_Personalized_Nutrition/blob/main/data/Survey_data.xlsx) was developed based on the variables from the draft models and literature review model. A copy of questionnaire was given to the team captain of each team. The captain was asked to bring the questionnaire back to the team and fill in the estimates (lower and upper ranges) together with their team members. The forms were collected after a week. 
 
 <span style="color:blue"> Since we needed inputs from the players for all three models, we developed the questionnaire after drafting all models. Eight new players were requested for each modelling exercise. Thus, a total of 24 players (6 players from each team) were given calibration training after drafting the third and final model. The whole team- with the help of players trained in proper calibration- filled out the estimates for variables in survey questionnaire. After collecting all survey forms, we confirmed the core variables and drew the final multistage model based on the drafts. </span>
 
-#### $\color{red}{\text{Model Drafts for Learning Outcome}}
+#### $\color{red}{\text{Model Drafts for Learning Outcome}}$
 
 Eight football players drafted the preliminary models for learning outcome. 
 
