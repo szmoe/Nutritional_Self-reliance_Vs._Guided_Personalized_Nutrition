@@ -549,7 +549,7 @@ A [survey questionnaire](https://github.com/szmoe/Nutritional_Self-reliance_Vs._
 
 Eight football players drafted the preliminary models for learning outcome. 
 
-![**Fig 3: Model Draft for Learning Outcome (Intervention 1)](./data_png/Self-reliance_Learning_Draft.png)
+![**Fig 3: Model Draft for Learning Outcome (Intervention 1)**](./data_png/Self-reliance_Learning_Draft.png)
 
 
 
