@@ -193,9 +193,7 @@ graph <- create_graph(
 graph %>%
   render_graph()
 
-
 # 1 improved nutrition knowledge
-
 # 2 Good trainer ++
 # 3 Good learning materials ++
 # 4 Good facility +
@@ -239,7 +237,108 @@ graph %>%
 # 34 Regular practice +
   # 35 Reminder (e.g. poster in dining hall) +
   # 36 Enough resources and help when needed +
+
+# Preliminary model for Intervention 2 drafted by the football players
+
+# Create a node data frame (ndf)
+ndf <- create_node_df(
+  n         = 19,
+  label     = c("Improved\n nutrition knowledge",
+                "Trainer",
+                "Learning materials",
+                "Facility",
+                "Interest",
+                "Convenience",
+                "Good interpersonal skill",
+                "Good teaching skill",
+                "Easy to understand",
+                "Easy to apply",
+                "Visual aid",
+                "Good classroom\n (light, sound, temperature)",
+                "Refreshments",
+                "Motivation from teacher",
+                "Know importance\n of nutrition",
+                "Lack of energy\n after training",
+                "Short class duration",
+                "Weekends class",
+                "Class scheduled\n shortly after training"),
   
+  shape     = c("hexagon", 
+                "circle", 
+                "circle", 
+                "circle", 
+                "circle",
+                "circle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle"),
+  style     = "filled",
+  fontsize  = 8,
+  fixedsize = FALSE,
+  height    = .2,
+  width     = .75,
+  color     = c("#5C4033","#00008B","#00008B","#00008B","#00008B","#00008B","#006400",
+                "#006400","#006400","#006400","#006400","#006400","#006400","#006400",
+                "#006400","#8B0000","#006400","#8B0000","#8B0000")
+  
+)
+
+# Create an edge data frame (edf)
+edf <- create_edge_df(
+  from     = c(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19),
+  to       = c(1,1,1,1,1,2,2,3,3,3,4,4,5,5,5,5,6,6),
+  label    = c("++","+","+","++","+++","+","+","+","+","+","+","+","+","+",
+               "-","+","-","-"),
+  fontsize = 9,
+  minlen   = 2,
+  color    = c("#006400","#006400","#006400","#006400","#006400","#006400",
+               "#006400","#006400","#006400","#006400","#006400","#006400",
+               "#006400","#006400","#8B0000","#006400","#8B0000","#8B0000",
+               "#8B0000","#8B0000")
+)
+
+# Create a graph with the ndf and edf
+graph <- create_graph(
+  nodes_df = ndf,
+  edges_df = edf
+)
+
+graph %>%
+  render_graph()
+
+
+# 1 improved nutrition knowledge
+
+# 2 Trainer ++
+# 3 Learning materials +
+# 4 Facility +
+# 5 Interest ++
+# 6 Convenience +++
+
+# 7 Good interpersonal skill +
+# 8 Good teaching skill +
+# 9 Easy to understand +
+# 10 Easy to apply +
+# 11 Visual aid +
+# 12 Good classroom (light, sound, temperature) +
+# 13 Refreshments +
+# 14 Motivation from teacher +
+# 15 Know importance of nutrition +
+# 16 Lack of energy after training -
+# 17 Short class duration +
+# 18 Weekend class -
+# 19 Class schedule after training -
+
 
 
 

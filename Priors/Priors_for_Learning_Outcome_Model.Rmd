@@ -550,7 +550,27 @@ A [survey questionnaire](https://github.com/szmoe/Nutritional_Self-reliance_Vs._
 Eight football players drafted the preliminary models for learning outcome. 
 
 ![**Fig 3: Model Draft for Learning Outcome (Intervention 1)**](./data_png/Self-reliance_Learning_Draft.png)
+![**Fig 4: Model Draft for Learning Outcome (Intervention 2)**](./data_png/Self-reliance_Guided_Draft.png)
 
+Based on the two drafts, we designed our interventions. 
+
+***Intervention 1: Nutritional Self-reliance***
+
+- 1-hour class twice per week for 2 months (total 16 hours)
+- 6 hours of theory 
+- 10 hours of practical (calculation, food exchange, practice with real food)
+- Agreement with coach to reduce training hours on class day (schedule away from training)
+
+***Intervention 2: Guided Personalized Nutrition***
+
+- 1-hour class once a week for 3 weeks (total 3 hours)
+- Agreement with coach to reduce training hours on class day (schedule away from training)
+
+#### $\color{red}{\text{Survey}}$
+
+This was the last stage of "Priors for Learning Outcome." We developed a survey form to assess the attitude, behavior and current nutrition knowledge of MFF players. The survey contained 20 questions that covered all three models. 
+
+As mentioned above, the form was given to the team captain after drafting all models, and the whole team would answer the survey together. We could use this approach because our population was small and homogeneous. The survey would allow us to estimate better ranges for input variables of our models.
 
 
 
