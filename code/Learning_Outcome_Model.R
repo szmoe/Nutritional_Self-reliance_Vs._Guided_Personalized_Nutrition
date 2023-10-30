@@ -82,3 +82,170 @@ mermaid("graph TB
 
 # Preliminary model for Intervention 1 drafted by the football players
 
+# Create a node data frame (ndf)
+ndf <- create_node_df(
+  n         = 36,
+  label     = c("improved nutrition knowledge",
+                 "Trainer",
+                 "Learning materials",
+                 "Facility",
+                 "Motivation",
+                 "Learning hours",
+                 "Attitude",
+                 "Good interpersonal skill",
+                 "Good teaching skill",
+                 "Easy to understand",
+                 "Easy to apply",
+                 "Visual aid\n Food models",
+                 "Good classroom\n (light, sound, temperature)",
+                 "Refreshments",
+                 "Know importance of nutrition",
+                 "Low interest",
+                 "Lack of energy",
+                 "Long training hour",
+                 "training on weekends",
+                 "Giving homework",
+                 "Inconvenience\n (time, location, etc)",
+                 "Experience benefits",
+                 "Shorter,\n frequent classes",
+                 "Good attitude towards\n nutrition training",
+                 "Willingness\n to learn and apply",
+                 "Know long term benefits",
+                 "Persistence",
+                 "improved nutrition practice\n (apply knowledge)",
+                 "Retain knowledge",
+                 "Food",
+                 "Not tasty/safe",
+                 "Not enough\n (amount, variety)",
+                 "Dietary restriction",
+                 "Regular practice",
+                 "Reminder\n (e.g. poster in dining hall)",
+                 "Enough resources and\n help when needed"),
+  shape     = c("hexagon", 
+                "circle", 
+                "circle", 
+                "circle", 
+                "circle",
+                "circle",
+                "circle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "rectangle",
+                "hexagon",
+                "circle",
+                "circle",
+                "rectangle",
+                "rectangle",
+                "circle",
+                "rectangle",
+                "rectangle",
+                "rectangle" ),
+  style     = "filled",
+  fontsize  = 8,
+  fixedsize = FALSE,
+  height    = .2,
+  width     = .75,
+  color     = c("#988558","#00008B","#00008B","#00008B","#00008B","#00008B","#00008B","#006400",
+                "#006400","#006400","#006400","#006400","#006400","#006400","#006400","#8B0000", 
+                "#8B0000","#8B0000","#8B0000","#8B0000","#8B0000","#006400","#006400","#006400",
+                "#006400","#006400","#006400","#5C4033","#00008B","#00008B","#8B0000","#8B0000",
+                "#00008B","#006400","#006400","#006400")
+
+)
+
+# Create an edge data frame (edf)
+edf <- create_edge_df(
+  from     = c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,
+               26,27,29,5,7,30,33,31,32,34,35,36),
+  to       = c(28,1,1,1,1,1,1,2,2,3,3,3,4,4,5,5,16,16,16,16,16,5,6,7,7,7,7,28,28,
+               28,28,28,30,30,29,34,34),
+  label    = c("","++","++","+","+++","++","+++","+","+","+","+","+","+","+",
+                 "+","-","-","-","-","-","-","+","+","+","+","+","+","++","+++",
+                 "++","-","-","-","+","+","+"),
+  fontsize = 9,
+  minlen   = 1,
+  color    = "#000000"
+)
+
+# Create a graph with the ndf and edf
+graph <- create_graph(
+  nodes_df = ndf,
+  edges_df = edf
+)
+
+graph %>%
+  render_graph()
+
+
+# 1 improved nutrition knowledge
+
+# 2 Good trainer ++
+# 3 Good learning materials ++
+# 4 Good facility +
+# 5 Enough motivation +++
+# 6 Enough learning hours ++
+# 7 Attitude +++
+
+# 8 Good interpersonal skill +
+# 9 Good teaching skill +
+# 10 Easy to understand +
+# 11 Easy to apply +
+# 12 Visual aid/ Food models +
+# 13 Good classroom (light, sound, temperature) +
+# 14 Refreshments +
+# 15 Know importance of nutrition +
+# 16 Low interest -
+  # 17 Lack of energy -
+  # 18 Long training hour -
+  # 19 training on weekends -
+  # 20 Giving homework -
+  # 21 Inconvenience (time, location, etc) -
+# 22 Experience benefits +
+# 23 Shorter, frequent classes +
+# 24 Good attitude towards nutrition training +
+# 25 Willingness to learn and apply +
+# 26 Know long term benefits +
+# 27 Persistence +
+
+
+#  28 improved nutrition practice (apply knowledge)
+
+# 29 Retain knowledge ++
+#  5 Enough motivation +++
+#  7 Attitude ++
+#  30  Food
+  # 31 Not tasty/safe
+  # 32 enough/n (amount, variety)
+# 33 Dietary restriction -
+
+
+# 34 Regular practice +
+  # 35 Reminder (e.g. poster in dining hall) +
+  # 36 Enough resources and help when needed +
+  
+
+
+
+
+
+
+
+
+ 
