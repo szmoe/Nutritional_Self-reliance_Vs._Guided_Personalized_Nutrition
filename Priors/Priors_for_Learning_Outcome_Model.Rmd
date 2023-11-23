@@ -582,6 +582,32 @@ This was the last stage of "Priors for Learning Outcome." We developed a survey 
 
 As mentioned above, the form was given to the team captain after drafting all models, and the whole team would answer the survey together. We could use this approach because our population was small and homogeneous. The survey would allow us to estimate better ranges for input variables of our models.
 
+The survey form can be accessed [here](https://github.com/szmoe/Nutritional_Self-reliance_Vs._Guided_Personalized_Nutrition/tree/main/data). We used a mixture of likert scale, sematic differential scale and 'yes,no' question in our survey form. The acquired ordinal data were not used directly in our model, but used as guide in generating calibrated ranges of estimates- distance between lower and upper bound, skewness, etc. The right-hand side of the form was for estimate range of population that gave 'positive' answer. 
+
+The data in the survey form are the finalized data of the four survey forms filled by four football teams. We discussed with the four football captains and finalized the range for estimates with large variations. 
+
+#### $\color{brown}{\text{Decision Wheel and Decision Template }}$
+
+
+We used the decision wheel and the [decision template](https://github.com/szmoe/Nutritional_Self-reliance_Vs._Guided_Personalized_Nutrition/blob/main/Decision_Template.xlsx) to conceptualize the links between the variables and the outcome. Both the wheel and template were based on the previous literature and impact pathway models drawn by football players (stakeholders). 
+
+```{r, echo=FALSE, out.width="49%", out.height="20%", fig.cap="**Decision Wheel for Intervention 1 (Left) and Intervention 2 (Right)**", fig.show='hold', fig.align='center'}
+knitr::include_graphics(c("data_png/LO_DW_In_1.png","data_png/LO_DW_In_2.png"))
+```
+
+
+
+
+We used the decision template as reference for coding in R. The prior assumptions are as follows:
+
+- The presence of all core variables contributes to meeting 100% of target for outcome. 
+
+- The percent (degree) of contribution of each core variable (or core variable pairs) to outcome is different. (This will prevent overestimation of our outcome.)
+
+
+At present, we have little to no prior information for targeted outcome for our population. Hence, we cannot assume that our variables are complete or precise. That's why we added the variable 'other' to look out for potential core variables during the monitoring stage- to update our prior for future works. We also don't have prior information for percent contribution of variable (pairs). Thus, we used wider estimate for percent contribution of variables or variable pairs to the outcome, and capped the value at 100% or 1. 
+
+
 
 
 
