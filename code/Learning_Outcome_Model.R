@@ -1,6 +1,6 @@
 library(DiagrammeR)
 
-# Initial Model based on findings in published papers
+# Initial Model based on findings in published papers ####
 DiagrammeR("graph LR
            A(Latent)--> I 
            B(Actualised)--> I
@@ -58,7 +58,7 @@ DiagrammeR("graph LR
            style X2 fill: lightviolet, stroke:black, stroke-width:2px
            style Z fill: pink, stroke:black, stroke-width:2px")
 
-# Conceptual Framework of Intervention
+# Conceptual Framework of Intervention ####
 mermaid("graph TB
         I(Interventions)-->N(Improved nutrition knowledge and practice)
         I--> R(Right food in right amount at right time)
@@ -80,7 +80,7 @@ mermaid("graph TB
         style B fill: lightbeige, stroke:brown, stroke-width: 3px
         style C fill: lightbeige, stroke:brown, stroke-width: 3px")
 
-# Preliminary model for Intervention 1 drafted by the football players
+# Preliminary model for Intervention 1 drafted by the football players ####
 
 # Create a node data frame (ndf)
 ndf <- create_node_df(
@@ -238,7 +238,7 @@ graph %>%
   # 35 Reminder (e.g. poster in dining hall) +
   # 36 Enough resources and help when needed +
 
-# Preliminary model for Intervention 2 drafted by the football players
+# Preliminary model for Intervention 2 drafted by the football players ####
 
 # Create a node data frame (ndf)
 ndf <- create_node_df(
@@ -339,14 +339,54 @@ graph %>%
 # 18 Weekend class -
 # 19 Class schedule after training -
 
+# Decision wheel for learning outcome for intervention 1 ####
+
+library(plotly)
+
+Inter_1 <- plot_ly(
+  labels = c("Learning outcome", "Motivation", "Interest", "Attitude", 
+              "Material", "Learning hour", "Quality of trainer", "Communication", 
+              "Study habit", "Creativity", "Facility","Other"),
+  
+  parents = c("","Learning outcome","Learning outcome","Learning outcome",
+              "Learning outcome","Learning outcome","Learning outcome",
+              "Learning outcome","Learning outcome","Learning outcome",
+              "Learning outcome","Learning outcome"),
+  
+  values = c(100, 14, 14, 14, 8, 8, 14, 8, 4, 8, 4, 4),
+  
+  type = 'sunburst',
+  
+  branchvalues = 'total',
+  
+  textinfo = "label"
+  
+  )
+Inter_1
+
+# Decision wheel for learning outcome for intervention 2 ####
+
+Inter_2 <- plot_ly(
+  
+  labels = c("Learning outcome", "Motivation", "Interest", "Convenience", "Material",
+             "Learning hour", "Attitude", "Quality of trainer", "Communication",
+             "Facility", "Other"),
+  
+  parents = c("", "Learning outcome","Learning outcome","Learning outcome",
+              "Learning outcome","Learning outcome","Learning outcome",
+              "Learning outcome","Learning outcome", "Learning outcome",
+              "Learning outcome"),
+  
+  values = c(100, 12, 12, 16, 4, 4, 16, 16, 12, 4, 4),
+  
+  type = 'sunburst',
+  
+  branchvalues = 'total',
+  
+  textinfo = 'labels'
+)
+
+Inter_2
 
 
 
-
-
-
-
-
-
-
- 
