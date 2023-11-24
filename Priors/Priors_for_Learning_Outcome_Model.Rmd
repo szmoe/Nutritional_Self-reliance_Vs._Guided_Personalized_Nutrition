@@ -582,9 +582,9 @@ This was the last stage of "Priors for Learning Outcome." We developed a survey 
 
 As mentioned above, the form was given to the team captain after drafting all models, and the whole team would answer the survey together. We could use this approach because our population was small and homogeneous. The survey would allow us to estimate better ranges for input variables of our models.
 
-The survey form can be accessed [here](https://github.com/szmoe/Nutritional_Self-reliance_Vs._Guided_Personalized_Nutrition/tree/main/data). We used a mixture of likert scale, sematic differential scale and 'yes,no' question in our survey form. The acquired ordinal data were not used directly in our model, but used as guide in generating calibrated ranges of estimates- distance between lower and upper bound, skewness, etc. The right-hand side of the form was for estimate range of population that gave 'positive' answer. 
+The survey form can be accessed [here](https://github.com/szmoe/Nutritional_Self-reliance_Vs._Guided_Personalized_Nutrition/tree/main/data). We used the semantic differential scale for questions in our survey form. The acquired ordinal data were not used directly in our model, but used as guide in generating calibrated ranges of estimates- distance between lower and upper bound, skewness, etc. The right-hand side of the form was for estimate range of population that gave 'positive' answer. 
 
-The data in the survey form are the finalized data of the four survey forms filled by four football teams. We discussed with the four football captains and finalized the range for estimates with large variations. 
+The data in the survey form are the finalized data of the four survey forms filled by four football teams. We discussed with the four football captains and finalized the range for estimates with large variations.
 
 #### $\color{brown}{\text{Decision Wheel and Decision Template }}$
 
