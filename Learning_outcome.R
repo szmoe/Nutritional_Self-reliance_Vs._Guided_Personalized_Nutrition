@@ -519,6 +519,27 @@ input_learing_outcome <- read.csv("Learning_outcome.csv")
                      x_axis_name = 'Possible distribution of total score for each MFF player ',
                      base_size = 7)
   
+  
+  plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
+                     vars = c("Individual_baseline_inter_two", "Learning_outcome_inter_two"),
+                     method = 'hist_simple_overlay',
+                     x_axis_name = 'Possible distribution of total score for each MFF player ',
+                     base_size = 7)
+  
+  plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
+                     vars = c("Number_player_90score_baseline_inter_one", 
+                              "Number_player_90score_after_training_inter_one"),
+                     method = 'hist_simple_overlay',
+                     x_axis_name = 'Total number of MFF players with good learning outcome ',
+                     base_size = 7)
+  
+  plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
+                     vars = c("Number_player_90score_baseline_inter_two", 
+                              "Number_player_90score_after_training_inter_two"),
+                     method = 'hist_simple_overlay',
+                     x_axis_name = 'Total number of MFF players with good learning outcome ',
+                     base_size = 7)
+  
 
 
 
