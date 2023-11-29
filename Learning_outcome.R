@@ -511,11 +511,14 @@ input_learing_outcome <- read.csv("Learning_outcome.csv")
   
   # Plot distributions histogram
   
+  # For intervention one 
+  
   plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
                      vars = c("Individual_baseline_inter_one", "Learning_outcome_inter_one"),
                      method = 'hist_simple_overlay',
                      x_axis_name = 'Possible distribution of total score for each MFF player ',
                      base_size = 7)
+  
 
 
 
