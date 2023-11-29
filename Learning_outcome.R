@@ -36,7 +36,7 @@ Learning_outcome_function <- function(x, varnames) {
   
   Individual_baseline_inter_one <- ((know_food_group*10) + (know_nutrient*15) +
     (know_healthy_eating*15) + (know_nu_requirement*20) + 
-    (know_nu_calculation*20) + ((know_plan_diet*know_food_exchange)*20))- 
+    (know_nu_calculation*20) + ((plan_diet*know_food_exchange)*20))- 
     (correction_factor* 100)
   
   # Individual-baseline for intervention 2 ####
@@ -147,7 +147,6 @@ Learning_outcome_function <- function(x, varnames) {
                                     (good_participation_inter_one*0.1) +
                                     (good_material_inter_one*0.2) +
                                     (good_activity_inter_one*0.1) +
-                                    (good_creativity_inter_one*0.1) +
                                     (good_prior_knowledge_inter_one*0.1)
   
   interest_in_learning_inter_two <- (good_value_belief*0.2) +
@@ -155,6 +154,11 @@ Learning_outcome_function <- function(x, varnames) {
                                     (good_participation_inter_two*0.1) +
                                     (good_material_inter_two*0.2) +
                                     (good_prior_knowledge_inter_two*0.2)
+  
+  # Probability of good creativity ####
+  
+  good_creativity_inter_one <- (know_math*plan_diet*0.5) + 
+    (interest_in_learning_inter_one*0.5)
   
   # Probability of motivation to learn ####
   
@@ -181,10 +185,6 @@ Learning_outcome_function <- function(x, varnames) {
                                 (willingness_learn_inter_one*0.2) +
                                 (motivation_to_learn_inter_one*0.3)
   
-  # Probability of good creativity ####
-  
-  good_creativity_inter_one <- (know_math*plan_diet*0.5) + 
-                               (interest_in_learning_inter_one*0.5)
   
   # Probability of good facility ####
   
@@ -441,9 +441,9 @@ Learning_outcome_function <- function(x, varnames) {
                                                percent_know_healthy_eating*
                                                percent_know_nu_requirement*
                                                percent_know_calculation*
-                                               percent_know_plan_diet*
+                                               percent_plan_diet*
                                                percent_know_food_exchange
-                                               )* number_athlete
+                                               )* number_athelete
   
   # 90 percent baseline for intervention two ####
   
