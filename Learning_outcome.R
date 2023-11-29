@@ -504,10 +504,18 @@ input_learing_outcome <- read.csv("Learning_outcome.csv")
 
   # Run the Monte Carlo Simulation
 
-  Game_mc_simulation <- mcSimulation(estimate = estimate_read_csv("Learning_outcome.csv"),
+  Learning_outcome_mc_simulation <- mcSimulation(estimate = estimate_read_csv("Learning_outcome.csv"),
                                      model_function = Learning_outcome_function,
                                     numberOfModelRuns = 1000,
                                     functionSyntax = "plainNames")
+  
+  # Plot distributions histogram
+  
+  plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
+                     vars = c("Individual_baseline_inter_one", "Learning_outcome_inter_one"),
+                     method = 'hist_simple_overlay',
+                     x_axis_name = 'Possible distribution of total score for each MFF player ',
+                     base_size = 7)
 
 
 
