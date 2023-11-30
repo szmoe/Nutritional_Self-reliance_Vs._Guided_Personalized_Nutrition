@@ -115,13 +115,13 @@ Learning_outcome_function <- function(x, varnames) {
   
   # Probability of good participation ####
   
-  good_participation_inter_one <- ((1-(if_long_training*0.3)) + (1-(if_weekend_training*0.1))+
-                                    (1-(inconvenience*0.1)) + (1-(if_give_homework*0.1)) +
-                                     (good_student_attitude_inter_one*0.4)) 
+  good_participation_inter_one <- ((1-if_long_training)*0.3) + ((1-if_weekend_training)*0.1)+
+                                    ((1-inconvenience)*0.1) + ((1-if_give_homework)*0.1) +
+                                     (good_student_attitude_inter_one*0.4) 
   
-  good_participation_inter_two <- ((1-(if_long_training*0.3)) + (1-(if_weekend_training*0.1))+
-                                     (1-(inconvenience*0.1)) + (1-(if_give_homework*0.1)) +
-                                     (good_student_attitude_inter_two*0.4)) 
+  good_participation_inter_two <- ((1-if_long_training)*0.3) + ((1-if_weekend_training)*0.1)+
+                                     ((1-inconvenience)*0.1) + ((1-if_give_homework)*0.1) +
+                                     (good_student_attitude_inter_two*0.4) 
   
   # Probability of good activities 
   
