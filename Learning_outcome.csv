@@ -1,69 +1,69 @@
 variable,distribution,lower,median,upper ,label
-,,,,,
+
 know_importance_nu,tnorm_0_1,0.5,,0.9,Probability of a MFF player know the importance of nutrition (%)
-,,,,,
+
 take_care_diet,tnorm_0_1,0.2,,0.9,Probability of a MFF player takes care of their diet (%)
 know_food_group,tnorm_0_1,0.5,,0.9,Probability of a MFF player know the basic food groups (%)
 know_nutrient,tnorm_0_1,0.3,,0.9,Probability of a MFF player know types of nutrients and their food sources (%)
 know_healthy_eating,tnorm_0_1,0.3,,0.9,Probability of a MFF player know healthy eating (%)
-know_nu_requirement,tnorm_0_1,0.01,,0.5,Probability of a MFF player know about nutrition and fluid requirement (%)
-know_nu_calculation,tnorm_0_1,0.01,,0.5,Probability of a MFF player know nutrition calculation (%)
-plan_diet,tnorm_0_1,0.01,,0.5,Probability of a MFF player know how to do meal planning well (%)
-know_food_exchange,tnorm_0_1,0.01,,0.5,Probability of a MFF player know how to use food exchange list (%)
-follow_diet_plan,tnorm_0_1,0.01,,0.7,Probability of a MFF player follow a proper diet plan
+know_nu_requirement,tnorm_0_1,0.1,,0.5,Probability of a MFF player know about nutrition and fluid requirement (%)
+know_nu_calculation,tnorm_0_1,0.1,,0.5,Probability of a MFF player know nutrition calculation (%)
+plan_diet,tnorm_0_1,0.1,,0.5,Probability of a MFF player know how to do meal planning well (%)
+know_food_exchange,tnorm_0_1,0.1,,0.5,Probability of a MFF player know how to use food exchange list (%)
+follow_diet_plan,tnorm_0_1,0.1,,0.7,Probability of a MFF player follow a proper diet plan
 correction_factor,tnorm_0_1,0.1,,0.3,Percent variations between self-accessed and actual knowledge level (%)
-,,,,,
+
 interest_advanced_training,tnorm_0_1,0.5,,0.9,Probability of a MFF player interested in taking advanced nutrition course (%)
-extra_study_hour,tnorm_0_1,0.01,,0.9,Probability of a MFF player finding extra study time (%)
+extra_study_hour,tnorm_0_1,0.1,,0.9,Probability of a MFF player finding extra study time (%)
 likelihood_behaviour_change,tnorm_0_1,0.1,,0.9,Probability of a MFF player make actual dietary changes after training (%)
 motivation_apply_knowledge,tnorm_0_1,0.2,,0.5,Probability of a MFF player motivated to apply knowledge after training (%)
 easy_use_resource,tnorm_0_1,0.1,,0.7,Probability of a MFF player can easily use resources for actual dietary change (%)
-,,,,,
+
 if_trainer_good_interpersonal,tnorm_0_1,0.7,,0.9,Probability of hiring a trainer with good interpersonal skill (%)
 if_trainer_good_teaching,tnorm_0_1,0.7,,0.9,Probability of hiring a trainer with good teaching skill (%)
 if_trainer_good_knowledge,tnorm_0_1,0.7,,0.9,Probability of hiring an experienced trainer (%)
-,,,,,
+
 like_learning_material,tnorm_0_1,0.5,,0.9,Probability of a MFF player like the content of learning materials (%)
 like_initial_four,tnorm_0_1,0.5,,0.9,Probability of a MFF player understand the initial four chapters of nutrition guide (%)
 like_final_two,tnorm_0_1,0.1,,0.7,Probability of a MFF player understand the final two chapters of nutrition guide (%)
-,,,,,
-if_long_training,tnorm_0_1,0.01,,0.03,Probability of long training hours (%)
-if_weekend_training,tnorm_0_1,0.01,,0.03,Probability of training on weekends (%)
-if_improper_time,tnorm_0_1,0.01,,0.03,Probability of training shortly after intense workout (%)
-if_improper_location,tnorm_0_1,0.01,,0.03,Probability of training location too far (%)
-if_give_homework,tnorm_0_1,0.01,,0.03,Probabiliy of trainer giving homework (%)
-,,,,,
+
+if_long_training,tnorm_0_1,0.1,,0.3,Probability of long training hours (%)
+if_weekend_training,tnorm_0_1,0.1,,0.3,Probability of training on weekends (%)
+if_improper_time,tnorm_0_1,0.1,,0.3,Probability of training shortly after intense workout (%)
+if_improper_location,tnorm_0_1,0.1,,0.3,Probability of training location too far (%)
+if_give_homework,tnorm_0_1,0.1,,0.3,Probabiliy of trainer giving homework (%)
+
 know_math,tnorm_0_1,0.3,,0.9,Probability of a MFF player know unitary method (%)
-,,,,,
+
 current_training_venue,tnorm_0_1,0.5,,0.9,Probability of a MFF player likes the current training venue (%)
-,,,,,
+
 number_athelete,const,120,,120,Number of football players
 percent_know_food_group,tnorm_0_1,0.7,,0.9,Percentage of MFF players know food groups well (%)
 percent_know_nutrient,tnorm_0_1,0.3,,0.5,Percentage of MFF players know nutrients and their sources well (%)
 percent_know_healthy_eating,tnorm_0_1,0.3,,0.5,Percentage of MFF players know healthy eating/pate well (%)
-percent_know_nu_requirement,tnorm_0_1,0.01,,0.1,Percentage of MFF players know nutrition requirement well (%)
-percent_know_calculation,tnorm_0_1,0.01,,0.1,Percentage of MFF players know nutrition calculation well (%)
-percent_plan_diet,tnorm_0_1,0.01,,0.1,Percentage of MFF players plan diet well (%)
-percent_know_food_exchange,tnorm_0_1,0.01,,0.1,Percentage of MFF players know food exchange well (%)
-,,,,,
-ch12_moti_interest_trainer_attitude_one,tnorm_0_1,0.1,,0.2,"Percent contribution of variable set 1 to chapter 1,2 of intervention 1 (%)"
-ch12_material_time_one,tnorm_0_1,0.1,,0.2,"Percent contribution of variable set 2 to chapter 1,2 of intervention 1 (%)"
-ch12_prior_knowledge_one,tnorm_0_1,0.5,,0.7,"Percent contribution of variable set 3 to chapter 1,2 of intervention 1 (%)"
-ch34_moti_interest_trainer_attitude_one,tnorm_0_1,0.2,,0.3,"Percent contribution of variable set 1 to chapter 3,4 of intervention 1 (%)"
-ch34_material_time_one,tnorm_0_1,0.1,,0.2,"Percent contribution of variable set 2 to chapter 3,4 of intervention 1 (%)"
-ch34_prior_knowledge_one,tnorm_0_1,0.3,,0.5,"Percent contribution of variable set 3 to chapter 3,4 of intervention 1 (%)"
-ch56_material_trainer_one,tnorm_0_1,0.1,,0.3,"Percent contribution of variable set 1 to chapter 5,6 of intervention 1 (%)"
-ch56_moti_persist_one,tnorm_0_1,0.1,,0.2,"Percent contribution of variable set 2 to chapter 5,6 of intervention 1 (%)"
-ch56_attitude_commu_one,tnorm_0_1,0.1,,0.2,"Percent contribution of variable set 3 to chapter 5,6 of intervention 1 (%)"
-ch56_creati_interest_one,tnorm_0_1,0.1,,0.2,"Percent contribution of variable set 4 to chapter 5,6 of intervention 1 (%)"
-ch56_time_prior_one,tnorm_0_1,0.01,,0.05,"Percent contribution of variable set 5 to chapter 5,6 of intervention 1 (%)"
-ch56_facility_one,tnorm_0_1,0.01,,0.05,"Percent contribution of variable set 6 to chapter 5,6 of intervention 1 (%)"
-,,,,,
-ch12_moti_interest_trainer_attitude_two,tnorm_0_1,0.05,,0.1,"Percent contribution of variable set 1 to chapter 1,2 of intervention 2 (%)"
-ch12_commu_material_two,tnorm_0_1,0.05,,0.1,"Percent contribution of variable set 2 to chapter 1,2 of intervention 2 (%)"
-ch12_convenience_facility_two,tnorm_0_1,0.1,,0.2,"Percent contribution of variable set 3 to chapter 1,2 of intervention 2 (%)"
-ch12_prior_knowledge_two,tnorm_0_1,0.3,,0.6,"Percent contribution of variable set 4 to chapter 1,2 of intervention 2 (%)"
-ch34_moti_interest_trainer_attitude_two,tnorm_0_1,0.1,,0.2,"Percent contribution of variable set 1 to chapter 3,4 of intervention 2 (%)"
-ch34_commu_material_two,tnorm_0_1,0.05,,0.1,"Percent contribution of variable set 2 to chapter 3,4 of intervention 2 (%)"
-ch34_convenience_facility_two,tnorm_0_1,0.05,,0.1,"Percent contribution of variable set 3 to chapter 3,4 of intervention 2 (%)"
-ch34_prior_knowledge_two,tnorm_0_1,0.3,,0.6,"Percent contribution of variable set 4 to chapter 3,4 of intervention 2 (%)"
+percent_know_nu_requirement,tnorm_0_1,0.1,,0.3,Percentage of MFF players know nutrition requirement well (%)
+percent_know_calculation,tnorm_0_1,0.1,,0.3,Percentage of MFF players know nutrition calculation well (%)
+percent_plan_diet,tnorm_0_1,0.1,,0.3,Percentage of MFF players plan diet well (%)
+percent_know_food_exchange,tnorm_0_1,0.1,,0.3,Percentage of MFF players know food exchange well (%)
+
+ch12_moti_interest_trainer_attitude_one,tnorm_0_1,0.1,,0.8,"Percent contribution of variable set 1 to chapter 1,2 of intervention 1 (%)"
+ch12_material_time_one,tnorm_0_1,0.3,,0.9,"Percent contribution of variable set 2 to chapter 1,2 of intervention 1 (%)"
+ch12_prior_knowledge_one,tnorm_0_1,0.5,,0.9,"Percent contribution of variable set 3 to chapter 1,2 of intervention 1 (%)"
+ch34_moti_interest_trainer_attitude_one,tnorm_0_1,0.2,,0.8,"Percent contribution of variable set 1 to chapter 3,4 of intervention 1 (%)"
+ch34_material_time_one,tnorm_0_1,0.1,,0.7,"Percent contribution of variable set 2 to chapter 3,4 of intervention 1 (%)"
+ch34_prior_knowledge_one,tnorm_0_1,0.3,,0.6,"Percent contribution of variable set 3 to chapter 3,4 of intervention 1 (%)"
+ch56_material_trainer_one,tnorm_0_1,0.1,,0.7,"Percent contribution of variable set 1 to chapter 5,6 of intervention 1 (%)"
+ch56_moti_persist_one,tnorm_0_1,0.1,,0.8,"Percent contribution of variable set 2 to chapter 5,6 of intervention 1 (%)"
+ch56_attitude_commu_one,tnorm_0_1,0.1,,0.6,"Percent contribution of variable set 3 to chapter 5,6 of intervention 1 (%)"
+ch56_creati_interest_one,tnorm_0_1,0.1,,0.9,"Percent contribution of variable set 4 to chapter 5,6 of intervention 1 (%)"
+ch56_time_prior_one,tnorm_0_1,0.2,,0.7,"Percent contribution of variable set 5 to chapter 5,6 of intervention 1 (%)"
+ch56_facility_one,tnorm_0_1,0.1,,0.3,"Percent contribution of variable set 6 to chapter 5,6 of intervention 1 (%)"
+
+ch12_moti_interest_trainer_attitude_two,tnorm_0_1,0.1,,0.9,"Percent contribution of variable set 1 to chapter 1,2 of intervention 2 (%)"
+ch12_commu_material_two,tnorm_0_1,0.2,,0.9,"Percent contribution of variable set 2 to chapter 1,2 of intervention 2 (%)"
+ch12_convenience_facility_two,tnorm_0_1,0.1,,0.5,"Percent contribution of variable set 3 to chapter 1,2 of intervention 2 (%)"
+ch12_prior_knowledge_two,tnorm_0_1,0.3,,0.7,"Percent contribution of variable set 4 to chapter 1,2 of intervention 2 (%)"
+ch34_moti_interest_trainer_attitude_two,tnorm_0_1,0.1,,0.8,"Percent contribution of variable set 1 to chapter 3,4 of intervention 2 (%)"
+ch34_commu_material_two,tnorm_0_1,0.1,,0.6,"Percent contribution of variable set 2 to chapter 3,4 of intervention 2 (%)"
+ch34_convenience_facility_two,tnorm_0_1,0.1,,0.3,"Percent contribution of variable set 3 to chapter 3,4 of intervention 2 (%)"
+ch34_prior_knowledge_two,tnorm_0_1,0.3,,0.9,"Percent contribution of variable set 4 to chapter 3,4 of intervention 2 (%)"
