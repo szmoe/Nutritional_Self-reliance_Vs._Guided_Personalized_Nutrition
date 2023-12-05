@@ -49,9 +49,8 @@ Learning_outcome_function <- function(x, varnames) {
   
   # We don't have priors for each links between the branch variables and
   # core variables. So, we assign degree of association based on past experience
-  # and knowledge (DW, DT, IPM). We don't use ranges for links between branches 
-  # but a single probability estimate to see how it works. 
-  # We only use ranges for core variable links.
+  # and knowledge (DW, DT, IPM).
+  
   # That means we need really good priors for this model to work properly. 
   # Not having priors for variable links will be a disadvantage. Otherwise, we
   # need to use ranges for each variable- rather a tedious task. 
@@ -62,78 +61,211 @@ Learning_outcome_function <- function(x, varnames) {
   # contribution is based on its degree of association. This is to ensure we
   # will still get benefit even if not all branch variables are present. 
   
+  # Since we are simulating for different individuals, there may be different 
+  # number of branch variables for a core variables. For example, a smart student
+  # with prior knowledge would only need the guide book to achieve high score, 
+  # whereas their counterparts may need more- good trainer, good motivation, good
+  # learning material, good attitude, good facility, etc. We set ranges based on 
+  # this assumption. 
+  
   
   # Probability of having a good trainer ####
   
-  good_trainer <- (if_trainer_good_interpersonal*0.5) + 
-                  (if_trainer_good_teaching*0.25) +
-                  (if_trainer_good_knowledge*0.25)
+  good_trainer <- (if_trainer_good_interpersonal*percent_good_interpersonal) + 
+                  (if_trainer_good_teaching*percent_good_teaching) +
+                  (if_trainer_good_knowledge*percent_good_knowledge)
+  
+  if (good_trainer <= 1) {
+    good_trainer <- good_trainer
+  } else {
+    good_trainer <- 1
+  }
   
   # Probability of having good value-related belief ####
   
-  good_value_belief <- (know_importance_nu*0.5) + (take_care_diet*0.5)
+  good_value_belief <- (know_importance_nu*percent_know_importance_nu) + 
+                       (take_care_diet*percent_take_care_diet)
+  
+  if (good_value_belief <= 1) {
+    good_value_belief <- good_value_belief
+  } else {
+    good_value_belief <- 1
+  }
   
   # Probability of having good learning and practice materials ####
   
-  good_material_inter_one <- (like_learning_material*0.5) + 
-                             (like_initial_four*0.25) +
-                             (like_final_two*0.25)
+  good_material_inter_one <- (like_learning_material*percent_like_learning_material) + 
+                             (like_initial_four*percent_like_initial_four) +
+                             (like_final_two*percent_like_final_two)
   
-  good_material_inter_two <- (like_learning_material*0.5) + 
-                             (like_initial_four*0.5)
+  if (good_material_inter_one <= 1) {
+    good_material_inter_one <- good_material_inter_one
+  } else {
+    good_material_inter_one <- 1
+  }
+  
+  good_material_inter_two <- (like_learning_material*percent_like_learning_material) + 
+                             (like_initial_four*percent_like-initial_four)
+  
+  if (good_material_inter_two <= 1) {
+    good_material_inter_two <- good_material_inter_two
+  } else {
+    good_material_inter_two <- 1
+  }
   
   # Probability of good attitude towards nutrition training ####
   
-  good_attitude_training_inter_one <- (good_trainer*0.5) + (good_material_inter_one*0.2)
-                                      (good_value_belief*0.3)
+  good_attitude_training_inter_one <- ((good_trainer*percent_good_trainer_to_attitude) + 
+                                       (good_material_inter_one*percent_good_material_to_attitude) +
+                                       (good_value_belief*percent_good_value_to_attitude))
   
-  good_attitude_training_inter_two <- (good_trainer*0.5) + (good_material_inter_two*0.2) +
-                                      (good_value_belief*0.3)
+  if (good_attitude_training_inter_one <= 1) {
+    good_attitude_training_inter_one <- good_attitude_training_inter_one
+  } else {
+    good_attitude_training_inter_one <- 1
+  }
+  
+  good_attitude_training_inter_two <- ((good_trainer*percent_good_trainer_to_attitude) + 
+                                       (good_material_inter_two*percent_good_material_to_attitude) +
+                                       (good_value_belief*percent_good_value_to_attitude))
+  
+  if (good_attitude_training_inter_two <= 1) {
+    good_attitude_training_inter_two <- good_attitude_training_inter_two
+  } else {
+    good_attitude_training_inter_two <- 1
+  }
   
   # Probability of willingness to learn ####
   
-  willingness_learn_inter_one <- (interest_advanced_training*0.3) +
-                                 (extra_study_hour*0.1) + (motivation_apply_knowledge*0.3) +
-                                 (easy_use_resource*0.3)
+  willingness_learn_inter_one <- ((interest_advanced_training*
+                                     percent_interest_training_to_willingness) +
+                                 (extra_study_hour*
+                                    percent_extra_hour_to_willingness) + 
+                                 (motivation_apply_knowledge*
+                                    percent_motivation_apply_to_willingness) +
+                                 (easy_use_resource*
+                                    percent_easy_resource_to_willingness))
   
-  # Probability of having presistance ####
+  if (willingness_learn_inter_one <= 1) {
+    willingness_learn_inter_one <- willingness_learn_inter_one
+  } else {
+    willingness_learn_inter_one <- 1
+  }
   
-  persistence_inter_one <- (good_trainer*0.3) + (interest_advanced_training*0.3) +
-                            (motivation_apply_knowledge*0.4)
+  # Probability of having persistance ####
+  
+  persistence_inter_one <- ((good_trainer*percent_good_trainer_to_persistence) +
+                            (interest_advanced_training*
+                               percent_interest_training_to_persistence) +
+                            (motivation_apply_knowledge*
+                               percent_motivation_apply_to_persistence))
+  
+  if (persistence_inter_one <= 1) {
+    persistence_inter_one <- persistence_inter_one
+  } else {
+    persistence_inter_one <- 1
+  }
   
   # Probability of good student attitude ####
   
-  good_student_attitude_inter_one <- (willingness_learn_inter_one*0.2) +
-                                     (good_attitude_training_inter_one*0.5) +
-                                     (persistence_inter_one*0.3)
+  good_student_attitude_inter_one <- ((willingness_learn_inter_one*
+                                         percent_willingness_to_attitude) +
+                                     (good_attitude_training_inter_one*
+                                        percent_attitude_towards_training_to_attitude) +
+                                     (persistence_inter_one*percent_persistence_to_attitude))
+  
+  if (good_student_attitude_inter_one <= 1) {
+    good_student_attitude_inter_one <- good_student_attitude_inter_one
+  } else {
+    good_student_attitude_inter_one <- 1
+  }
   
   good_student_attitude_inter_two <- good_attitude_training_inter_two
   
   # Probability of inconvenience ####
   
-  inconvenience <- (if_improper_time*0.5) + (if_improper_location*0.5)
+  inconvenience <- ((if_improper_time*percent_improper_time_to_inconvenience) + 
+                    (if_improper_location*
+                       percent_improper_location_to_inconvenience))
+  
+  if (inconvenience <= 1) {
+    inconvenience <- inconvenience
+  } else {
+    inconvenience <- 1
+  }
   
   # Probability of good participation ####
   
-  good_participation_inter_one <- ((1-if_long_training)*0.3) + ((1-if_weekend_training)*0.1)+
-                                    ((1-inconvenience)*0.1) + ((1-if_give_homework)*0.1) +
-                                     (good_student_attitude_inter_one*0.4) 
+  good_participation_inter_one <- (((1-if_long_training)*
+                                     percent_short_training_to_participation) + 
+                                    ((1-if_weekend_training)*
+                                       percent_weekday_training_to_participation)+
+                                    ((1-inconvenience)*
+                                       percent_convenience_to_participation) + 
+                                    ((1-if_give_homework)*
+                                       percent_no_homework_to_participation) +
+                                     (good_student_attitude_inter_one*
+                                        percent_overall_attitude_to_participation)) 
   
-  good_participation_inter_two <- ((1-if_long_training)*0.3) + ((1-if_weekend_training)*0.1)+
-                                     ((1-inconvenience)*0.1) + ((1-if_give_homework)*0.1) +
-                                     (good_student_attitude_inter_two*0.4) 
+  if (good_participation_inter_one <= 1) {
+    good_participation_inter_one <- good_participation_inter_one
+  } else {
+    good_participation_inter_one <- 1
+  }
+  
+  good_participation_inter_two <- (((1-if_long_training)*
+                                     percent_short_training_to_participation) +
+                                    ((1-if_weekend_training)*
+                                       percent_weekday_training_to_participation)+
+                                     ((1-inconvenience)*
+                                        percent_convenience_to_participation) + 
+                                     ((1-if_give_homework)*
+                                        percent_no_homework_to_participation) +
+                                     (good_student_attitude_inter_two*
+                                        percent_overall_attitude_to_participation)) 
+  
+  if (good_participation_inter_two <= 1) {
+    good_participation_inter_two <- good_participation_inter_two
+  } else {
+    good_participation_inter_two <- 1
+  }
   
   # Probability of good activities 
   
-  good_activity_inter_one <- (good_participation_inter_one*0.5) +
-                             (good_trainer*0.5)
+  good_activity_inter_one <- ((good_participation_inter_one*
+                                 percent_participation_to_activity) +
+                             (good_trainer*
+                                percent_good_trainer_to_activity))
   
-  good_activity_inter_two <- (good_participation_inter_two*0.5) +
-                             (good_trainer*0.5)
+  if (good_activity_inter_one <= 1) {
+    good_activity_inter_one <- good_activity_inter_one
+  } else { 
+    good_activity_inter_one <- 1
+    }
+  
+  good_activity_inter_two <- ((good_participation_inter_two*
+                                 percent_participation_to_activity) +
+                             (good_trainer*
+                                percent_good_trainer_to_activity))
+  
+  if (good_activity_inter_two <= 1) {
+    good_activity_inter_two <- good_activity_inter_two
+  } else {
+    good_activity_inter_two <- 1
+  }
   
   # Probability of good prior knowledge/ experience ####
   
-  good_prior_knowledge_inter_one <- (take_care_diet*0.7) + (follow_diet_plan * 0.3)
+  good_prior_knowledge_inter_one <- ((take_care_diet*
+                                        percent_take_care_diet_to_prior_knowledge) + 
+                                     (follow_diet_plan * 
+                                       percent_follow_diet_plan_to_prior_knowledge))
+  
+  if (good_prior_knowledge_inter_one <= 1) {
+    good_prior_knowledge_inter_one <- good_prior_knowledge_inter_one
+  } else {
+    good_prior_knowledge_inter_one <- 1
+  }
   
   good_prior_knowledge_inter_two <- take_care_diet
   
@@ -142,12 +274,12 @@ Learning_outcome_function <- function(x, varnames) {
   
   # Probability of interest in learning ####
   
-  interest_in_learning_inter_one <- (good_value_belief*0.1) + 
+  interest_in_learning_inter_one <- ((good_value_belief*0.1) + 
                                     (good_student_attitude_inter_one*0.3) +
                                     (good_participation_inter_one*0.1) +
                                     (good_material_inter_one*0.2) +
                                     (good_activity_inter_one*0.1) +
-                                    (good_prior_knowledge_inter_one*0.1)
+                                    (good_prior_knowledge_inter_one*0.1))
   
   interest_in_learning_inter_two <- (good_value_belief*0.2) +
                                     (good_student_attitude_inter_two*0.3) +
@@ -476,6 +608,7 @@ Learning_outcome_function <- function(x, varnames) {
                                                      )* number_athelete
                   
   # 90 percent for intervention two using model result ####
+  
   
   Number_player_90score_after_training_inter_two <- (inter_two_chapter1*
                                                      inter_two_chapter2*
