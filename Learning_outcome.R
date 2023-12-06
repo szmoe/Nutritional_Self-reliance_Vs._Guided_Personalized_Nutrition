@@ -25,24 +25,55 @@ make_variables(estimate_read_csv(paste("Learning_outcome.csv")))
 
 Learning_outcome_function <- function(x, varnames) {
  
-  # Calculate baseline knowledge 
+  # Calculate baseline knowledge ####
   
   # Here we use the correction factor (see explanation in excel) to prevent 
   # overestimation of score at baseline. Individuals may over- or under- 
   # estimate their knowledge level- a correction factor is used to fix that.
+  # We focus on overestimation only in this case. 
   
   
   # Individual-baseline for intervention 1 ####
   
-  Individual_baseline_inter_one <- ((know_food_group*10) + (know_nutrient*15) +
-    (know_healthy_eating*15) + (know_nu_requirement*20) + 
-    (know_nu_calculation*20) + ((plan_diet*know_food_exchange)*20))- 
-    (correction_factor* 100)
+  know_food_groups <- vv(know_food_group,
+                         var_CV, n)
+  
+  know_nutrients <- vv(know_nutrient,
+                       var_CV, n)
+  
+  know_healthy_eatings <- vv(know_healthy_eating,
+                             var_CV, n)
+  
+  know_nu_requirements <- vv(know_nu_requirement,
+                             var_CV, n)
+  
+  know_nu_calculations <- vv(know_nu_calculation,
+                             var_CV, n)
+  
+  plan_diets <- vv(plan_diet,
+                   var_CV, n)
+  
+  know_food_exchanges <- vv(know_food_exchange,
+                            var_CV, n)
+  
+  correction_factors <- vv(correction_factor,
+                           var_CV, n)
+  
+  Individual_baseline_inter_one <- (((know_food_groups*10) + 
+                                      (know_nutrients*15) +
+                                      (know_healthy_eatings*15) + 
+                                      (know_nu_requirements*20) + 
+                                      (know_nu_calculations*20) + 
+                                      ((plan_diets*know_food_exchanges)*20))- 
+                                      (correction_factors* 100))
   
   # Individual-baseline for intervention 2 ####
   
-  Individual_baseline_inter_two <- ((know_food_group*25) + (know_nutrient*25) +
-    (know_healthy_eating*25) + (know_nu_requirement*25))- (correction_factor* 100)
+  Individual_baseline_inter_two <- (((know_food_groups*25) + 
+                                     (know_nutrients*25) +
+                                     (know_healthy_eatings*25) + 
+                                     (know_nu_requirements*25))- 
+                                     (correction_factors* 100))
   
   # Before we calculate the outcomes after intervention, we string branch 
   # variables into core variables first, based on decision template.
@@ -71,253 +102,293 @@ Learning_outcome_function <- function(x, varnames) {
   
   # Probability of having a good trainer ####
   
-  good_trainer <- (if_trainer_good_interpersonal*percent_good_interpersonal) + 
-                  (if_trainer_good_teaching*percent_good_teaching) +
-                  (if_trainer_good_knowledge*percent_good_knowledge)
-  
-  if (good_trainer <= 1) {
-    good_trainer <- good_trainer
-  } else {
-    good_trainer <- 1
-  }
+  good_trainer_in <- vv((if_trainer_good_interpersonal*percent_good_interpersonal) + 
+                     (if_trainer_good_teaching*percent_good_teaching) +
+                     (if_trainer_good_knowledge*percent_good_knowledge),
+                      var_CV, n)
+
+good_trainer <- min(good_trainer_in, 1)
   
   # Probability of having good value-related belief ####
   
-  good_value_belief <- (know_importance_nu*percent_know_importance_nu) + 
-                       (take_care_diet*percent_take_care_diet)
+  good_value_belief_in <- vv((know_importance_nu*percent_know_importance_nu) + 
+                             (take_care_diet*percent_take_care_diet),
+                             var_CV, n)
   
-  if (good_value_belief <= 1) {
-    good_value_belief <- good_value_belief
-  } else {
-    good_value_belief <- 1
-  }
-  
+good_value_belief <- min(good_value_belief_in, 1)
+
   # Probability of having good learning and practice materials ####
   
-  good_material_inter_one <- (like_learning_material*percent_like_learning_material) + 
-                             (like_initial_four*percent_like_initial_four) +
-                             (like_final_two*percent_like_final_two)
+  good_material_inter_one_in <- vv((like_learning_material*percent_like_learning_material) + 
+                                   (like_initial_four*percent_like_initial_four) +
+                                   (like_final_two*percent_like_final_two),
+                                   var_CV, n)
   
-  if (good_material_inter_one <= 1) {
-    good_material_inter_one <- good_material_inter_one
-  } else {
-    good_material_inter_one <- 1
-  }
+  good_material_inter_one <- min(good_material_inter_one_in, 1)
   
-  good_material_inter_two <- (like_learning_material*percent_like_learning_material) + 
-                             (like_initial_four*percent_like-initial_four)
   
-  if (good_material_inter_two <= 1) {
-    good_material_inter_two <- good_material_inter_two
-  } else {
-    good_material_inter_two <- 1
-  }
+  good_material_inter_two_in <- vv((like_learning_material*
+                                      percent_like_learning_material) + 
+                                   (like_initial_four*percent_like_initial_four),
+                                   var_CV, n)
+  
+  good_material_inter_two <- min(good_material_inter_two_in, 1)
+  
   
   # Probability of good attitude towards nutrition training ####
   
-  good_attitude_training_inter_one <- ((good_trainer*percent_good_trainer_to_attitude) + 
-                                       (good_material_inter_one*percent_good_material_to_attitude) +
-                                       (good_value_belief*percent_good_value_to_attitude))
+  good_attitude_training_inter_one_in <- vv((good_trainer*
+                                               percent_good_trainer_to_attitude) + 
+                                           (good_material_inter_one*
+                                              percent_good_material_to_attitude) +
+                                           (good_value_belief*
+                                              percent_good_value_to_attitude),
+                                           var_CV, n)
   
-  if (good_attitude_training_inter_one <= 1) {
-    good_attitude_training_inter_one <- good_attitude_training_inter_one
-  } else {
-    good_attitude_training_inter_one <- 1
-  }
+  good_attitude_training_inter_one <- min(good_attitude_training_inter_one_in, 1)
   
-  good_attitude_training_inter_two <- ((good_trainer*percent_good_trainer_to_attitude) + 
-                                       (good_material_inter_two*percent_good_material_to_attitude) +
-                                       (good_value_belief*percent_good_value_to_attitude))
   
-  if (good_attitude_training_inter_two <= 1) {
-    good_attitude_training_inter_two <- good_attitude_training_inter_two
-  } else {
-    good_attitude_training_inter_two <- 1
-  }
+  good_attitude_training_inter_two_in <- vv((good_trainer*
+                                               percent_good_trainer_to_attitude) + 
+                                            (good_material_inter_two*
+                                               percent_good_material_to_attitude) +
+                                            (good_value_belief*
+                                               percent_good_value_to_attitude),
+                                            var_CV, n)
+  
+  good_attitude_training_inter_two <- min(good_attitude_training_inter_two_in, 1)
   
   # Probability of willingness to learn ####
   
-  willingness_learn_inter_one <- ((interest_advanced_training*
-                                     percent_interest_training_to_willingness) +
-                                 (extra_study_hour*
-                                    percent_extra_hour_to_willingness) + 
-                                 (motivation_apply_knowledge*
-                                    percent_motivation_apply_to_willingness) +
-                                 (easy_use_resource*
-                                    percent_easy_resource_to_willingness))
+  willingness_learn_inter_one_in <- vv((interest_advanced_training*
+                                         percent_interest_training_to_willingness) +
+                                      (extra_study_hour*
+                                         percent_extra_hour_to_willingness) + 
+                                      (motivation_apply_knowledge*
+                                         percent_motivation_apply_to_willingness) +
+                                      (easy_use_resource*
+                                         percent_easy_resource_to_willingness),
+                                      var_CV, n)
   
-  if (willingness_learn_inter_one <= 1) {
-    willingness_learn_inter_one <- willingness_learn_inter_one
-  } else {
-    willingness_learn_inter_one <- 1
-  }
+  willingness_learn_inter_one <- min(willingness_learn_inter_one_in, 1)
+  
   
   # Probability of having persistance ####
   
-  persistence_inter_one <- ((good_trainer*percent_good_trainer_to_persistence) +
-                            (interest_advanced_training*
-                               percent_interest_training_to_persistence) +
-                            (motivation_apply_knowledge*
-                               percent_motivation_apply_to_persistence))
+  persistence_inter_one_in <- vv((good_trainer*
+                                    percent_good_trainer_to_persistence) +
+                                 (interest_advanced_training*
+                                    percent_interest_training_to_persistence) +
+                                 (motivation_apply_knowledge*
+                                    percent_motivation_apply_to_persistence),
+                                 var_CV, n)
   
-  if (persistence_inter_one <= 1) {
-    persistence_inter_one <- persistence_inter_one
-  } else {
-    persistence_inter_one <- 1
-  }
+  persistence_inter_one <- min(persistence_inter_one_in, 1)
   
   # Probability of good student attitude ####
   
-  good_student_attitude_inter_one <- ((willingness_learn_inter_one*
-                                         percent_willingness_to_attitude) +
-                                     (good_attitude_training_inter_one*
-                                        percent_attitude_towards_training_to_attitude) +
-                                     (persistence_inter_one*percent_persistence_to_attitude))
+  good_student_attitude_inter_one_in <- vv((willingness_learn_inter_one*
+                                             percent_willingness_to_attitude) +
+                                           (good_attitude_training_inter_one*
+                                             percent_attitude_towards_training_to_attitude) +
+                                           (persistence_inter_one*
+                                              percent_persistence_to_attitude),
+                                           var_CV, n)
   
-  if (good_student_attitude_inter_one <= 1) {
-    good_student_attitude_inter_one <- good_student_attitude_inter_one
-  } else {
-    good_student_attitude_inter_one <- 1
-  }
+  good_student_attitude_inter_one <- min(good_student_attitude_inter_one_in, 1)
   
-  good_student_attitude_inter_two <- good_attitude_training_inter_two
+  good_student_attitude_inter_two <- vv(good_attitude_training_inter_two,
+                                        var_CV, n)
+  
   
   # Probability of inconvenience ####
   
-  inconvenience <- ((if_improper_time*percent_improper_time_to_inconvenience) + 
-                    (if_improper_location*
-                       percent_improper_location_to_inconvenience))
+  inconvenience_in <- vv((if_improper_time*
+                            percent_improper_time_to_inconvenience) + 
+                         (if_improper_location*
+                            percent_improper_location_to_inconvenience),
+                         var_CV, n)
   
-  if (inconvenience <= 1) {
-    inconvenience <- inconvenience
-  } else {
-    inconvenience <- 1
-  }
+  inconvenience <- min(inconvenience_in, 1)
+  
   
   # Probability of good participation ####
   
-  good_participation_inter_one <- (((1-if_long_training)*
-                                     percent_short_training_to_participation) + 
-                                    ((1-if_weekend_training)*
-                                       percent_weekday_training_to_participation)+
-                                    ((1-inconvenience)*
-                                       percent_convenience_to_participation) + 
-                                    ((1-if_give_homework)*
-                                       percent_no_homework_to_participation) +
-                                     (good_student_attitude_inter_one*
-                                        percent_overall_attitude_to_participation)) 
+  good_participation_inter_one_in <- vv(((1-if_long_training)*
+                                           percent_short_training_to_participation) + 
+                                        ((1-if_weekend_training)*
+                                           percent_weekday_training_to_participation)+
+                                        ((1-inconvenience)*
+                                           percent_convenience_to_participation) + 
+                                        ((1-if_give_homework)*
+                                           percent_no_homework_to_participation) +
+                                        (good_student_attitude_inter_one*
+                                           percent_overall_attitude_to_participation),
+                                        var_CV, n) 
   
-  if (good_participation_inter_one <= 1) {
-    good_participation_inter_one <- good_participation_inter_one
-  } else {
-    good_participation_inter_one <- 1
-  }
+  good_participation_inter_one <- min(good_participation_inter_one_in, 1)
   
-  good_participation_inter_two <- (((1-if_long_training)*
-                                     percent_short_training_to_participation) +
-                                    ((1-if_weekend_training)*
-                                       percent_weekday_training_to_participation)+
-                                     ((1-inconvenience)*
-                                        percent_convenience_to_participation) + 
-                                     ((1-if_give_homework)*
-                                        percent_no_homework_to_participation) +
-                                     (good_student_attitude_inter_two*
-                                        percent_overall_attitude_to_participation)) 
   
-  if (good_participation_inter_two <= 1) {
-    good_participation_inter_two <- good_participation_inter_two
-  } else {
-    good_participation_inter_two <- 1
-  }
+  good_participation_inter_two_in <- vv(((1-if_long_training)*
+                                           percent_short_training_to_participation) +
+                                        ((1-if_weekend_training)*
+                                           percent_weekday_training_to_participation)+
+                                        ((1-inconvenience)*
+                                           percent_convenience_to_participation) + 
+                                        ((1-if_give_homework)*
+                                           percent_no_homework_to_participation) +
+                                        (good_student_attitude_inter_two*
+                                           percent_overall_attitude_to_participation),
+                                        var_CV, n) 
+  
+  good_participation_inter_two <- min(good_participation_inter_two_in, 1)
+  
   
   # Probability of good activities 
   
-  good_activity_inter_one <- ((good_participation_inter_one*
-                                 percent_participation_to_activity) +
-                             (good_trainer*
-                                percent_good_trainer_to_activity))
+  good_activity_inter_one_in <- vv((good_participation_inter_one*
+                                     percent_participation_to_activity) +
+                                   (good_trainer*
+                                     percent_good_trainer_to_activity),
+                                   var_CV, n)
   
-  if (good_activity_inter_one <= 1) {
-    good_activity_inter_one <- good_activity_inter_one
-  } else { 
-    good_activity_inter_one <- 1
-    }
+  good_activity_inter_one <- min(good_activity_inter_one_in, 1)
   
-  good_activity_inter_two <- ((good_participation_inter_two*
-                                 percent_participation_to_activity) +
-                             (good_trainer*
-                                percent_good_trainer_to_activity))
   
-  if (good_activity_inter_two <= 1) {
-    good_activity_inter_two <- good_activity_inter_two
-  } else {
-    good_activity_inter_two <- 1
-  }
+  good_activity_inter_two_in <- vv((good_participation_inter_two*
+                                     percent_participation_to_activity) +
+                                  (good_trainer*
+                                     percent_good_trainer_to_activity),
+                                   var_CV, n)
+  
+  good_activity_inter_two <- min(good_activity_inter_two_in, 1)
+  
   
   # Probability of good prior knowledge/ experience ####
   
-  good_prior_knowledge_inter_one <- ((take_care_diet*
-                                        percent_take_care_diet_to_prior_knowledge) + 
-                                     (follow_diet_plan * 
-                                       percent_follow_diet_plan_to_prior_knowledge))
+  good_prior_knowledge_inter_one_in <- vv((take_care_diet*
+                                            percent_take_care_diet_to_prior_knowledge) + 
+                                          (follow_diet_plan * 
+                                            percent_follow_diet_plan_to_prior_knowledge),
+                                          var_CV, n)
   
-  if (good_prior_knowledge_inter_one <= 1) {
-    good_prior_knowledge_inter_one <- good_prior_knowledge_inter_one
-  } else {
-    good_prior_knowledge_inter_one <- 1
-  }
+  good_prior_knowledge_inter_one <- min(good_prior_knowledge_inter_one_in, 1)
   
-  good_prior_knowledge_inter_two <- take_care_diet
+  good_prior_knowledge_inter_two <- vv(take_care_diet,
+                                       var_CV, n)
   
   
   # Finding core variables
   
   # Probability of interest in learning ####
   
-  interest_in_learning_inter_one <- ((good_value_belief*0.1) + 
-                                    (good_student_attitude_inter_one*0.3) +
-                                    (good_participation_inter_one*0.1) +
-                                    (good_material_inter_one*0.2) +
-                                    (good_activity_inter_one*0.1) +
-                                    (good_prior_knowledge_inter_one*0.1))
+  interest_in_learning_inter_one_in <- vv((good_value_belief*
+                                            percent_value_belief_to_learning_interest) + 
+                                          (good_student_attitude_inter_one*
+                                            percent_overall_attitude_to_learning_interest) +
+                                          (good_participation_inter_one*
+                                            percent_participation_to_learning_interest) +
+                                          (good_material_inter_one*
+                                            percent_good_material_to_learning_interest) +
+                                          (good_activity_inter_one*
+                                            percent_good_activity_to_learning_interest) +
+                                          (good_prior_knowledge_inter_one*
+                                            percent_prior_knowledge_to_learning_interest),
+                                          var_CV, n)
   
-  interest_in_learning_inter_two <- (good_value_belief*0.2) +
-                                    (good_student_attitude_inter_two*0.3) +
-                                    (good_participation_inter_two*0.1) +
-                                    (good_material_inter_two*0.2) +
-                                    (good_prior_knowledge_inter_two*0.2)
+  interest_in_learning_inter_one <- min(interest_in_learning_inter_one_in, 1)
+  
+  
+  interest_in_learning_inter_two_in <- vv((good_value_belief*
+                                            percent_value_belief_to_learning_interest) +
+                                          (good_student_attitude_inter_two*
+                                            percent_overall_attitude_to_learning_interest) +
+                                          (good_participation_inter_two*
+                                            percent_participation_to_learning_interest) +
+                                         (good_material_inter_two*
+                                            percent_good_material_to_learning_interest) +
+                                         (good_prior_knowledge_inter_two*
+                                            percent_prior_knowledge_to_learning_interest),
+                                         var_CV, n)
+  
+  interest_in_learning_inter_two <- min(interest_in_learning_inter_two_in, 1)
+  
   
   # Probability of good creativity ####
   
-  good_creativity_inter_one <- (know_math*plan_diet*0.5) + 
-    (interest_in_learning_inter_one*0.5)
+  good_creativity_inter_one_in <- vv((know_math*plan_diet*
+                                       percent_math_diet_to_creativity) + 
+                                     (interest_in_learning_inter_one*
+                                       percent_learning_interest_to_creativity),
+                                      var_CV, n)
+  
+  good_creativity_inter_one <- min(good_creativity_inter_one_in, 1)
   
   # Probability of motivation to learn ####
   
-  motivation_to_learn_inter_one <- (interest_in_learning_inter_one*0.5) +
-                                   (if_trainer_good_interpersonal*0.5)
+  motivation_to_learn_inter_one_in <- vv((interest_in_learning_inter_one*
+                                           percent_learning_interest_to_motivation) +
+                                         (if_trainer_good_interpersonal*
+                                           percent_trainer_interpersonal_to_motivation),
+                                         var_CV, n)
   
-  motivation_to_learn_inter_two <- (interest_in_learning_inter_two*0.5) +
-                                   (if_trainer_good_interpersonal*0.5)
+  motivation_to_learn_inter_one <- min(motivation_to_learn_inter_one_in, 1)
+  
+  
+  motivation_to_learn_inter_two_in <- vv((interest_in_learning_inter_two*
+                                           percent_learning_interest_to_motivation) +
+                                         (if_trainer_good_interpersonal*
+                                           percent_trainer_interpersonal_to_motivation),
+                                         var_CV, n)
+  
+  motivation_to_learn_inter_two <- min(motivation_to_learn_inter_two_in, 1)
+  
   
   # Probability of having good learning hour (longer hours and more focus) ####
   
-  good_learning_hour_inter_one <- (good_prior_knowledge_inter_one*0.1) +
-    (good_student_attitude_inter_one*0.5) +
-    (good_trainer*0.4)
+  good_learning_hour_inter_one_in <- vv((good_prior_knowledge_inter_one*
+                                          percent_prior_knowledge_to_learning_hour) +
+                                        (good_student_attitude_inter_one*
+                                          extra_study_hour*
+                                           percent_time_attitude_to_learning_hour) +
+                                       (good_trainer*
+                                          percent_good_trainer_to_learning_hour),
+                                       var_CV, n)
   
-  good_learning_hour_inter_two <- (good_prior_knowledge_inter_two*0.1) +
-    (good_student_attitude_inter_two*0.5) +
-    (good_trainer*0.4)
+  good_learning_hour_inter_one <- min(good_learning_hour_inter_one_in, 1)
+  
+  
+  good_learning_hour_inter_two_in <- vv((good_prior_knowledge_inter_two*
+                                          percent_prior_knowledge_to_learning_hour) +
+                                        (good_student_attitude_inter_two*
+                                          extra_study_hour*
+                                           percent_time_attitude_to_learning_hour) +
+                                       (good_trainer*
+                                          percent_good_trainer_to_learning_hour),
+                                       var_CV, n)
+   
+  good_learning_hour_inter_two <- min(good_learning_hour_inter_two_in, 1)
+  
   
   # Probability of good study habit ####
   
-  good_study_habit_inter_one <- (interest_in_learning_inter_one*0.3) +
-                                (extra_study_hour*0.2) +
-                                (willingness_learn_inter_one*0.2) +
-                                (motivation_to_learn_inter_one*0.3)
+  good_study_habit_inter_one_in <- vv((interest_in_learning_inter_one*
+                                        percent_learning_interest_to_study_habit) +
+                                      (good_learning_hour_inter_one*
+                                        percent_learning_hour_to_study_habit) +
+                                     (willingness_learn_inter_one*
+                                        percent_willingness_to_study_habit) +
+                                     (motivation_to_learn_inter_one*
+                                        percent_motivation_to_study_habit),
+                                     var_CV, n)
+  # Here we use both willingness to learn and motivation to learn. Willingness 
+  # and motivation may sound the same but they have different branch variables. 
+  # Willingness is intrinsic and motivation is extrinsic in this case.
+  # We didn't factor willingness as a core variable in intervention two. 
   
+  good_study_habit_inter_one <- min(good_study_habit_inter_one_in, 1)
   
+ 
   # Probability of good facility ####
   
   current_training_venue_like_dislike <- chance_event(current_training_venue,
@@ -325,9 +396,11 @@ Learning_outcome_function <- function(x, varnames) {
                                                       value_if_not = 0)
   
   good_facility <- if (current_training_venue_like_dislike == 1) {
-    current_training_venue
+    vv(current_training_venue,
+       var_CV, n)
   } else {
-    (1- inconvenience)
+    vv((1- inconvenience),
+       var_CV, n)
   }
   
   # Calculate learning outcome for intervention one
@@ -337,120 +410,181 @@ Learning_outcome_function <- function(x, varnames) {
   
   # For chapter one and two 
   
+  ch12_moti_interest_trainer_attitude_one_f <- vv(ch12_moti_interest_trainer_attitude_one,
+                                                  var_CV, n)
+  
+  ch12_material_time_one_f <- vv(ch12_material_time_one,
+                                 var_CV, n)
+  
+  ch12_prior_knowledge_one_f <- vv(ch12_prior_knowledge_one,
+                                   var_CV, n)
+  
+  
   inter_one_chapter12_set_one <- (motivation_to_learn_inter_one*
                                   interest_in_learning_inter_one*
                                   good_trainer*
                                   good_student_attitude_inter_one*
-                                  ch12_moti_interest_trainer_attitude_one)
+                                  ch12_moti_interest_trainer_attitude_one_f)
   
-  inter_one_chapter12_set_two <- ((good_material_inter_one- (like_final_two*0.25))*
+  inter_one_chapter12_set_two <- ((good_material_inter_one- 
+                                     (like_final_two*
+                                        percent_like_final_two))*
                                    good_learning_hour_inter_one*
-                                   ch12_material_time_one)
+                                   ch12_material_time_one_f)
   
   inter_one_chapter12_set_three_one <- (good_prior_knowledge_inter_one*
                                         know_food_group*
-                                        ch12_prior_knowledge_one)
+                                        ch12_prior_knowledge_one_f)
   
   inter_one_chapter12_set_three_two <- (good_prior_knowledge_inter_one*
                                         know_nutrient*
-                                        ch12_prior_knowledge_one)
+                                        ch12_prior_knowledge_one_f)
   
   
   # Probability of good learning outcome for chapter one
   
-  inter_one_chapter1 <- (inter_one_chapter12_set_one + 
-                          inter_one_chapter12_set_two +
-                          inter_one_chapter12_set_three_one)
+  inter_one_chapter1_in <- (inter_one_chapter12_set_one + 
+                            inter_one_chapter12_set_two +
+                            inter_one_chapter12_set_three_one)
+  
+  inter_one_chapter1 <- min(inter_one_chapter1_in, 1)
+  
   
   # Probability of good learning outcome for chapter two
   
-  inter_one_chapter2 <- (inter_one_chapter12_set_one + 
-                           inter_one_chapter12_set_two +
-                           inter_one_chapter12_set_three_two)
+  inter_one_chapter2_in <- (inter_one_chapter12_set_one + 
+                            inter_one_chapter12_set_two +
+                            inter_one_chapter12_set_three_two)
   
-  # For chatper three and four
+  inter_one_chapter2 <- min(inter_one_chapter2_in, 1)
+  
+  
+  # For chapter three and four
+  
+  ch34_moti_interest_trainer_attitude_one_f <- vv(ch34_moti_interest_trainer_attitude_one,
+                                                  var_CV, n)
+  
+  ch34_material_time_one_f <- vv(ch34_material_time_one,
+                                 var_CV, n)
+  
+  ch34_prior_knowledge_one_f <- vv(ch34_prior_knowledge_one,
+                                   var_CV, n)
   
   inter_one_chapter34_set_one <- (motivation_to_learn_inter_one*
                                   interest_in_learning_inter_one*
                                   good_trainer*
                                   good_student_attitude_inter_one*
-                                  ch34_moti_interest_trainer_attitude_one)
+                                  ch34_moti_interest_trainer_attitude_one_f)
   
-  inter_one_chapter34_set_two <- ((good_material_inter_one- (like_final_two*0.25))*
+  inter_one_chapter34_set_two <- ((good_material_inter_one- 
+                                     (like_final_two*
+                                        percent_like_final_two))*
                                   good_learning_hour_inter_one*
-                                  ch34_material_time_one)
+                                  ch34_material_time_one_f)
   
   inter_one_chapter34_set_three_three <- (good_prior_knowledge_inter_one*
                                           know_healthy_eating*
-                                          ch34_prior_knowledge_one)
+                                          ch34_prior_knowledge_one_f)
   
   inter_one_chapter34_set_three_four <- (good_prior_knowledge_inter_one*
                                          know_nu_requirement*
-                                         ch34_prior_knowledge_one)
+                                         ch34_prior_knowledge_one_f)
   
   # Probability of good learning outcome for chapter three
   
-  inter_one_chapter3 <- (inter_one_chapter34_set_one +
-                         inter_one_chapter34_set_two +
-                         inter_one_chapter34_set_three_three)
+  inter_one_chapter3_in <- (inter_one_chapter34_set_one +
+                            inter_one_chapter34_set_two +
+                            inter_one_chapter34_set_three_three)
+  
+  inter_one_chapter3 <- min(inter_one_chapter3_in, 1)
+  
   
   # Probability of good learning outcome for chapter four
   
-  inter_one_chapter4 <- (inter_one_chapter34_set_one +
-                         inter_one_chapter34_set_two +
-                         inter_one_chapter34_set_three_four)
+  inter_one_chapter4_in <- (inter_one_chapter34_set_one +
+                            inter_one_chapter34_set_two +
+                            inter_one_chapter34_set_three_four)
+  
+  inter_one_chapter4 <- min(inter_one_chapter4_in, 1)
+  
   
   # For chapter five and six
   
-  inter_one_chapter56_set_one <- ((good_material_inter_one-(like_initial_four*0.25))*
+  ch56_material_trainer_one_f <- vv(ch56_material_trainer_one, 
+                                    var_CV, n)
+  
+  ch56_moti_persist_one_f <- vv(ch56_moti_persist_one,
+                                var_CV, n)
+  
+  ch56_attitude_commu_one_f <- vv(ch56_attitude_commu_one,
+                                  var_CV, n)
+  
+  ch56_creati_interest_one_f <- vv(ch56_creati_interest_one,
+                                   var_CV, n)
+  
+  ch56_time_prior_one_f <- vv(ch56_time_prior_one,
+                              var_CV, n)
+  
+  ch56_facility_one_f <- vv(ch56_facility_one,
+                            var_CV, n)
+  
+  inter_one_chapter56_set_one <- ((good_material_inter_one-
+                                     (like_initial_four*
+                                        percent_like_initial_four))*
                                    good_trainer*
-                                   ch56_material_trainer_one)
+                                   ch56_material_trainer_one_f)
   
   inter_one_chapter56_set_two <- (motivation_to_learn_inter_one*
                                   persistence_inter_one*
-                                  ch56_moti_persist_one)
+                                  ch56_moti_persist_one_f)
   
   inter_one_chapter56_set_three <- (good_student_attitude_inter_one*
                                     if_trainer_good_interpersonal*
-                                    ch56_attitude_commu_one)
+                                    ch56_attitude_commu_one_f)
   
   inter_one_chapter56_set_four <- (good_creativity_inter_one*
                                    interest_in_learning_inter_one*
-                                   ch56_creati_interest_one)
+                                   ch56_creati_interest_one_f)
   
   inter_one_chapter56_set_five_five <- (good_learning_hour_inter_one*
                                         good_study_habit_inter_one*
                                         good_prior_knowledge_inter_one*
                                         know_nu_calculation*
-                                        ch56_time_prior_one)
+                                        ch56_time_prior_one_f)
   
   inter_one_chapter56_set_five_six <- (good_learning_hour_inter_one*
                                        good_study_habit_inter_one*
                                        good_prior_knowledge_inter_one*
                                        plan_diet*
                                        know_food_exchange*
-                                       ch56_time_prior_one)
+                                       ch56_time_prior_one_f)
   
   inter_one_chapter56_set_six <- (good_facility*
-                                  ch56_facility_one)
+                                  ch56_facility_one_f)
   
   # Probability of good learning outcome for chapter five
   
-  inter_one_chapter5 <- (inter_one_chapter56_set_one +
-                         inter_one_chapter56_set_two +
-                         inter_one_chapter56_set_three +
-                         inter_one_chapter56_set_four +
-                         inter_one_chapter56_set_five_five +
-                         inter_one_chapter56_set_six)
+  inter_one_chapter5_in <- (inter_one_chapter56_set_one +
+                            inter_one_chapter56_set_two +
+                            inter_one_chapter56_set_three +
+                            inter_one_chapter56_set_four +
+                            inter_one_chapter56_set_five_five +
+                            inter_one_chapter56_set_six)
+  
+  inter_one_chapter5 <- min(inter_one_chapter5_in, 1)
+  
   
   # Probability of good learning outcome for chapter six
   
-  inter_one_chapter6 <- (inter_one_chapter56_set_one +
-                         inter_one_chapter56_set_two +
-                         inter_one_chapter56_set_three +
-                         inter_one_chapter56_set_four +
-                         inter_one_chapter56_set_five_six +
-                         inter_one_chapter56_set_six)
+  inter_one_chapter6_in <- (inter_one_chapter56_set_one +
+                            inter_one_chapter56_set_two +
+                            inter_one_chapter56_set_three +
+                            inter_one_chapter56_set_four +
+                            inter_one_chapter56_set_five_six +
+                            inter_one_chapter56_set_six)
+  
+  inter_one_chapter6 <- min(inter_one_chapter6_in, 1)
+  
   
   # Learning outcome for intervention one ####
   
@@ -465,79 +599,119 @@ Learning_outcome_function <- function(x, varnames) {
   
   # For chapter one and two
   
+  ch12_moti_interest_trainer_attitude_two_f <- vv(ch12_moti_interest_trainer_attitude_two,
+                                                  var_CV, n)
+  
+  ch12_commu_material_two_f <- vv(ch12_commu_material_two, 
+                                  var_CV, n)
+  
+  ch12_convenience_facility_two_f <- vv(ch12_convenience_facility_two,
+                                        var_CV, n)
+  
+  ch12_prior_knowledge_two_f <- vv(ch12_prior_knowledge_two,
+                                   var_CV, n)
+  
   inter_two_chapter12_set_one <- (motivation_to_learn_inter_two*
                                   interest_in_learning_inter_two*
                                   good_trainer*
                                   good_student_attitude_inter_two*
-                                  ch12_moti_interest_trainer_attitude_two)
+                                  ch12_moti_interest_trainer_attitude_two_f)
   
   inter_two_chapter12_set_two <- (if_trainer_good_interpersonal*
                                   good_material_inter_two*
-                                  ch12_commu_material_two)
+                                  ch12_commu_material_two_f)
   
   inter_two_chapter12_set_three <- ((1- inconvenience)*
                                     good_facility*
-                                    ch12_convenience_facility_two)
+                                    ch12_convenience_facility_two_f)
   
   inter_two_chapter12_set_four_one <- (good_prior_knowledge_inter_two*
                                        know_food_group*
-                                       ch12_prior_knowledge_two)
+                                       ch12_prior_knowledge_two_f)
   
   inter_two_chapter12_set_four_two <- (good_prior_knowledge_inter_two*
                                        know_nutrient*
-                                       ch12_prior_knowledge_two)
+                                       ch12_prior_knowledge_two_f)
+  
   
   # Probability of good learning outcome for chapter one (intervention two)
   
-  inter_two_chapter1 <- (inter_two_chapter12_set_one +
-                         inter_two_chapter12_set_two +
-                         inter_two_chapter12_set_three +
-                         inter_two_chapter12_set_four_one)
+  inter_two_chapter1_in <- (inter_two_chapter12_set_one +
+                            inter_two_chapter12_set_two +
+                            inter_two_chapter12_set_three +
+                            inter_two_chapter12_set_four_one)
+  
+  inter_two_chapter1 <- min(inter_two_chapter1_in, 1)
+  
   
   # Probability of good learning for chapter two (intervention two)
   
-  inter_two_chapter2 <- (inter_two_chapter12_set_one +
-                         inter_two_chapter12_set_two +
-                         inter_two_chapter12_set_three +
-                         inter_two_chapter12_set_four_two)
+  inter_two_chapter2_in <- (inter_two_chapter12_set_one +
+                            inter_two_chapter12_set_two +
+                            inter_two_chapter12_set_three +
+                            inter_two_chapter12_set_four_two)
+  
+  inter_two_chapter2 <- min(inter_two_chapter2_in, 1)
+  
   
   # For chapter three and four
+  
+  ch34_moti_interest_trainer_attitude_two_f <- vv(ch34_moti_interest_trainer_attitude_two,
+                                                  var_CV, n)
+  
+  ch34_commu_material_two_f <- vv(ch34_commu_material_two,
+                                  var_CV, n)
+  
+  ch34_convenience_facility_two_f <- vv(ch34_convenience_facility_two,
+                                        var_CV, n)
+  
+  ch34_prior_knowledge_two_f <- vv(ch34_prior_knowledge_two,
+                                   var_CV, n)
+  
   
   inter_two_chapter34_set_one <- (motivation_to_learn_inter_two*
                                   interest_in_learning_inter_two*
                                   good_trainer*
                                   good_student_attitude_inter_two*
-                                  ch34_moti_interest_trainer_attitude_two)
+                                  ch34_moti_interest_trainer_attitude_two_f)
   
   inter_two_chapter34_set_two <- (if_trainer_good_interpersonal*
                                   good_material_inter_two*
-                                  ch34_commu_material_two)
+                                  ch34_commu_material_two_f)
   
   inter_two_chapter34_set_three <- ((1- inconvenience)*
                                     good_facility*
-                                    ch34_convenience_facility_two)
+                                    ch34_convenience_facility_two_f)
   
   inter_two_chapter34_set_four_three <- (good_prior_knowledge_inter_two*
                                          know_healthy_eating*
-                                         ch34_prior_knowledge_two)
+                                         ch34_prior_knowledge_two_f)
   
   inter_two_chapter34_set_four_four <- (good_prior_knowledge_inter_two*
                                         know_nu_requirement*
-                                        ch34_prior_knowledge_two)
+                                        ch34_prior_knowledge_two_f)
+  
   
   # Probability of good learning outcome for chapter three (intervention two)
   
-  inter_two_chapter3 <- (inter_two_chapter34_set_one +
-                         inter_two_chapter34_set_two +
-                         inter_two_chapter34_set_three +
-                         inter_two_chapter34_set_four_three)
+  inter_two_chapter3_in <- (inter_two_chapter34_set_one +
+                            inter_two_chapter34_set_two +
+                            inter_two_chapter34_set_three +
+                            inter_two_chapter34_set_four_three)
+  
+  
+  inter_two_chapter3 <- min(inter_two_chapter3_in, 1)
+  
   
   # Probability of good learning outcome for chapter four (intervention two)
   
-  inter_two_chapter4 <- (inter_two_chapter34_set_one +
-                         inter_two_chapter34_set_two +
-                         inter_two_chapter34_set_three +
-                         inter_two_chapter34_set_four_four)
+  inter_two_chapter4_in <- (inter_two_chapter34_set_one +
+                            inter_two_chapter34_set_two +
+                            inter_two_chapter34_set_three +
+                            inter_two_chapter34_set_four_four)
+  
+  inter_two_chapter4 <- min(inter_two_chapter4_in, 1)
+  
   
   # Learning outcome for intervention two ####
   
@@ -594,27 +768,16 @@ Learning_outcome_function <- function(x, varnames) {
   
   # Calculate number of player who have at least 90% score after intervention one
   
-  # Here we find the probability of having good learning outcome for all chapters
-  # and mulitply it with total number of athletes. 
   
   # 90 percent for intervention one using model result ####
   
-  Number_player_90score_after_training_inter_one <- (inter_one_chapter1*
-                                                     inter_one_chapter2*
-                                                     inter_one_chapter3*
-                                                     inter_one_chapter4*
-                                                     inter_one_chapter5*
-                                                     inter_one_chapter6
-                                                     )* number_athelete
-                  
+  
+  #Number_player_90score_after_training_inter_one <-       
+  
   # 90 percent for intervention two using model result ####
   
   
-  Number_player_90score_after_training_inter_two <- (inter_two_chapter1*
-                                                     inter_two_chapter2*
-                                                     inter_two_chapter3*
-                                                     inter_two_chapter4
-                                                     )* number_athelete
+ # Number_player_90score_after_training_inter_two <- 
   
   # Return list ####
   
@@ -625,11 +788,12 @@ Learning_outcome_function <- function(x, varnames) {
               Number_player_90score_baseline_inter_one = 
                 Number_player_90score_baseline_inter_one,
               Number_player_90score_baseline_inter_two =
-                Number_player_90score_baseline_inter_two,
-              Number_player_90score_after_training_inter_one =
-                Number_player_90score_after_training_inter_one,
-              Number_player_90score_after_training_inter_two =
-                Number_player_90score_after_training_inter_two))
+               Number_player_90score_baseline_inter_two
+             # Number_player_90score_after_training_inter_one =
+            #    Number_player_90score_after_training_inter_one,
+            #  Number_player_90score_after_training_inter_two =
+             #   Number_player_90score_after_training_inter_two
+            ))
   
 }
 
