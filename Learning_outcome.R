@@ -5,8 +5,8 @@
 
 # Here we simulate baseline knowledge and learning outcome after training.
 # We simulate outcome for before and after intervention (two time points).
-# So, time series function is not used. We model this based on scoring system of
-# a formal exam. But we are not simulating how well each player would score 
+# We model this based on scoring system of a formal exam. 
+# But we are not simulating how well each player would score 
 # in a test.We simulate their ability to understand (find and use) resources.
 # The threshold for intervention 1 is a score of 90%- need at least 90% score to 
 # achieve nutritional self-reliance. No threshold or target for intervention 2.
@@ -84,7 +84,7 @@ Learning_outcome_function <- function(x, varnames) {
   
   # That means we need really good priors for this model to work properly. 
   # Not having priors for variable links will be a disadvantage. Otherwise, we
-  # need to use ranges for each variable- rather a tedious task. 
+  # need to use ranges for each variable- a rather tedious task. 
   
   # And this is based on assumption that we don't need all branch variables to 
   # happen simultaneously to get the outcome (or higher variables). The existence
@@ -383,7 +383,7 @@ good_value_belief <- min(good_value_belief_in, 1)
                                      var_CV, n)
   # Here we use both willingness to learn and motivation to learn. Willingness 
   # and motivation may sound the same but they have different branch variables. 
-  # Willingness is intrinsic and motivation is extrinsic in this case.
+  # Willingness is more intrinsic and motivation is more extrinsic in this case.
   # We didn't factor willingness as a core variable in intervention two. 
   
   good_study_habit_inter_one <- min(good_study_habit_inter_one_in, 1)
@@ -730,7 +730,7 @@ good_value_belief <- min(good_value_belief_in, 1)
   # will fall within the simulated range of distribution. 
   
   # Now we will calculate the number of MFF players who will achieve at least
-  # 90% score after interventions and at baseline. 
+  # 90% score at baseline. 
 
   
   # Calculate number of MFF players who can have at least 90% score at baseline 
@@ -753,7 +753,7 @@ good_value_belief <- min(good_value_belief_in, 1)
   
   # 90 percent baseline for intervention two ####
   
-  # We calculate this to see some comparison, but it's not necessary since we 
+  # We calculate this to see some comparison, but it is not necessary since we 
   # don't have a threshold or target score for intervention two. 
   
   # MFF players having good nutrition knowledge is not crucial for successful 
@@ -766,19 +766,6 @@ good_value_belief <- min(good_value_belief_in, 1)
                                                percent_know_nu_requirement
                                                )* number_athelete
   
-  # Calculate number of player who have at least 90% score after intervention one
-  
-  
-  # 90 percent for intervention one using model result ####
-  
-  
-  #Number_player_90score_after_training_inter_one <-       
-  
-  # 90 percent for intervention two using model result ####
-  
-  
- # Number_player_90score_after_training_inter_two <- 
-  
   # Return list ####
   
   return(list(Individual_baseline_inter_one = Individual_baseline_inter_one,
@@ -788,16 +775,11 @@ good_value_belief <- min(good_value_belief_in, 1)
               Number_player_90score_baseline_inter_one = 
                 Number_player_90score_baseline_inter_one,
               Number_player_90score_baseline_inter_two =
-               Number_player_90score_baseline_inter_two
-             # Number_player_90score_after_training_inter_one =
-            #    Number_player_90score_after_training_inter_one,
-            #  Number_player_90score_after_training_inter_two =
-             #   Number_player_90score_after_training_inter_two
-            ))
+               Number_player_90score_baseline_inter_two))
   
 }
 
-input_learing_outcome <- read.csv("Learning_outcome.csv")
+input_learning_outcome <- read.csv("Learning_outcome.csv")
 
   # Run the Monte Carlo Simulation
 
@@ -813,30 +795,204 @@ input_learing_outcome <- read.csv("Learning_outcome.csv")
   plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
                      vars = c("Individual_baseline_inter_one", "Learning_outcome_inter_one"),
                      method = 'hist_simple_overlay',
-                     x_axis_name = 'Possible distribution of total score for each MFF player ',
+                     x_axis_name = 'Distribution of total score for all MFF players ',
                      base_size = 7)
   
   
   plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
                      vars = c("Individual_baseline_inter_two", "Learning_outcome_inter_two"),
                      method = 'hist_simple_overlay',
-                     x_axis_name = 'Possible distribution of total score for each MFF player ',
+                     x_axis_name = 'Distribution of total score for MFF players ',
                      base_size = 7)
   
   plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
-                     vars = c("Number_player_90score_baseline_inter_one", 
-                              "Number_player_90score_after_training_inter_one"),
-                     method = 'hist_simple_overlay',
-                     x_axis_name = 'Total number of MFF players with good learning outcome ',
+                     vars = "Number_player_90score_baseline_inter_one",
+                     method = 'boxplot_density',
+                     x_axis_name = 'Total number of MFF players with good learning outcome at baseline for intervention one',
                      base_size = 7)
   
   plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
-                     vars = c("Number_player_90score_baseline_inter_two", 
-                              "Number_player_90score_after_training_inter_two"),
-                     method = 'hist_simple_overlay',
-                     x_axis_name = 'Total number of MFF players with good learning outcome ',
+                     vars = "Number_player_90score_baseline_inter_two",
+                     method = 'boxplot_density',
+                     x_axis_name = 'Total number of MFF players with good learning outcome at baseline for intervention two',
                      base_size = 7)
+  
+  plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
+                     vars = "Learning_outcome_inter_one",
+                     method = 'boxplot_density',
+                     x_axis_name = 'Distribution of total scores for all MFF players after intervention one',
+                     base_size = 7)
+  
+  plot_distributions(mcSimulation_object = Learning_outcome_mc_simulation,
+                     vars = "Learning_outcome_inter_two",
+                     method = 'boxplot_density',
+                     x_axis_name = 'Distribution of total scores for all MFF players after intervention two',
+                     base_size = 7)
+  
+  #Find EVPI 
+  
+  mcSimulation_table <- data.frame(Learning_outcome_mc_simulation$x, 
+                                   Learning_outcome_mc_simulation$y[1:4])
+  
+  evpi_inter_one <- multi_EVPI(mc = mcSimulation_table, first_out_var = "Learning_outcome_inter_one")
+  evpi_inter_two <- multi_EVPI(mc = mcSimulation_table, first_out_var = "Learning_outcome_inter_two")
+  evpi_baseline_one <- multi_EVPI(mc = mcSimulation_table, first_out_var = "Individual_baseline_inter_one")
+  evpi_baseline_two <- multi_EVPI(mc = mcSimulation_table, first_out_var = "Individual_baseline_inter_two")
+ 
+  
+  plot_evpi(evpi_inter_one, decision_vars = "Learning_outcome_inter_one")
+  plot_evpi(evpi_inter_two, decision_vars = "Learning_outcome_inter_two")
+  plot_evpi(evpi_baseline_one, decision_vars = "Individual_baseline_inter_one")
+  plot_evpi(evpi_baseline_two, decision_vars = "Individual_baseline_inter_two")
   
 
+  #Find PLS result
+  
+  names(Learning_outcome_mc_simulation$y)
+  
+  pls_result <- plsr.mcSimulation(object = Learning_outcome_mc_simulation,
+                                  resultName = names
+                                  (Learning_outcome_mc_simulation$y)[1], 
+                                  ncomp = 1)
+
+  plot_pls(pls_result, input_table = input_learning_outcome, threshold = 0.9)
+  
+  
+  pls_result <- plsr.mcSimulation(object = Learning_outcome_mc_simulation,
+                                  resultName = names
+                                  (Learning_outcome_mc_simulation$y)[2], 
+                                  ncomp = 1)
+  plot_pls(pls_result, input_table = input_learning_outcome, threshold = 0.9)
+  
+  
+  pls_result <- plsr.mcSimulation(object = Learning_outcome_mc_simulation,
+                                  resultName = names
+                                  (Learning_outcome_mc_simulation$y)[3], 
+                                  ncomp = 1)
+  plot_pls(pls_result, input_table = input_learning_outcome, threshold = 0.9)
+  
+  
+  pls_result <- plsr.mcSimulation(object = Learning_outcome_mc_simulation,
+                                  resultName = names
+                                  (Learning_outcome_mc_simulation$y)[4], 
+                                  ncomp = 1)
+  plot_pls(pls_result, input_table = input_learning_outcome, threshold = 0.9)
+  
+  
+  
+  # Summary of distribution of total scores 
+  
+  summary(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)
+  summary(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)
+  summary(Learning_outcome_mc_simulation$y$Individual_baseline_inter_one)
+  summary(Learning_outcome_mc_simulation$y$Individual_baseline_inter_two)
+  
+  
+  # Calculate number of MFF players who score above 90 at baseline
+  
+  # First we check the distribution of the score range
+  
+  hist(Learning_outcome_mc_simulation$y$Individual_baseline_inter_one)
+  # The histogram plot shows the maximum score for baseline (intervention one) is 45. 
+  # Hence, the number of high scoring MFF players for baseline (intervention one) is 0.
+  # This matches the simulation result using estimates from survey (Line 808). 
+  
+  hist(Learning_outcome_mc_simulation$y$Individual_baseline_inter_two)
+  # The histogram plot shows the maximum score for baseline (intervention two) is 70. 
+  # Hence, the number of high scorers at baseline (intervention two) is also 0.
+  # This result slightly differs from the simulation result using estimates from survey (Line 814).
+  # The result from simulation shows the number of high scorers at baseline 
+  # (intervention two) could be between 0-8 people with an average of 3. 
+  
+  
+  # Calculate number of MFF players who score above 90 after interventions
+  
+  # Check the distribution of score ranges after intervention 1
+  
+  hist(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)
+  
+  qqnorm(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)
+  
+  # Both histogram and Q-Q plot shows sigmoid curve. Hence, we apply the 
+  # cumulative probability using cumulative distribution function (CDF) to calculate
+  # the number of MFF players with score above 90 points. 
+  
+  # First, we find the SD and Mean of the score range for intervention one 
+  
+  sd_inter_one <- sd(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)
+  sd_inter_one
+
+  mean_inter_one <- mean(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)  
+  mean_inter_one  
+  
+  summary(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)
+  
+  # Then, we make variables. 
+
+  total_students <- 120
+  mean_score_inter_one <- 86.65
+  standard_deviation_inter_one <- 9.32
+  minimum_score_inter_one <- 50.38
+  maximum_score <- 100
+
+  # We set threshold score at 89 because we want score 90 points and above. 
+  threshold_score <- 89
+
+  # Calculate the z-score for the threshold score
+  z_score_threshold_inter_one <- (threshold_score - mean_score_inter_one) / standard_deviation_inter_one
+  z_score_threshold_inter_one
+
+  # Calculate the cumulative probability using the logistic CDF
+  probability_above_threshold_inter_one <- 1 - plogis(z_score_threshold_inter_one)
+  probability_above_threshold_inter_one
+
+  # Estimate the number of students scoring above the threshold
+  students_above_threshold_inter_one <- total_students * probability_above_threshold_inter_one
+  students_above_threshold_inter_one
+  
+  # Check the distribution of score ranges after intervention 2
+  
+  hist(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)
+  
+  qqnorm(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)
+  
+  # Both histogram and Q-Q plot shows sigmoid curve. Hence, we apply the 
+  # cumulative probability using cumulative distribution function (CDF) to calculate
+  # the number of MFF players with score above 90 points. 
+  
+  # First, we find the SD and Mean of the score range for intervention two 
+  
+  sd_inter_two <- sd(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)
+  sd_inter_two
+  
+  mean_inter_two <- mean(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)  
+  mean_inter_two  
+  
+  summary(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)
+  
+  # Then, we make variables. 
+  
+  total_students <- 120
+  mean_score_inter_two <- 88.39
+  standard_deviation_inter_two <- 10.64
+  minimum_score_inter_one <- 41.84
+  maximum_score <- 100
+  
+  # We set threshold score at 89 because we want score 90 points and above. 
+  threshold_score <- 89
+  
+  # Calculate the z-score for the threshold score
+  z_score_threshold_inter_two <- (threshold_score - mean_score_inter_two) / standard_deviation_inter_two
+  z_score_threshold_inter_two
+  
+  # Calculate the cumulative probability using the logistic CDF
+  probability_above_threshold_inter_two <- 1 - plogis(z_score_threshold_inter_two)
+  probability_above_threshold_inter_two
+  
+  # Estimate the number of students scoring above the threshold
+  students_above_threshold_inter_two <- total_students * probability_above_threshold_inter_two
+  students_above_threshold_inter_two
+
+  
 
 
