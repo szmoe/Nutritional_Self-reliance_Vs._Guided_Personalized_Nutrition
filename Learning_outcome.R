@@ -765,6 +765,9 @@ good_value_belief <- min(good_value_belief_in, 1)
                                                percent_know_healthy_eating*
                                                percent_know_nu_requirement
                                                )* number_athelete
+
+  
+  
   
   # Return list ####
   
@@ -775,7 +778,8 @@ good_value_belief <- min(good_value_belief_in, 1)
               Number_player_90score_baseline_inter_one = 
                 Number_player_90score_baseline_inter_one,
               Number_player_90score_baseline_inter_two =
-               Number_player_90score_baseline_inter_two))
+               Number_player_90score_baseline_inter_two
+            ))
   
 }
 
@@ -828,6 +832,7 @@ input_learning_outcome <- read.csv("Learning_outcome.csv")
                      method = 'boxplot_density',
                      x_axis_name = 'Distribution of total scores for all MFF players after intervention two',
                      base_size = 7)
+  
   
   #Find EVPI 
   
@@ -888,4 +893,155 @@ input_learning_outcome <- read.csv("Learning_outcome.csv")
   summary(Learning_outcome_mc_simulation$y$Individual_baseline_inter_two)
   
   
- 
+ ############# 
+  
+  # Calculate number of MFF players who score above 90 at baseline
+  
+  # First we check the distribution of the score range
+  
+  hist(Learning_outcome_mc_simulation$y$Individual_baseline_inter_one)
+  # The histogram plot shows the maximum score for baseline (intervention one) is 45. 
+  # Hence, the number of high scoring MFF players for baseline (intervention one) is 0.
+  # This matches the simulation result using estimates from survey (Line 808). 
+  
+  hist(Learning_outcome_mc_simulation$y$Individual_baseline_inter_two)
+  # The histogram plot shows the maximum score for baseline (intervention two) is 70. 
+  # Hence, the number of high scorers at baseline (intervention two) is also 0.
+  # This result slightly differs from the simulation result using estimates from survey (Line 814).
+  # The result from simulation shows the number of high scorers at baseline 
+  # (intervention two) could be between 0-8 people with an average of 3. 
+
+  
+  # Calculate number of MFF players who score above 90 after interventions
+  
+  # Check the distribution of score ranges after intervention 1
+  
+  hist(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)
+  
+  qqnorm(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)
+  
+  # Both histogram and Q-Q plot shows sigmoid curve. Hence, we apply the 
+  # cumulative probability using cumulative distribution function (CDF) to calculate
+  # the number of MFF players with score above 90 points. 
+  
+  # First, we find the SD and Mean of the score range for intervention one 
+  
+  sd_inter_one <- sd(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)
+  sd_inter_one
+  
+  mean_inter_one <- mean(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)  
+  mean_inter_one  
+  
+  summary(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one)
+  
+  # Then, we make variables. 
+  
+  total_students <- 120
+  mean_score_inter_one <- 86.65
+  standard_deviation_inter_one <- 9.32
+  minimum_score_inter_one <- 50.38
+  maximum_score <- 100
+  
+  # We set threshold score at 89 because we want score 90 points and above. 
+  threshold_score <- 89
+  
+  # Calculate the z-score for the threshold score
+  z_score_threshold_inter_one <- (threshold_score - mean_score_inter_one) / standard_deviation_inter_one
+  z_score_threshold_inter_one
+  
+  # Calculate the cumulative probability using the logistic CDF
+  probability_above_threshold_inter_one <- 1 - plogis(z_score_threshold_inter_one)
+  probability_above_threshold_inter_one
+  
+  # Estimate the number of students scoring above the threshold
+  students_above_threshold_inter_one <- total_students * probability_above_threshold_inter_one
+  students_above_threshold_inter_one
+  
+  # Check the distribution of score ranges after intervention 2
+  
+  hist(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)
+  
+  qqnorm(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)
+  
+  # Both histogram and Q-Q plot shows sigmoid curve. Hence, we apply the 
+  # cumulative probability using cumulative distribution function (CDF) to calculate
+  # the number of MFF players with score above 90 points. 
+  
+  # First, we find the SD and Mean of the score range for intervention two 
+  
+  sd_inter_two <- sd(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)
+  sd_inter_two
+  
+  mean_inter_two <- mean(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)  
+  mean_inter_two  
+  
+  summary(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two)
+  
+  # Then, we make variables. 
+  
+  total_students <- 120
+  mean_score_inter_two <- 88.39
+  standard_deviation_inter_two <- 10.64
+  minimum_score_inter_one <- 41.84
+  maximum_score <- 100
+  
+  # We set threshold score at 89 because we want score 90 points and above. 
+  threshold_score <- 89
+  
+  # Calculate the z-score for the threshold score
+  z_score_threshold_inter_two <- (threshold_score - mean_score_inter_two) / standard_deviation_inter_two
+  z_score_threshold_inter_two
+  
+  # Calculate the cumulative probability using the logistic CDF
+  probability_above_threshold_inter_two <- 1 - plogis(z_score_threshold_inter_two)
+  probability_above_threshold_inter_two
+  
+  # Estimate the number of students scoring above the threshold
+  students_above_threshold_inter_two <- total_students * probability_above_threshold_inter_two
+  students_above_threshold_inter_two
+  
+  
+  ###############
+
+  # Find number of high scorers who score >= 90 points after intervention one 
+  
+  score_inter_one <- vv(Learning_outcome_mc_simulation$y$Learning_outcome_inter_one,
+                        var_CV, n = 120)
+  
+  plot(score_inter_one, type = 'o', col = 'blue', pch = 16)
+  abline(h = 90, col = 'red', lty = 2)
+  
+  # counted 52 for score >= 90 for intervention one 
+  # same result as using plogis function. I'm not sure about this though. 
+  
+  # Find number of higher scorer who score >= 90 points after intervention two 
+  
+  score_inter_two <- vv(Learning_outcome_mc_simulation$y$Learning_outcome_inter_two,
+                        var_CV, n = 120) # 120 for total number of players
+  
+  plot(score_inter_two,type = 'o', col = 'blue', pch = 16)
+  abline(h = 90, col = 'red', lty = 2)
+
+  # counter 62 for score >= 90 for intervention two
+  # plogis result is 58 (quite similar)
+  
+  # Find number of high scorers who score >= 90 points at baseline for intervention one
+  
+  score_baseline_one <- vv(Learning_outcome_mc_simulation$y$Individual_baseline_inter_one,
+                           var_CV, n = 120)
+  
+  plot(score_baseline_one,type = 'o', col = 'blue', pch = 16)
+  abline(h = 90, col = 'red', lty = 2)
+
+  # Counted '0'. Same result as the mcSimulation and plogis results  
+  
+  # Find number of high scorers who score >= 90 points at baseline for intervention two
+  
+  score_baseline_two <- vv(Learning_outcome_mc_simulation$y$Individual_baseline_inter_two,
+                           var_CV, n = 120)
+  
+  plot(score_baseline_two,type = 'o', col = 'blue', pch = 16)
+  abline(h = 90, col = 'red', lty = 2)
+
+  # Counted '0'. Same result as the result using plogis function. 
+  # Result from mcSimulation is  min=0, max= 8, average= 3
