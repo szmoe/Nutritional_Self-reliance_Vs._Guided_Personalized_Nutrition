@@ -1,0 +1,48 @@
+---
+title: "Learning_Outcome_Model"
+author: "SM"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: html_document
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(decisionSupport)
+```
+
+# Model 1: Comparison of nutrition knowledge before and after interventions
+
+We simulated the extent of nutrition knowledge at baseline and after interventions in this model. Two interventions were chosen- to improve nutritional self-reliance by improving nutrition knowledge and to provide personalized nutrition care by nutrition professionals. The success of the first intervention relies heavily on the knowledge improvement of the participants, while the success of the latter depends on the design of nutrition care system. Hence, model 1 is mainly for intervention one- to find out if there is significant knowledge improvement between baseline and intervention, and if the level of improvement is enough to achieve nutritional self-reliance. 
+
+
+## The Conceptual Model 
+
+We finalized the conceptual model for learning outcome based on the model drafts drawn by two groups of football players at MFF and the data obtained from [survey](https://github.com/szmoe/Nutritional_Self-reliance_Vs._Guided_Personalized_Nutrition/blob/main/data/Survey_data.xlsx). The model drafts and other details are shown in [the priors for learning outcome model](http://htmlpreview.github.io/?https://github.com/szmoe/Nutritional_Self-reliance_Vs._Guided_Personalized_Nutrition/blob/main/Priors/Priors_for_Learning_Outcome_Model.html). 
+
+![Figure: Conceptual Model for Learning Outcome]
+
+
+## Data simulation in R
+
+We used the Monte Carlo simulation method to predict the levels of knowledge at baseline and after interventions based on the currently available data. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
