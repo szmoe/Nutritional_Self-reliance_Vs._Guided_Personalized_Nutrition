@@ -4,12 +4,12 @@
 # Based on DA course, process needs to be:
 # 1. Simple and not time-consuming (not data-driven; try to make decision even when data is scarce)
 # 2. Start simple and add on complexity
-# 3. Collect data from any possible sources- transdisplinary
+# 3. Collect data from any possible sources- transdisciplinary
 
-# Based on statistical rethinking, bayesian process is similar to frequentist in base theory
-# So, the basic principles still apply- I can't go to town with the model just coz the decisionSupport
+# Based on statistical rethinking, Bayesian process is similar to frequentist in base theory
+# So, the basic principles still apply- I can't go to town on the model just coz the decisionSupport
 # package allows 
-# Problem with overfitting with complex models- meaning here in DA model, unnecessary complexity brings in chaos!
+# Problem with over-fitting with complex models- meaning here in DA model, unnecessary complexity brings in chaos!
 
 ## In order to build a good model, I think I need to learn more on:
 
@@ -31,12 +31,16 @@
 # measure anything" but still at first chapter. Also, I need to look up more resources on how
 # economists assign values to health outcomes. 
 
+# So, these will be the limitations of this model.
+
 ##########################################################################################################
 
-## Simulation is for a small homogenous group- so less generalization)
+## Simulation is for a small homogeneous group- so less generalization)
 ## I may be able to treat it as client level- not population level
 
 # Do base/ standard first
+
+
 
 
 

@@ -1,0 +1,25 @@
+variable,distribution,lower,median,upper,label
+n_year,const,4,,4,number of years for simulation
+var_CV,tnorm_0_1,0.1,,0.3,Coefficient of variation (%)
+weight_male,posnorm,50,,80,weight range of male athletes in kg
+weight_female,posnorm,40,,70,weight range of female athletes in kg
+height_male,posnorm,165,,185,height range of male athletes in cm
+height_female,posnorm,152,,156,height range of female athletes in cm
+age_male,posnorm,15,,30,age range of male athletes in years
+age_female,posnorm,18,,28,age range of female athletes in years
+paf_normal,posnorm,1.5,,1.8,physical activity factor for normal training days
+paf_intensive,posnorm,1.81,,2,physical activity factor for intensive training days
+number_male,posnorm,150,,300,number of male football players per year
+number_female,posnorm,100,,200,number of female football players per year
+number_total,posnorm,250,,500,number of football players per year
+normal_training,posnorm,151,,181,number of normal training days per year
+intensive_training,posnorm,100,,120,number of intensive training days per year
+bmi_low_cutoff,const,18.5,,18.5,bmi cut off point for underweight 
+bmi_healthy_cutoff,posnorm,18.5,,22.9,healthy bmi range for asian population
+target_fat_perc_male,posnorm,6,,13,percent target body fat for male athletes (%)
+target_fat_perc_female,posnorm,14,,20,percent target body fat for female athletes (%)
+fat_perc_male,posnorm,4,,20,percent body fat of male athletes (%)
+fat_perc_female,posnorm,12,,22,percent body fat of female athletes (%)
+weekly_weight_loss,posnorm,0.45,,0.9,Target weight loss per week in kg
+daily_kcal_male,posnorm,2000,,3000,Current daily calorie intake of male athletes (kcal)
+daily_kcal_female,posnorm,1800,,2500,Current daily calorie intake of female athletes (kcal)
