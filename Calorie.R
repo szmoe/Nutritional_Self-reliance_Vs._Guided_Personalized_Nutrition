@@ -73,8 +73,7 @@ Calorie_function <- function(x, varnames){
   
   # Extract weight range of underweight male athletes
   
-  underweight_bmi_male <- c(ifelse(bmi_male < bmi_healthy_cutoff[1] | 
-                                     bmi_male > bmi_healthy_cutoff[2],
+  underweight_bmi_male <- c(ifelse(bmi_male < bmi_healthy_cutoff,
                                    bmi_male, 0),
                             rep(0, n_year-1))
   
@@ -118,8 +117,7 @@ Calorie_function <- function(x, varnames){
   
   # Extract weight range of underweight female athletes
   
-  underweight_bmi_female <- c(ifelse(bmi_female < bmi_healthy_cutoff[1] | 
-                                     bmi_female > bmi_healthy_cutoff[2],
+  underweight_bmi_female <- c(ifelse(bmi_female < bmi_healthy_cutoff,
                                    bmi_female, 0),
                             rep(0, n_year-1))
   
@@ -156,73 +154,130 @@ Calorie_function <- function(x, varnames){
 ################################################################################ 
   
   ## Deduct calories for overweight athletes
+  # watch out for training intensity- kcal deduction will be less if they increase training
   
   # Calculate fat mass of male athletes (weight in kg * (% body fat)/100)
   
+  fat_mass_male <- c(weight_male * (fat_perc_male/100),
+                     rep(0, n_year-1))
   
   
   # Calculate lean body mass of male athletes (total body weight - fat mass)
   
+  lean_mass_male <- c(weight_male - fat_mass_male,
+                      rep(0, n_year-1))
+
   
-  # Calculate minimum target weight for male athletes
+  # Calculate target weight for male athletes
+  # Since input table allows range, I just use one calculation to generate range-no need for step-cal
   
-  
-  # Calculate target desired weight for male athletes
-  
-  
-  # Calculate realistic weight range for male athletes
+  target_wt_male <- c(lean_mass_male/(1-(target_fat_perc_male/100)),
+                      rep(0, n_year-1))
   
   
   # Extract number of male athletes with percent body fat above threshold range
   
+  number_overweight_male <- c(per_overweight_male * number_male,
+                              rep(0, n_year-1))
+  
   
   # Extract range of male percent body fat above threshold range
   
+  fat_above_threshold_male <- c(ifelse(fat_perc_male > target_fat_perc_male,
+                                       fat_perc_male, 0),
+                                rep(0, n_year-1))
+  
   # Extract weight range of male athletes with percent body fat above threshold range
+  
+  wt_over_male <- c(fat_mass_male/(fat_above_threshold_male/100),
+                    rep(0, n_year-1))
   
   # Range of weight loss needed (kg) for male athletes with percent body fat above threshold range
   
+  wt_normal_male <- c(fat_mass_male/(target_fat_perc_male/100),
+                      rep(0, n_year-1))
+  
+  wt_deduct_male <- c(wt_over_male - wt_normal_male,
+                      rep(0, n_year-1))
   
   # Range of weeks needed to meet target weights 
+  
+  wt_loss_week_male <- c(wt_deduct_male/weekly_weight_loss,
+                           rep(0, n_year-1))
   
   
   # Range of calorie deduction needed for male athletes for total target weeks
   
+  kcal_deduct_male <- c(weekly_extra_kcal * wt_loss_week_male,
+                         rep(0, n_year-1))
   
   # Total extra calorie deducted for all overweight male athletes
+  
+  total_deduct_kcal_male <- c(kcal_deduct_male * number_overweight_male,
+                               rep(0, n_year-1))
   
   
   # Calculate fat mass of female athletes (weight in kg * (% body fat)/100)
   
+  fat_mass_female <- c(weight_female * (fat_perc_female/100),
+                     rep(0, n_year-1))
+  
   
   # Calculate lean body mass of female athletes (total body weight - fat mass)
   
-  
-  # Calculate minimum target weight for female athletes
-  
-  
-  # Calculate target desired weight for female athletes
+  lean_mass_female <- c(weight_female - fat_mass_female,
+                      rep(0, n_year-1))
   
   
-  # Calculate realistic weight range for female athletes
+  # Calculate target weight for female athletes
+  
+  target_wt_female <- c(lean_mass_female/(1-(target_fat_perc_female/100)),
+                      rep(0, n_year-1))
+  
   
   
   # Extract number of female athletes with percent body fat above threshold range
   
+  number_overweight_female <- c(per_overweight_female * number_female,
+                              rep(0, n_year-1))
+  
   
   # Extract range of female percent body fat above threshold range
   
+  fat_above_threshold_female <- c(ifelse(fat_perc_female > target_fat_perc_female,
+                                         fat_perc_female, 0),
+                                  rep(0, n_year-1))
+  
+  
   # Extract weight range of female athletes with percent body fat above threshold range
   
+  wt_over_female <- c(fat_mass_female/(fat_above_threshold_female/100),
+                    rep(0, n_year-1))
+  
   # Range of weight loss needed (kg) for female athletes with percent body fat above threshold range
+  
+  wt_normal_female <- c(fat_mass_female/(target_fat_perc_female/100),
+                      rep(0, n_year-1))
+  
+  wt_deduct_female <- c(wt_over_female - wt_normal_female,
+                      rep(0, n_year-1))
   
   
   # Range of weeks needed to meet target weights 
   
+  wt_loss_week_female <- c(wt_deduct_female/weekly_weight_loss,
+                         rep(0, n_year-1))
+  
   
   # Range of calorie deduction needed for female athletes for total target weeks
   
+  kcal_deduct_female <- c(weekly_extra_kcal * wt_loss_week_female,
+                        rep(0, n_year-1))
+  
   # Total extra calorie deducted for all overweight female athletes
+  
+  total_deduct_kcal_female <- c(kcal_deduct_female * number_overweight_female,
+                              rep(0, n_year-1))
   
 ################################################################################ 
   
