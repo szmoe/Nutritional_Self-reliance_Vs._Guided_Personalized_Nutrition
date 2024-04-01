@@ -13,16 +13,18 @@ make_variables(estimate_read_csv(paste("Calorie.csv")))
 
 Calorie_function <- function(x, varnames){
   
+  ### For First Year
+  
   # Calculate BMR for men using the Mifflin-St Jeor equation
   
-  bmr_male <- vv(((10*weight_male) + (6.25*height_male) - (5*age_male) + 5),
-                var_CV, n_year)
+  bmr_male <- c(((10*weight_male) + (6.25*height_male) - (5*age_male) + 5),
+                rep(0, n_year-1))
   
   
   # Calculate BMR for women using the Mifflin-St Jeor equation
   
-  bmr_female <- vv(((10*weight_female) + (6.25*height_female) - (5*age_female) - 161),
-                   var_CV, n_year)
+  bmr_female <- c(((10*weight_female) + (6.25*height_female) - (5*age_female) - 161),
+                   rep(0, n_year-1))
   
 ################################################################################
   
@@ -30,14 +32,14 @@ Calorie_function <- function(x, varnames){
   
   # Calculate daily calorie target for men to maintain current weight
   
-  daily_kcal_tar_nor_male <-vv(bmr_male * paf_normal,
-                           var_CV, n_year)
+  daily_kcal_tar_nor_male <-c(bmr_male * paf_normal,
+                              rep(0, n_year-1))
   
   
   # Calculate daily calorie target for women to maintain current weight
   
-  daily_kcal_tar_nor_female <- vv(bmr_female * paf_intensive,
-                              var_CV, n_year)
+  daily_kcal_tar_nor_female <- c(bmr_female * paf_intensive,
+                                 rep(0, n_year-1))
   
 
 ################################################################################  
@@ -46,14 +48,14 @@ Calorie_function <- function(x, varnames){
   
   # Calculate daily calorie target for men to maintain current weight
   
-  daily_kcal_tar_int_male <- vv(bmr_male * paf_intensive,
-                                var_CV, n_year)
+  daily_kcal_tar_int_male <- c(bmr_male * paf_intensive,
+                               rep(0, n_year-1))
   
   
   # Calculate daily calorie target for women to maintain current weight
   
-  daily_kcal_tar_int_female <- vv(bmr_female * paf_intensive,
-                                  var_CV, n_year)
+  daily_kcal_tar_int_female <- c(bmr_female * paf_intensive,
+                                 rep(0, n_year-1))
   
 ################################################################################  
   
@@ -61,46 +63,102 @@ Calorie_function <- function(x, varnames){
   
   # Calculate BMI for male athletes
   
+  bmi_male <- c(weight_male/(height_male*0.01)^2,
+                rep(0,  n_year-1))
   
   # Number of underweight male athletes
   
+  underweight_male <- c(per_underweight_male * number_male,
+                        rep(0, n_year-1))
   
   # Extract weight range of underweight male athletes
   
+  underweight_bmi_male <- c(ifelse(bmi_male < bmi_healthy_cutoff[1] | 
+                                     bmi_male > bmi_healthy_cutoff[2],
+                                   bmi_male, 0),
+                            rep(0, n_year-1))
+  
+  ## here we estimate weights for all possible low bmi for all heights
+  wt_under_male <- c(underweight_bmi_male * (height_male * 0.01)^2,
+                     rep(0, n_year-1))
   
   # Range of extra weight gain needed (kg) for male athletes
   
+  wt_healthy_male <- bmi_healthy_cutoff * (height_male * 0.01)^2
+                  
+  
+  extra_wt_male <- c(wt_healthy_male - wt_under_male,
+                     rep(0, n_year-1))
+  
   
   # Range of weeks needed to meet target weights
   
+  wt_gain_week_male <- c(extra_wt_male/weekly_weight_gain,
+                    rep(0, n_year-1))
   
   # Range of extra calorie needed for male athletes for total target weeks
   
+  extra_kcal_male <- c(weekly_extra_kcal * wt_gain_week_male,
+                       rep(0, n_year-1))
+  
+  # Total extra calorie needed for all underweight male athletes
+  
+  total_extra_kcal_male <- c(extra_kcal_male * underweight_male,
+                             rep(0, n_year-1))
   
   # Calculate BMI for female athletes
   
+  bmi_female <- c(weight_female/(height_female*0.01)^2,
+                rep(0,  n_year-1))
   
   # Number of underweight female athletes
   
-  # Number of underweight female athletes
-  
+  underweight_female <- c(per_underweight_female * number_female,
+                        rep(0, n_year-1))
   
   # Extract weight range of underweight female athletes
   
+  underweight_bmi_female <- c(ifelse(bmi_female < bmi_healthy_cutoff[1] | 
+                                     bmi_female > bmi_healthy_cutoff[2],
+                                   bmi_female, 0),
+                            rep(0, n_year-1))
   
-  # Range of extra weight gain needed (kg) for female athletes ()
+  ## here we estimate weights for all possible low bmi for all heights
+  wt_under_female <- c(underweight_bmi_female * (height_female * 0.01)^2,
+                     rep(0, n_year-1))
+  
+  
+  # Range of extra weight gain needed (kg) for female athletes 
+  
+  wt_healthy_female <- bmi_healthy_cutoff * (height_female * 0.01)^2
+  
+  
+  extra_wt_female <- c(wt_healthy_female - wt_under_female,
+                     rep(0, n_year-1))
   
   
   # Range of weeks needed to meet target weights
   
+  wt_gain_week_female <- c(extra_wt_female/weekly_weight_gain,
+                         rep(0, n_year-1))
+  
   
   # Range of extra calorie needed for female athletes for total target weeks
+  
+  extra_kcal_female <- c(weekly_extra_kcal * wt_gain_week_female,
+                       rep(0, n_year-1))
+  
+  # Total extra calorie needed for all underweight female athletes
+  
+  total_extra_kcal_female <- c(extra_kcal_female * underweight_female,
+                             rep(0, n_year-1))
   
 ################################################################################ 
   
   ## Deduct calories for overweight athletes
   
   # Calculate fat mass of male athletes (weight in kg * (% body fat)/100)
+  
   
   
   # Calculate lean body mass of male athletes (total body weight - fat mass)
@@ -131,6 +189,7 @@ Calorie_function <- function(x, varnames){
   # Range of calorie deduction needed for male athletes for total target weeks
   
   
+  # Total extra calorie deducted for all overweight male athletes
   
   
   # Calculate fat mass of female athletes (weight in kg * (% body fat)/100)
@@ -163,33 +222,43 @@ Calorie_function <- function(x, varnames){
   
   # Range of calorie deduction needed for female athletes for total target weeks
   
+  # Total extra calorie deducted for all overweight female athletes
+  
 ################################################################################ 
   
   ## Total yearly calorie needs 
   
-  # Calculate total yearly calorie needs for male athletes
+  # Calculate total yearly calorie needs for male athletes for first year
   
   
-  # Calculate total yearly calorie needs for female athletes
+  # Calculate total yearly calorie needs for female athletes for first year
   
   
-  # Calculate overall yearly calorie needs
+  # Calculate overall yearly calorie needs for first year
   
   
 ################################################################################ 
   
-  ## Calculate yearly extra calorie provided during intervention (to calculate cost)
+  ## Calculate first year extra calorie provided during intervention (to calculate cost) 
   
   # Calculate current yearly calorie intake for male athletes
   
-  # Calculate extra yearly calorie provided for male athletes
+  # Calculate extra yearly calorie provided for male athletes for first year
   
   # Calculate current yearly calorie intake for female athletes
   
-  # Calculate extra yearly calorie provided for female athletes
+  # Calculate extra yearly calorie provided for female athletes for first year
   
+
+################################################################################ 
   
+  ## For following years (except first year)
   
+  # I calculate again for following years because the assumption is after first year
+  # all athletes will be within normal weight range- so not the same weight as in 
+  # the input table
+ 
+ 
   
   
   
