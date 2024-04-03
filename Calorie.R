@@ -38,7 +38,7 @@ Calorie_function <- function(x, varnames){
   
   # Calculate daily calorie target for women to maintain current weight
   
-  daily_kcal_tar_nor_female <- c(bmr_female * paf_intensive,
+  daily_kcal_tar_nor_female <- c(bmr_female * paf_normal,
                                  rep(0, n_year-1))
   
 
@@ -100,10 +100,7 @@ Calorie_function <- function(x, varnames){
   extra_kcal_male <- c(weekly_extra_kcal * wt_gain_week_male,
                        rep(0, n_year-1))
   
-  # Total extra calorie needed for all underweight male athletes
-  
-  total_extra_kcal_male <- c(extra_kcal_male * underweight_male,
-                             rep(0, n_year-1))
+#####################
   
   # Calculate BMI for female athletes
   
@@ -146,11 +143,7 @@ Calorie_function <- function(x, varnames){
   extra_kcal_female <- c(weekly_extra_kcal * wt_gain_week_female,
                        rep(0, n_year-1))
   
-  # Total extra calorie needed for all underweight female athletes
-  
-  total_extra_kcal_female <- c(extra_kcal_female * underweight_female,
-                             rep(0, n_year-1))
-  
+
 ################################################################################ 
   
   ## Deduct calories for overweight athletes
@@ -209,10 +202,7 @@ Calorie_function <- function(x, varnames){
   kcal_deduct_male <- c(weekly_extra_kcal * wt_loss_week_male,
                          rep(0, n_year-1))
   
-  # Total extra calorie deducted for all overweight male athletes
-  
-  total_deduct_kcal_male <- c(kcal_deduct_male * number_overweight_male,
-                               rep(0, n_year-1))
+#######################
   
   
   # Calculate fat mass of female athletes (weight in kg * (% body fat)/100)
@@ -255,7 +245,6 @@ Calorie_function <- function(x, varnames){
   
   # Range of weight loss needed (kg) for female athletes with percent body fat above threshold range
   
-  
   wt_deduct_female <- c(wt_over_female - target_wt_female,
                       rep(0, n_year-1))
   
@@ -271,17 +260,173 @@ Calorie_function <- function(x, varnames){
   kcal_deduct_female <- c(weekly_extra_kcal * wt_loss_week_female,
                         rep(0, n_year-1))
   
-  # Total extra calorie deducted for all overweight female athletes
-  
-  total_deduct_kcal_female <- c(kcal_deduct_female * number_overweight_female,
-                              rep(0, n_year-1))
   
 ################################################################################ 
   
   ## Total yearly calorie needs 
   
-  # Calculate total yearly calorie needs for male athletes for first year
+  # Calculate number of male athletes within healthy weight range
   
+  number_healthy_male <- number_male - (underweight_male + number_overweight_male)
+  
+  # Calculate total calorie needs for healthy weight range athletes for the first year
+  
+  bmr_healthy_male <- c(((10*target_wt_male) + (6.25*height_male) - (5*age_male) + 5),
+                        rep(0, n_year-1))
+  
+  daily_kcal_tar_nor_healthy_male <-c(bmr_healthy_male * paf_normal,
+                                      rep(0, n_year-1))
+  
+  
+  daily_kcal_tar_int_healthy_male <- c(bmr_healthy_male * paf_intensive,
+                                       rep(0, n_year-1))
+  
+  first_year_kcal_healthy_male <- c((daily_kcal_tar_nor_healthy_male*normal_training) +
+                                      (daily_kcal_tar_int_healthy_male*intensive_training),
+                                    rep(0, n_year-1))
+  
+  total_first_year_kcal_healthy_male <- c(yearly_kcal_healthy_male*number_healthy_male,
+                                          rep(0, n_year-1))
+  
+  ##############
+  
+  # Calculate number of female athletes within healthy weight range
+  
+  number_healthy_female <- number_female - (underweight_female + number_overweight_female)
+  
+  # Calculate total calorie needs for healthy weight range athletes for the first year
+  
+  bmr_healthy_female <- c(((10*target_wt_female) + (6.25*height_female) - (5*age_female) - 161),
+                          rep(0, n_year-1))
+  
+  daily_kcal_tar_nor_healthy_female <-c(bmr_healthy_female * paf_normal,
+                                        rep(0, n_year-1))
+  
+  
+  daily_kcal_tar_int_healthy_female <- c(bmr_healthy_female * paf_intensive,
+                                         rep(0, n_year-1))
+  
+  first_year_kcal_healthy_female <- c((daily_kcal_tar_nor_healthy_female*normal_training) +
+                                        (daily_kcal_tar_int_healthy_female*intensive_training),
+                                      rep(0, n_year-1))
+  
+  total_first_year_kcal_healthy_female <- c(yearly_kcal_healthy_female*number_healthy_female,
+                                            rep(0, n_year-1))
+  
+  
+  #############
+  
+  # Change weight gain weeks for male athletes into days
+  
+  wt_gain_week_male_in_days <- wt_gain_week_male * 7
+  
+  ## Intensive training period (training before games) comes after normal period
+  # Calculate total days where underweight athletes will do normal or intensive training during weight gain period
+  
+  wt-gain_int_training_days_male <- abs(wt_gain_week_male_in_days - normal_training)
+  wt-gain_nor_training_days_male <- ifelse(normal_training > wt_gain_week_male_in_days,
+                                           wt_gain_week_male_in_days, 
+                                           (wt_gain_week_male_in_days - 
+                                              wt_gain_int_training_days_male))
+  
+  
+  # Base calorie needs for an underweight male athlete during weight gain period
+  
+  base_kcal_need_during_wt_gain_male <- ifelse(wt_gain_week_male_in_days < normal_training,
+                                               (daily_kcal_tar_nor_male*wt_gain_week_male_in_days),
+                                               ((daily_kcal_tar_nor_male*wt_gain_nor_training_days_male)+
+                                                  daily_kcal_tar_int_male*wt_gain_int_training_days_male))
+  
+  # Total calorie needs for an underweight male athlete during weight gain period
+  
+  total_kcal_wt_gain_male <- base_kcal_need_during_wt_gain_male + extra_kcal_male
+  
+  ####################
+  
+  # Total calorie needs for an underweight male (now normal weight) after weight gain period
+  
+  total_training_days <- normal_training + intensive_training
+  training_days_after_wt_gain_male <- total_training_days - wt_gain_week_male_in_days
+  nor_training_days_after_wt_gain_male <- ifelse(training_days_after_wt_gain_male > intensive_training,
+                                                 (training_days_after_wt_gain_male - 
+                                                    intensive_training), 0)
+  
+  
+  int_training_days_after_wt_gain_male <- ifelse(training_days_after_wt_gain_male > intensive_training,
+                                                 (training_days_after_wt_gain_male -
+                                                    nor_training_days_after_wt_gain_male),
+                                                 training_days_after_wt_gain_male)
+  
+  first_year_kcal_after_wt_gain_male <- ((daily_kcal_tar_nor_healthy_male*
+                                            nor_training_days_after_wt_gain_male) +
+                                           (daily_kcal_tar_int_healthy_male*
+                                              int_training_days_after_wt_gain_male))
+  
+  # Total first year calorie needs for all underweight male athletes during and after weight gain
+  
+  total_first_year_kcal_wt_gain_male <- c((total_kcal_wt_gain_male + 
+                                             first_year_kcal_after_wt_gain_male)*
+                                            underweight_male,
+                                          rep(0, n_year-1))
+  
+  ###############
+  
+  # Change weight gain weeks for female athletes into days
+  
+  wt_gain_week_female_in_days <- wt_gain_week_female * 7
+  
+  ## Intensive training period (training before games) comes after normal period
+  # Calculate total days where underweight athletes will do normal or intensive training during weight gain period
+  
+  wt-gain_int_training_days_female <- abs(wt_gain_week_female_in_days - normal_training)
+  wt-gain_nor_training_days_female <- ifelse(normal_training > wt_gain_week_female_in_days,
+                                             wt_gain_week_female_in_days, 
+                                             (wt_gain_week_female_in_days - 
+                                                wt_gain_int_training_days_female))
+  
+  
+  # Base calorie needs for an underweight female athlete during weight gain period
+  
+  base_kcal_need_during_wt_gain_female <- ifelse(wt_gain_week_female_in_days < normal_training,
+                                                 (daily_kcal_tar_nor_female*wt_gain_week_female_in_days),
+                                                 ((daily_kcal_tar_nor_female*wt_gain_nor_training_days_female)+
+                                                    daily_kcal_tar_int_female*wt_gain_int_training_days_female))
+  
+  # Total calorie needs for an underweight male athlete during weight gain period
+  
+  total_kcal_wt_gain_female <- base_kcal_need_during_wt_gain_female + extra_kcal_female
+  
+  ####################
+  
+  # Total calorie needs for an underweight female (now normal weight) after weight gain period
+  
+  total_training_days <- normal_training + intensive_training
+  training_days_after_wt_gain_female <- total_training_days - wt_gain_week_female_in_days
+  nor_training_days_after_wt_gain_female <- ifelse(training_days_after_wt_gain_female > intensive_training,
+                                                   (training_days_after_wt_gain_female - 
+                                                      intensive_training), 0)
+  
+  
+  int_training_days_after_wt_gain_female <- ifelse(training_days_after_wt_gain_female > intensive_training,
+                                                   (training_days_after_wt_gain_female -
+                                                      nor_training_days_after_wt_gain_female),
+                                                   training_days_after_wt_gain_female)
+  
+  first_year_kcal_after_wt_gain_female <- ((daily_kcal_tar_nor_healthy_female*
+                                              nor_training_days_after_wt_gain_female) +
+                                             (daily_kcal_tar_int_healthy_female*
+                                                int_training_days_after_wt_gain_female))
+  
+  
+  # Total first year calorie needs for all underweight female athletes during and after weight gain
+  
+  total_first_year_kcal_wt_gain_female <- c((total_kcal_wt_gain_female + 
+                                               first_year_kcal_after_wt_gain_female)*
+                                              underweight_female,
+                                            rep(0, n_year-1))
+  ##################
+  
+  # Calculate total yearly calorie needs for male athletes for first year
   
   # Calculate total yearly calorie needs for female athletes for first year
   
