@@ -9,7 +9,7 @@ make_variables<-function(est,n=1)
 { x<-random(rho=est, n=n)
 for(i in colnames(x)) assign(i, as.numeric(x[1,i]),envir=.GlobalEnv)}
 
-make_variables(estimate_read_csv(paste("Calorie.csv")))
+make_variables(estimate_read_csv(paste("1_Calorie.csv")))
 
 Calorie_function <- function(x, varnames){
   
@@ -576,21 +576,49 @@ Calorie_function <- function(x, varnames){
   # the input table
   
   
+  # Calculate total yearly calorie needs for male athlete (now all within healthy weight range)
+  
+  bmr_healthy_male_yearly <- vv(((10*target_wt_male) + (6.25*height_male) - (5*age_male) + 5),
+                                  var_CV, n_year)
+  
+  daily_kcal_tar_nor_healthy_male_yearly <-vv(bmr_healthy_male_yearly * paf_normal,
+                                              var_CV, n_year)
   
   
+  daily_kcal_tar_int_healthy_male_yearly <- vv(bmr_healthy_male_yearly * paf_intensive,
+                                                var_CV, n_year)
+  
+  total_kcal_need_male_yearly <- vv(((daily_kcal_tar_nor_healthy_male_yearly *
+                                       normal_training) +
+                                      (daily_kcal_tar_int_healthy_male_yearly *
+                                         intensive_training))*number_male,
+                                    var_CV, n_year)
+  
+  total_kcal_need_male_yearly[1] <- total_first_year_kcal_need_male
+
+  
+  ##############
+  
+  # Calculate total yearly calorie needs for female athlete (now all within healthy weight range)
+  
+  bmr_healthy_female_yearly <- vv(((10*target_wt_female) + (6.25*height_female) - (5*age_female) - 161),
+                                var_CV, n_year)
   
   
+  daily_kcal_tar_nor_healthy_female_yearly <-vv(bmr_healthy_female_yearly * paf_normal,
+                                              var_CV, n_year)
   
   
+  daily_kcal_tar_int_healthy_female_yearly <- vv(bmr_healthy_female_yearly * paf_intensive,
+                                               var_CV, n_year)
   
+  total_kcal_need_female_yearly <- vv(((daily_kcal_tar_nor_healthy_female_yearly *
+                                        normal_training) +
+                                       (daily_kcal_tar_int_healthy_female_yearly *
+                                          intensive_training))*number_female,
+                                    var_CV, n_year)
   
-  
-  
-  
-  
-  
-  
-  
+  total_kcal_need_female_yearly[1] <- total_first_year_kcal_need_female
   
  
 ################################################################################
@@ -599,13 +627,33 @@ Calorie_function <- function(x, varnames){
   
   # Calculate current yearly calorie intake for male athletes
   
-  # Calculate extra yearly calorie provided for male athletes 
+  current_kcal_intake_yearly_male <- vv((daily_kcal_male * total_training_days)*
+                                          number_male,
+                                        var_CV, n_year)
+  
+  # Calculate extra yearly calorie need for male athletes 
+  
+  extra_yearly_kcal_need_male <- vv(total_kcal_need_male_yearly -
+                                      current_kcal_intake_yearly_male,
+                                    var_CV, n_year)
   
   # Calculate current yearly calorie intake for female athletes
   
-  # Calculate extra yearly calorie provided for female athletes 
+  current_kcal_intake_yearly_female <- vv((daily_kcal_female * total_training_days)*
+                                            number_female,
+                                          var_CV, n_year)
   
-  # Calculate overall yearly extra calorie provided
+  # Calculate extra yearly calorie need for female athletes 
+  
+  extra_yearly_kcal_need_female <- vv(total_kcal_need_female_yearly -
+                                        current_kcal_intake_yearly_female,
+                                      var_CV, n_year)
+  
+  # Calculate overall yearly extra calorie need
+  
+  overall_yearly_extra_kcal_need <- vv(extra_yearly_kcal_need_male +
+                                         extra_yearly_kcal_need_female,
+                                       var_CV, n_year)
   
   
 ################################################################################ 
@@ -632,14 +680,57 @@ Calorie_function <- function(x, varnames){
 ################################################################################ 
  
   
-  
+  return(list(total_kcal_need_male_yearly = sum(total_kcal_need_male_yearly),
+              total_kcal_need_female_yearly = sum(total_kcal_need_female_yearly),
+              current_kcal_intake_yearly_male = sum(current_kcal_intake_yearly_male),
+              current_kcal_intake_yearly_female = sum(current_kcal_intake_yearly_female),
+              overall_yearly_extra_kcal_need = sum(overall_yearly_extra_kcal_need)))
   
 
-
-  
-  
-  
-  
-  
-  
 }
+  
+  input_kcal <- read.csv("1_Calorie.csv")
+  
+  
+  
+  # Run the Monte Carlo Simulation
+  
+  Calorie_mc_simulation <- mcSimulation(estimate = estimate_read_csv("1_Calorie.csv"),
+                                     model_function = Calorie_function,
+                                     numberOfModelRuns = 1000,
+                                     functionSyntax = "plainNames")
+  
+  
+  # Plot distributions histogram
+  
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = c("current_kcal_intake_yearly_male", "total_kcal_need_male_yearly"),
+                     method = 'smooth_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7)
+  
+  
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = c("current_kcal_intake_yearly_female", "total_kcal_need_female_yearly"),
+                     method = 'smooth_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7)
+  
+  
+  
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = "overall_yearly_extra_kcal_need",
+                     method = 'hist_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7)
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+

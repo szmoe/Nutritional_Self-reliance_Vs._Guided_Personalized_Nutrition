@@ -20,6 +20,12 @@ target_fat_perc_male,posnorm,6,,13,percent target body fat for male athletes (%)
 target_fat_perc_female,posnorm,14,,20,percent target body fat for female athletes (%)
 fat_perc_male,posnorm,4,,20,percent body fat of male athletes (%)
 fat_perc_female,posnorm,12,,22,percent body fat of female athletes (%)
-weekly_weight_loss,posnorm,0.45,,0.9,Target weight loss per week in kg
+weekly_weight_loss,posnorm,0.45,,1,Target weight loss per week in kg
+weekly_weight_gain,posnorm,0.45,,1,Target weight gain per week in kg
+weekly_extra_kcal,posnorm,3150,,7000,Weekly extra calorie needed/reduced for 0.45-1 kg weight gain/loss (kcal)
 daily_kcal_male,posnorm,2000,,3000,Current daily calorie intake of male athletes (kcal)
 daily_kcal_female,posnorm,1800,,2500,Current daily calorie intake of female athletes (kcal)
+per_underweight_male,tnorm_0_1,0.1,,0.3,percentage of underweight male athletes (%)
+per_underweight_female,tnorm_0_1,0.1,,0.3,percentage of underweight female athletes (%)
+per_overweight_male,tnorm_0_1,0.2,,0.5,percentage of male athletes with high fat mass (%)
+per_overweight_female,tnorm_0_1,0.2,,0.5,percentage of female athletes with high fat mass (%)
