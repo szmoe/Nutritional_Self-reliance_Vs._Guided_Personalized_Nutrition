@@ -1,4 +1,4 @@
-## Model 1: Calorie
+## Model 1: Calorie and Macro-nutrients
 
 library(decisionSupport)
 
