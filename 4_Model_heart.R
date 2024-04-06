@@ -12,3 +12,5 @@
    # they will be able to identify good parameters and confounders 
 
 ## To draw impact pathway model of chosen parameters and possible confounders
+
+# time and recovery

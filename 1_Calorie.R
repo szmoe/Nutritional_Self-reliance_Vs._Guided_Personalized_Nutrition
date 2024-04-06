@@ -658,24 +658,131 @@ Calorie_function <- function(x, varnames){
   
 ################################################################################ 
   
-  #### Protein
+  # The calorie simulation results show the athletes' kcal intake is not a problem.
+  # So, I will check if the problem lies in quality of the calorie- the distribution of macronutrient 
+  # I will calculate current macronutrient intake in model 2 coz need to calculate it from food type and portion
+  # I calculate macronutrient targets based on calorie target (kcal need)
   
+  #### Protein need 
   
+  # Calculate protein need for  male athletes
+  daily_protein_need_male_nor <- vv(protein_need_nor * target_wt_male,
+                                    var_CV, n_year)
   
+  daily_protein_need_male_int <- vv(protein_need_int * target_wt_male,
+                                    var_CV, n_year)
   
+  yearly_protein_need_male <- vv((daily_protein_need_male_nor*normal_training) +
+                                 (daily_protein_need_male_int*intensive_training),
+                               var_CV, n_year)
+  
+  total_protein_need_male <- vv(yearly_protein_need_male * number_male,
+                                var_CV, n_year)
+  
+  protein_kcal_model_check_male <- vv(total_protein_need_male * 4,
+                                 var_CV, n_year)
+  
+#########################
+  
+  # Calculate protein need for  female athletes
+  daily_protein_need_female_nor <- vv(protein_need_nor * target_wt_female,
+                                    var_CV, n_year)
+  
+  daily_protein_need_female_int <- vv(protein_need_int * target_wt_female,
+                                    var_CV, n_year)
+  
+  yearly_protein_need_female <- vv((daily_protein_need_female_nor*normal_training) +
+                                   (daily_protein_need_female_int*intensive_training),
+                                 var_CV, n_year)
+  
+  total_protein_need_female <- vv(yearly_protein_need_female * number_female,
+                                var_CV, n_year)
+  
+  protein_kcal_model_check_female <- vv(total_protein_need_female * 4,
+                                 var_CV, n_year)
+  
+ 
 ################################################################################ 
   
   ### Carbohydrate
   
+  # Calculate carbohydrate need for  male athletes
+  daily_carb_need_male_nor <- vv(carb_need_nor * target_wt_male,
+                                    var_CV, n_year)
   
+  daily_carb_need_male_int <- vv(carb_need_int * target_wt_male,
+                                    var_CV, n_year)
+  
+  yearly_carb_need_male <- vv((daily_carb_need_male_nor*normal_training) +
+                                   (daily_carb_need_male_int*intensive_training),
+                                 var_CV, n_year)
+  
+  total_carb_need_male <- vv(yearly_carb_need_male * number_male,
+                                var_CV, n_year)
+  
+  carb_kcal_model_check_male <- vv(total_carb_need_male * 4,
+                                      var_CV, n_year)
+  
+  #########################
+  
+  # Calculate carbohydrate need for  female athletes
+  daily_carb_need_female_nor <- vv(carb_need_nor * target_wt_female,
+                                 var_CV, n_year)
+  
+  daily_carb_need_female_int <- vv(carb_need_int * target_wt_female,
+                                 var_CV, n_year)
+  
+  yearly_carb_need_female <- vv((daily_carb_need_female_nor*normal_training) +
+                                (daily_carb_need_female_int*intensive_training),
+                              var_CV, n_year)
+  
+  total_carb_need_female <- vv(yearly_carb_need_female * number_female,
+                             var_CV, n_year)
+  
+  carb_kcal_model_check_female <- vv(total_carb_need_female * 4,
+                                   var_CV, n_year)
   
   
 ################################################################################ 
   
-  ### Fat
+  ### Fat (model check)
+  
+  fat_kcal_model_check_male <- vv(total_kcal_need_male_yearly - 
+                                    (protein_kcal_model_check_male +
+                                       carb_kcal_model_check_male),
+                                  var_CV, n_year)
+  
+  fat_kcal_model_check_female <- vv(total_kcal_need_female_yearly - 
+                                    (protein_kcal_model_check_female +
+                                       carb_kcal_model_check_female),
+                                  var_CV, n_year)
+  
+  fat_kcal_check <- vv(fat_kcal_model_check_female + fat_kcal_model_check_male,
+                       var_CV, n_year)
+  
+  fat_kcal_check_one <- vv((total_kcal_need_male_yearly + total_kcal_need_female_yearly) -
+                             ((total_carb_need_female + total_carb_need_male +
+                                 total_protein_need_female + total_protein_need_female)*4),
+                           var_CV, n_year)
+  
+  fat_kcal_model_check_male_female <- vv(fat_tar_perc * (total_kcal_need_male_yearly + 
+                                                           total_kcal_need_female_yearly ),
+                                         var_CV, n_year)
   
   
+  ### Kcal model check
   
+  kcal_model_check <- vv(carb_kcal_model_check_female +
+                           carb_kcal_model_check_male +
+                           protein_kcal_model_check_female +
+                           protein_kcal_model_check_male +
+                           fat_kcal_model_check_female +
+                           fat_kcal_model_check_male,
+                         var_CV, n_year)
+  
+  kcal_model_check_simulation <- vv(total_kcal_need_female_yearly +
+                                      total_kcal_need_male_yearly,
+                                    var_CV, n_year)
   
 ################################################################################ 
  
@@ -684,7 +791,22 @@ Calorie_function <- function(x, varnames){
               total_kcal_need_female_yearly = sum(total_kcal_need_female_yearly),
               current_kcal_intake_yearly_male = sum(current_kcal_intake_yearly_male),
               current_kcal_intake_yearly_female = sum(current_kcal_intake_yearly_female),
-              overall_yearly_extra_kcal_need = sum(overall_yearly_extra_kcal_need)))
+              overall_yearly_extra_kcal_need = sum(overall_yearly_extra_kcal_need),
+              total_protein_need_male = sum(total_protein_need_male),
+              total_protein_need_female = sum(total_protein_need_female),
+              total_carb_need_male = sum(total_carb_need_male),
+              total_carb_need_female = sum(total_carb_need_female),
+              yearly_carb_need_male = sum(yearly_carb_need_male),
+              yearly_carb_need_female = sum(yearly_carb_need_female),
+              yearly_protein_need_male = sum(yearly_protein_need_male),
+              yearly_protein_need_female = sum(yearly_protein_need_female),
+              fat_kcal_model_check_male = sum(fat_kcal_model_check_male),
+              fat_kcal_model_check_female = sum(fat_kcal_model_check_female),
+              fat_kcal_check = sum(fat_kcal_check),
+              fat_kcal_check_one = sum(fat_kcal_check_one),
+              fat_kcal_model_check_male_female = sum(fat_kcal_model_check_male_female),
+              kcal_model_check = sum(kcal_model_check),
+              kcal_model_check_simulation = sum(kcal_model_check_simulation)))
   
 
 }
@@ -724,13 +846,75 @@ Calorie_function <- function(x, varnames){
                      x_axis_name = 'Calorie (kcal)',
                      base_size = 7)
   
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = c("kcal_model_check", "kcal_model_check_simulation"),
+                     method = 'smooth_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7) # model check successful
+
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = c("fat_kcal_check", "fat_kcal_model_check_male_female", "fat_kcal_check_one"),
+                     method = 'smooth_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7) # not successful (need adjusting fat) 
+  # To solve problem: try calculating with target percent and compare with gram 
+  
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = c("total_protein_need_male", "total_protein_need_female"),
+                     method = 'smooth_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7)
+
+  
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = c("total_carb_need_male", "total_carb_need_female"),
+                     method = 'smooth_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7)
+  
+  
+  
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = c("fat_kcal_model_check_male", "fat_kcal_model_check_female"),
+                     method = 'smooth_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7) # fat tar shouldn't be negative
+  
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = c("fat_kcal_model_check_male", "total_kcal_need_male_yearly"),
+                     method = 'smooth_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7) # shouldn't cross zero for fat
+  
+
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = c("fat_kcal_model_check_female", "total_kcal_need_female_yearly"),
+                     method = 'smooth_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7) # shouldn't be negative value for fat
+
+  plot_distributions(mcSimulation_object = Calorie_mc_simulation,
+                     vars = c("yearly_carb_need_male", "yearly_carb_need_female",
+                              "yearly_protein_need_male", "yearly_protein_need_female"),
+                     method = 'smooth_simple_overlay',
+                     x_axis_name = 'Calorie (kcal)',
+                     base_size = 7)
+  
+  Calorie_mc_simulation$y$fat_kcal_model_check_male
+  Calorie_mc_simulation$y$fat_kcal_model_check_female
+  tcm <-Calorie_mc_simulation$y$total_kcal_need_male_yearly
+  tcf <- Calorie_mc_simulation$y$total_kcal_need_female_yearly
+  Calorie_mc_simulation$y$total_protein_need_male
+  Calorie_mc_simulation$y$total_protein_need_female
+ cf <- Calorie_mc_simulation$y$total_carb_need_female
+  cm <- Calorie_mc_simulation$y$total_carb_need_male
+  pf <-Calorie_mc_simulation$y$total_protein_need_female
+  pm <- Calorie_mc_simulation$y$total_protein_need_male
+  
+  check <- (tcm + tcf) - ((cf + cm + pf + pm)*4)
+check  
   
 
 
   
   
-  
-  
-  
-  
-

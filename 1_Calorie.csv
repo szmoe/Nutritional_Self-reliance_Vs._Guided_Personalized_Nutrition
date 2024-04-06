@@ -1,5 +1,5 @@
 variable,distribution,lower,median,upper,label
-n_year,const,4,,4,number of years for simulation
+n,const,4,,4,number of years for simulation
 var_CV,tnorm_0_1,0.1,,0.3,Coefficient of variation (%)
 weight_male,posnorm,50,,80,weight range of male athletes in kg
 weight_female,posnorm,40,,70,weight range of female athletes in kg
@@ -29,3 +29,8 @@ per_underweight_male,tnorm_0_1,0.1,,0.3,percentage of underweight male athletes 
 per_underweight_female,tnorm_0_1,0.1,,0.3,percentage of underweight female athletes (%)
 per_overweight_male,tnorm_0_1,0.2,,0.5,percentage of male athletes with high fat mass (%)
 per_overweight_female,tnorm_0_1,0.2,,0.5,percentage of female athletes with high fat mass (%)
+protein_need_nor,posnorm,1.3,,1.8,daily protein need in gram on normal training days (g)
+protein_need_int,posnorm,1.81,,2,daily protein need in gram on intensive training days (g)
+carb_need_nor,posnorm,7,,10,daily carbohydrate need in gram on normal training days (g)
+carb_need_int,posnorm,9,,12,daily carbohydrate need in gram on intensive training days (g)
+fat_tar_perc,tnorm_0_1,0.25,,0.3,percent daily calorie allocated for fat (%)
