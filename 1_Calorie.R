@@ -827,3 +827,12 @@ Calorie_function <- function(x, varnames){
                      x_axis_name = 'Calorie (kcal)',
                      base_size = 7) # fat percent distribution is okay now. So, all okay. Move on to model 2
   
+  
+  Calorie_mc_simulation <- decisionSupport("1_Calorie.csv",
+                                           outputPath = 'results_Calorie',
+                                           welfareFunction = Calorie_function,
+                                           numberOfModelRuns = 1000,
+                                           functionSyntax = "plainNames")
+  
+  read.csv("results_Calorie/mcSimulationResults.csv")  
+  
