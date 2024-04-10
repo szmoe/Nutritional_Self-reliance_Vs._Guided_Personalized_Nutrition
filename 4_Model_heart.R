@@ -17,3 +17,5 @@
 # I think I get it. Various experts will give various inputs, and I need to select patterns and input with high
 # relevancy (also some historical data if possible). Build initial trends with it and refine the model as
 # I collect more data. 
+
+# What if I build the model backwards? It might work. 
