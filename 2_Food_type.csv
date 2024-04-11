@@ -1,0 +1,151 @@
+variable,distribution,lower,median,upper,label
+n_year,const,4,,4,number of years for simulation
+var_CV,tnorm_0_1,0.1,,0.3,Coefficient of variation (%)
+total_kcal_need_male_yearly,posnorm,470000000,,990000000,yearly calorie need of male athletes (kcal)
+total_kcal_need_female_yearly,posnorm,240000000,,510000000,yearly calorie need of female athletes (kcal)
+protein_need_gram_male,posnorm,15000000,,34000000,yearly protein need of male athletes (g)
+protein_need_gram_female,posnorm,8000000,,18000000,yearly protein need of female athletes (g)
+total_protein_need_gram,posnorm,26000000,,48000000,total yearly protein need for all athletes (g)
+carb_need_gram_male,posnorm,69000000,,150000000,yearly carbohydrate need of male athletes (g)
+carb_need_gram_female,posnorm,35000000,,77000000,yearly carbohydrate need of female athletes (g)
+total_carb_need_gram,posnorm,120000000,,210000000,total yearly carbohydrate need for all athletes (g)
+fat_need_gram_male,posnorm,13000000,,31000000,yearly fat need of male athletes (g)
+fat_need_gram_female,posnorm,6700000,,16000000,yearly fat need of female athletes (g)
+total_fat_need_gram,posnorm,22000000,,45000000,total yearly fat need for all athletes (g)
+,,,,,
+chicken_raw_100g_kcal,posnorm,152,,223,"calorie per 100 g of raw chicken (breast,drumstick,thigh,wing w/skin,bone) (kcal)"
+chicken_raw_100g_protein,posnorm,17.6,,22.4,"protein per 100 g of raw chicken (breast,drumstick,thigh,wing w/skin,bone) (g)"
+chicken_raw_100g_CHO,posnorm,0.001,,4,"carbohydrate per 100 g of raw chicken (breast,drumstick,thigh,wing w/skin,bone) (g)"
+chicken_raw_100g_fat,posnorm,7,,17,"fat per 100 g of raw chicken (breast,drumstick,thigh,wing w/skin,bone) (g)"
+chicken_raw_100g_Ca,posnorm,10,,27,"calcium per 100 g of raw chicken (breast,drumstick,thigh,wing w/skin,bone) (mg)"
+chicken_raw_100g_Fe,posnorm,0.9,,2.2,"iron per 100 g of raw chicken (breast,drumstick,thigh,wing w/skin,bone) (mg)"
+chicken_gram_per_serve,const,80,,80,gram of chicken per serving (g)
+,,,,,
+pork_raw_100g_kcal,posnorm,116,,210,"calorie per 100 g of raw pork (rib, shoulder, tenderloin w/o bone) (kcal)"
+pork_raw_100g_protein,posnorm,17.1,,21.8,"protein per 100 g of raw pork (rib, shoulder, tenderloin w/o bone) (g)"
+pork_raw_100g_CHO,posnorm,0.001,,4.4,"carbohydrate per 100 g of raw pork (rib, shoulder, tenderloin w/o bone) (g)"
+pork_raw_100g_fat,posnorm,3.2,,13.8,"fat per 100 g of raw pork (rib, shoulder, tenderloin w/o bone) (g)"
+pork_raw_100g_Ca,posnorm,3,,31,"calcium per 100 g of raw pork (rib, shoulder, tenderloin w/o bone) (mg)"
+pork_raw_100g_Fe,posnorm,0.9,,1.1,"iron per 100 g of raw pork (rib, shoulder, tenderloin w/o bone) (mg)"
+pork_gram_per_serve,const,60,,60,gram of pork per serving (g)
+,,,,,
+beef_raw_100g_kcal,const,84,,84,calorie per 100 g of beef (meat ball) (kcal)
+beef_raw_100g_protein,const,16.5,,16.5,protein per 100 g of beef (meat ball) (g)
+beef_raw_100g_CHO,const,2.9,,2.9,carbohydrate per 100 g of beef (meat ball) (g)
+beef_raw_100g_fat,const,0.7,,0.7,fat per 100 g of beef (meat ball) (g)
+beef_raw_100g_Ca,const,21,,21,calcium per 100 g of beef (meat ball) (g)
+beef_raw_100g_Fe,const,5,,5,iron per 100 g of beef (meat ball) (g)
+beef_gram_per_serve,const,100,,100,gram of beef (meat ball) per serve (g)
+,,,,,
+fish_raw_100g_kcal,posnorm,70,,230,calorie per 100 g of raw fish (different species) (kcal)
+fish_raw_100g_protein,posnorm,15,,30.8,protein per 100 g of raw fish (different species) (g)
+fish_raw_100g_CHO,posnorm,0.001,,3.2,carbohydrate per 100 g of raw fish (different species) (g)
+fish_raw_100g_fat,posnorm,0.2,,16.5,fat per 100 g of raw fish (different species) (g)
+fish_raw_100g_Ca,posnorm,20,,500,calcium per 100 g of raw fish (different species) (mg)
+fish_raw_100g_Fe,posnorm,0.5,,5,iron per 100 g of raw fish (different species) (mg)
+fish_gram_per_serve,posnorm,60,,100,gram of fish (different species) per serving (g)
+,,,,,
+prawn_raw_100g_kcal,const,98,,98,calorie per 100 g of prawn meat (kcal)
+prawn_raw_100g_protein,const,17.5,,17.5,protein per 100 g of prawn meat (g)
+prawn_raw_100g_CHO,const,3.1,,3.1,carbohydrate per 100 g of prawn meat (g)
+prawn_raw_100g_fat,const,1.7,,1.7,fat per 100 g of prawn meat (g)
+prawn_raw_100g_Ca,const,44,,44,calcium per 100 g of prawn meat (g)
+prawn_raw_100g_Fe,const,1.7,,1.7,iron per 100 g of prawn meat (g)
+prawn_gram_per_serve,const,80,,80,gram of prawn meat per serving (g)
+,,,,,
+vegetable_mushroom_raw_100g_kcal,posnorm,18,,300,calorie per 100 g of vegetables or mushroom (different species) (kcal)
+vegetable_mushroom_raw_100g_protein,posnorm,0.6,,16,protein per 100 g of vegetables or mushroom (different species) (g)
+vegetable_mushroom_raw_100g_CHO,posnorm,0.001,,30,carbohydrate per 100 g of vegetables or mushroom (different species) (g)
+vegetable_mushroom_raw_100g_fat,posnorm,0.1,,4.5,fat per 100 g of vegetables or mushroom (different species) (g)
+vegetable_mushroom_raw_100g_Ca,posnorm,10,,250,calcium per 100 g of vegetables or mushroom (different species) (mg)
+vegetable_mushroom_raw_100g_Fe,posnorm,0.4,,20,iron per 100 g of vegetables or mushroom (different species) (mg)
+vegetable_mushroom_gram_per_serve,const,80,,80,gram of vegetable/mushroom per serving (g)
+,,,,,
+bean_nut_raw_100g_kcal,posnorm,60,,550,calorie per 100 g of beans/nuts (different species) (kcal)
+bean_nut_raw_100g_protein,posnorm,7.1,,25.6,protein per 100 g of beans/nuts (different species) (g)
+bean_nut_raw_100g_CHO,posnorm,5.2,,40,carbohydrate per 100 g of beans/nuts (different species) (g)
+bean_nut_raw_100g_fat,posnorm,1.9,,45.7,fat per 100 g of beans/nuts (different species) (g)
+bean_nut_raw_100g_Ca,posnorm,20,,69,calcium per 100 g of beans/nuts (different species) (mg)
+bean_nut_raw_100g_Fe,posnorm,2.9,,6,iron per 100 g of beans/nuts (different species) (mg)
+bean_nut_gram_per_serve,const,30,,30,gram of beans/nuts per serving (g)
+,,,,,
+egg_whole_100g_kcal,posnorm,152,,259,calorie per 100 g of whole chicken egg (boiled/omelet) (kcal)
+egg_whole_100g_protein,posnorm,7,,13.4,protein per 100 g of whole chicken egg (boiled/omelet) (g)
+egg_whole_100g_CHO,posnorm,1.2,,3.1,carbohydrate per 100 g of whole chicken egg (boiled/omelet) (g)
+egg_whole_100g_fat,posnorm,10.4,,24.3,fat per 100 g of whole chicken egg (boiled/omelet) (g)
+egg_whole_100g_Ca,posnorm,56,,60,calcium per 100 g of whole chicken egg (boiled/omelet) (mg)
+egg_whole_100g_Fe,posnorm,2.6,,2.8,iron per 100 g of whole chicken egg (boiled/omelet) (mg)
+egg_whole_gram_per_serve,posnorm,50,,70,gram of whole chicken egg (boiled/omelet) per serve (g)
+,,,,,
+dairy_100g_kcal,posnorm,67,,86,calorie per 100 ml of dairy (milk/yogurt) (kcal)
+dairy_100g_protein,posnorm,1.5,,4.8,protein per 100 ml of dairy (milk/yogurt) (g)
+dairy_100g_CHO,posnorm,4.2,,19,carbohydrate per 100 ml of dairy (milk/yogurt) (g)
+dairy_100g_fat,posnorm,1.6,,4.1,fat per 100 ml of dairy (milk/yogurt) (g)
+dairy_100g_Ca,posnorm,103,,150,calcium per 100 ml of dairy (milk/yogurt) (mg)
+dairy_100g_Fe,posnorm,0.1,,0.6,iron per 100 ml of dairy (milk/yogurt) (mg)
+dairy_ml_per_serve,posnorm,100,,300,ml of dairy (milk/yogurt) per serving
+,,,,,
+fruit_100g_kcal,posnorm,24,,300,calorie per 100 g of fresh fruit (different species) (kcal)
+fruit_100g_protein,posnorm,0.5,,2,protein per 100 g of of fresh fruit (different species) (g)
+fruit_100g_CHO,posnorm,5.1,,26.3,carbohydrate per 100 g of of fresh fruit (different species) (g)
+fruit_100g_fat,posnorm,0.1,,1.1,fat per 100 g of of fresh fruit (different species) (g)
+fruit_100g_Ca,posnorm,5,,57,calcium per 100 g of of fresh fruit (different species) (mg)
+fruit_100g_Fe,posnorm,0.4,,1.6,iron per 100 g of of fresh fruit (different species) (mg)
+fruit_gram_per_serve,const,80,,80,gram of fruit (different species) per serve (g)
+,,,,,
+rice_ noodle_cooked_100g_kcal,posnorm,106,,300,calorie per 100 g of cooked rice/noodle (different types) (kcal)
+rice_ noodle_cooked_100g_protein,posnorm,1.4,,3,protein per 100 g of cooked rice/noodle (different types) (g)
+rice_ noodle_cooked_100g_CHO,posnorm,24.3,,32.4,carbohydrate per 100 g of cooked rice/noodle (different types) (g)
+rice_ noodle_cooked_100g_fat,posnorm,0.3,,0.9,fat per 100 g of cooked rice/noodle (different types) (g)
+rice_ noodle_cooked_100g_Ca,posnorm,5,,19,calcium per 100 g of cooked rice/noodle (different types) (mg)
+rice_ noodle_cooked_100g_Fe,posnorm,0.4,,2.7,iron per 100 g of cooked rice/noodle (different types) (mg)
+rice_ noodle_gram_per_serve,posnorm,150,,200,gram of cooked rice/noodle per serving (g)
+,,,,,
+sandwich_100g_kcal,posnorm,220,,286,calorie per 100 g of sandwich (chicken/ham) (kcal)
+sandwich_100g_protein,posnorm,9.3,,12,protein per 100 g of sandwich (chicken/ham) (g)
+sandwich_100g_CHO,posnorm,22.2,,23.5,carbohydrate per 100 g of sandwich (chicken/ham) (g)
+sandwich_100g_fat,posnorm,10.2,,15.6,fat per 100 g of sandwich (chicken/ham) (g)
+sandwich_100g_Ca,posnorm,26,,35,calcium per 100 g of sandwich (chicken/ham) (mg)
+sandwich_100g_Fe,posnorm,0.7,,2,iron per 100 g of sandwich (chicken/ham) (mg)
+sandwich_gram_per_serve,posnorm,100,,200,gram of sandwich per serving (g)
+,,,,,
+oil_fat_100g_kcal,posnorm,760,,856,"calorie per 100 g of fats and oils (butter, cooking oil, spread) (kcal)"
+oil_fat_100g_protein,posnorm,0.001,,0.7,"protein per 100 g of fats and oils (butter, cooking oil, spread) (g)"
+oil_fat_100g_CHO,posnorm,0.001,,3.6,"carbohydrate per 100 g of fats and oils (butter, cooking oil, spread) (g)"
+oil_fat_100g_fat,posnorm,76.7,,95.1,"fat per 100 g of fats and oils (butter, cooking oil, spread) (g)"
+oil_fat_100g_Ca,posnorm,15,,21,"calcium per 100 g of fats and oils (butter, cooking oil, spread) (mg)"
+oil_fat_100g_Fe,posnorm,0.2,,0.6,"iron per 100 g of fats and oils (butter, cooking oil, spread) (mg)"
+oil_fat_gram_per_serve,const,20,,20,"gram of fats and oils (butter, cooking oil, spread) per serve (g)"
+,,,,,
+sports_drink_kcal,const,140,,140,calorie per bottle (325ml) of sports drink (kcal)
+sports_drink_protein,const,1,,1,protein per bottle (325ml) of sports drink (g)
+sports_drink_CHO,const,35,,35,carbohydrate per bottle (325ml) of sports drink (g)
+,,,,,
+current_kcal_intake_yearly_male,posnorm,380000000,,860000000,current yearly calorie intake of all male athletes (kcal)
+current_kcal_intake_yearly_female,posnorm,230000000,,500000000,current yearly calorie intake of all female athletes (kcal)
+current_chicken_intake_serve_per_meal,posnorm,1,,1.5,current chicken intake per meal (serve)
+current_pork_intake_serve_per_meal,posnorm,1,,1.5,current pork intake per meal (serve)
+current_beef_intake_serve_per_meal,posnorm,1,,1.5,current beef intake per meal (serve)
+current_fish_intake_serve_per_meal,posnorm,1,,1.5,current fish intake per meal (serve)
+current_prawn_intake_serve_per_meal,posnorm,1,,1.5,current prawn intake per meal (serve)
+current_vegetable_mushroom_intake_serve_per_meal,posnorm,0.5,,1,current vegetable and mushroom intake per meal (serve)
+current_bean_nut_intake_serve_per_day,posnorm,0.5,,1,current bean and nut intake per day (serve)
+current_egg_intake_serve_per_day,posnorm,1,,2,current egg intake per day (serve)
+current_dairy_intake_serve_per_day,posnorm,1,,2,current dairy intake per day (serve)
+current_fruit_intake_serve_per_day,posnorm,1,,1.5,current fruit intake per day (serve)
+current_sandwich_intake_serve_per_day,posnorm,1,,2,current sandwich intake per day (serve)
+current_oil_fat_intake_serve_per_day,posnorm,1,,1.5,current fat/oil intake per day (serve)
+sports_drink_bot_per_day,posnorm,1,,2,current sports drink intake per day (bottle)
+,,,,,
+normal_training_days,posnorm,151,,181,number of normal training days per year
+intensive_training_days,posnorm,100,,120,number of intensive training days per year
+number_meal_per_day,const,3,,3,number of main meals provided per day 
+number_snack_per_day,const,2,,2,number of light snacks provided per day
+chicken_frequency,const,0.3,,0.3,percent number of meals where chicken is provided (%)
+pork_frequency,const,0.3,,0.3,percent number of meals where pork is provided (%)
+pork_frequency_new,const,0.1,,0.1,percent number of meals where pork is provided (%)
+beef_frequency,const,0.1,,0.1,percent number of meals where beef is provided (%)
+beef_frequency_new,const,0.2,,0.2,percent number of meals where beef is provided (%)
+fish_frequency,const,0.2,,0.2,percent number of meals where fish is provided (%)
+fish_frequency_new,const,0.3,,0.3,percent number of meals where fish is provided (%)
+prawn_frequency,const,0.1,,0.1,percent number of meals where prawn is provided (%)
