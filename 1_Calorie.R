@@ -760,13 +760,12 @@ Calorie_function <- function(x, varnames){
               fat_need_gram_female = sum(fat_need_gram_female),
               total_fat_need_gram = sum(total_fat_need_gram),
               fat_model_check_one = sum(fat_model_check_one),
-              fat_model_check_two = sum(fat_model_check_two)))
+              fat_model_check_two = sum(fat_model_check_two),
+              target_wt_female = sum(target_wt_female),
+              target_wt_male = sum(target_wt_male)))
 }
   
-  input_kcal <- read.csv("1_Calorie.csv")
-  
-  
-  
+
   # Run the Monte Carlo Simulation
   
   Calorie_mc_simulation <- mcSimulation(estimate = estimate_read_csv("1_Calorie.csv"),
