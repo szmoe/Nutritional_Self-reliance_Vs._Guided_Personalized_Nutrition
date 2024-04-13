@@ -662,23 +662,23 @@ Food_function <- function(x, varnames){
   
   # Total egg servings 
   total_egg_serving_per_year_per_person <- if(two_trainings_per_day == 1){
-    total_training_days_per_year * 4
+    total_training_days_per_year * (provided_egg_intake_serve_per_day *4)
   } else {
-    total_training_days_per_year * 2
+    total_training_days_per_year * (provided_egg_intake_serve_per_day * 2)
   }
   
   # Total dairy servings
   total_dairy_serving_per_year_per_person <- if(two_trainings_per_day == 1){
-    total_training_days_per_year * 4
+    total_training_days_per_year * provided_dairy_intake_serve_per_day *4
   } else {
-    total_training_days_per_year * 2
+    total_training_days_per_year * provided_dairy_intake_serve_per_day * 2
   }
   
   # Total sandwich servings
   total_sandwich_serving_per_year_per_person <- if(two_trainings_per_day == 1){
-    total_training_days_per_year * 4
+    total_training_days_per_year * provided_sandwich_intake_serve_per_day * 4
   } else {
-    total_training_days_per_year * 2
+    total_training_days_per_year * provided_sandwich_intake_serve_per_day * 2
   }
   
   # Calculate protein gram from fixed serves of vegetable, bean, fruit and sports drink
