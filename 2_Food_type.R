@@ -240,6 +240,10 @@ Food_function <- function(x, varnames){
   total_main_meals_per_year_per_person <- vv(number_meal_per_day * total_training_days_per_year,
                                              var_CV, n_year)
   
+  total_main_meals_per_year_all_athletes <- vv(total_main_meals_per_year_per_person*
+                                                 number_athlete,
+                                               var_CV, n_year)
+  
   
   # Calculate total nutrient distributions for everyday food
   
@@ -507,7 +511,7 @@ Food_function <- function(x, varnames){
                                          var_CV, n_year)
   
 
-  # Change gram of rice into serve of rice
+  # Change kcal of rice into serve of rice
   
   rice_serve <- vv(total_current_rice_noodle_kcal_per_year_per_person/ rice_noodle_cooked_per_serve_kcal,
                    var_CV, n_year)
@@ -631,6 +635,14 @@ Food_function <- function(x, varnames){
                                         value_if = 1,
                                         value_if_not = 0)
   
+  # Calculate number of snack times (to be used in next model)
+  total_snack_time_per_year_all_athletes <- if(two_trainings_per_day == 1){
+    total_training_days_per_year*number_athlete*4
+  } else{
+    total_training_days_per_year*number_athlete*2
+  }
+  
+  # Calculate protein for snacks
   before_training_protein_gram_per_year_per_person <- if(two_trainings_per_day == 1){
     before_training_protein_g * total_training_days_per_year * 2
   } else{
@@ -1082,7 +1094,11 @@ Food_function <- function(x, varnames){
               total_fish_serving_per_year_all_athletes = sum(total_fish_serving_per_year_all_athletes),
               total_prawn_serving_per_year_all_athletes = sum(total_prawn_serving_per_year_all_athletes),
               total_rice_noodle_serving_per_year_all_athletes = sum(total_rice_noodle_serving_per_year_all_athletes),
-              total_fat_oil_serving_per_year_all_athletes = sum(total_fat_oil_serving_per_year_all_athletes)
+              total_fat_oil_serving_per_year_all_athletes = sum(total_fat_oil_serving_per_year_all_athletes),
+              total_training_days_per_year = sum(total_training_days_per_year),
+              total_main_meals_per_year_all_athletes = sum(total_main_meals_per_year_all_athletes),
+              total_snack_time_per_year_all_athletes = sum(total_snack_time_per_year_all_athletes)
+              
               ))
   
 }
@@ -1153,6 +1169,7 @@ plot_distributions(mcSimulation_object = Food_mc_simulation,
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Protein (g)',
                    base_size = 7) # protein need and provided protein (before/after training) match- model successful
+# Not an exact match here (seems slightly lower) but okay for me since total protein provided covers the range for protein needs.
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_protein_need_gram", "total_protein_provided_gram_per_year_all_athletes"),
@@ -1175,6 +1192,10 @@ plot_distributions(mcSimulation_object = Food_mc_simulation,
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Fat (g)',
                    base_size = 7) # fat need and provided fat match- model successful
+
+plot_distributions(mcSimulation_object = Food_mc_simulation,
+                   vars = c("total_fat_oil_provided_per_year_all_athletes", "total_fat_need_gram"),
+                   method = 'boxplot')
 
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
