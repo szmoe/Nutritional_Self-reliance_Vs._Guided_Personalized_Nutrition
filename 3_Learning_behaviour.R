@@ -128,53 +128,194 @@ Learning_behaviour_function <- function(x, varnames){
   
   # Calculate percent contribution of having prior knowledge to good learning outcome
   
+  prior_knowledge_inter_two <- vv(((prior_knowledge_ch_1*
+                                     weight_contribution_ch_1) +
+                                     (prior_knowledge_ch_2*
+                                        weight_contribution_ch_2))/
+                                    (weight_contribution_ch_1 +
+                                       weight_contribution_ch_2),
+                                  var_CV, n_year)
   
   # Calculate improved knowledge with good trainer conditional on having prior knowledge
   
+  knowledge_to_learning_outcome_inter_two <- vv(prior_knowledge_inter_two *
+                                                  (((chance_of_good_trainer*
+                                                       weight_good_trainer_to_successful_ch1) +
+                                                      (chance_of_good_trainer*
+                                                         weight_good_trainer_to_successful_ch2))/
+                                                     (weight_good_trainer_to_successful_ch1 +
+                                                        weight_good_trainer_to_successful_ch2)),
+                                                var_CV, n_year)
   
   # Calculate athletes' interest percent
+  
+  chance_athletes_interest_inter_two <- vv(((chance_of_good_learning_hour*
+                                              weight_learning_hour_to_interest_in_class) +
+                                              (chance_of_good_learning_material*
+                                                 weight_learning_material_to_interest) +
+                                              (chance_of_good_trainer*
+                                                 weight_good_trainer_to_interest) +
+                                              (chance_athletes_understand_nutrition_importance*
+                                                 weight_understand_nutrition_importance_to_interest))/
+                                             (weight_learning_hour_to_interest_in_class +
+                                                weight_learning_material_to_interest +
+                                                weight_good_trainer_to_interest +
+                                                weight_understand_nutrition_importance_to_interest),
+                                           var_CV, n_year)
   
   
   # Calculate athlete's motivation percent
   
+  chance_athletes_motivation_inter_two <- vv(((chance_of_good_learning_material*
+                                                 weight_learning_material_to_motivation_inter_two) +
+                                                (chance_of_good_trainer*
+                                                   weight_good_trainer_to_motivation_inter_two) +
+                                                (chance_of_good_facility*
+                                                   weight_good_facility_to_motivation) +
+                                                (chance_athletes_understand_nutrition_importance*
+                                                   weight_understand_nutrition_importance_to_motivation))/
+                                               (weight_learning_material_to_motivation_inter_two +
+                                                  weight_good_trainer_to_motivation_inter_two +
+                                                  weight_good_facility_to_motivation +
+                                                  weight_understand_nutrition_importance_to_motivation),
+                                             var_CV, n_year)
   
+  
+
   # Calculate chance of good learning outcome
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  good_learning_outcome_inter_two <- vv(((knowledge_to_learning_outcome_inter_two*
+                                            weight_knowledge_to_learning_success) +
+                                           (chance_athletes_interest_inter_two*
+                                              weight_interest_to_learning_success) +
+                                           (chance_athletes_motivation_inter_two*
+                                              weight_motivation_to_learning_success))/
+                                          (weight_knowledge_to_learning_success +
+                                             weight_interest_to_learning_success +
+                                             weight_motivation_to_learning_success),
+                                        var_CV, n_year)
   
   
   ################################################################################
   
   ### Maintain good nutrition
   
+  # Chance of good food safety
   
+  chance_good_food_safety <- vv(((chance_good_kitchen_staff*
+                                    weight_good_kitchen_staff_to_good_food_safety) +
+                                   (chance_regular_audit*
+                                      weight_regular_audit_to_good_food_safety))/
+                                  (weight_good_kitchen_staff_to_good_food_safety +
+                                     weight_regular_audit_to_good_food_safety),
+                                var_CV, n_year)
   
+  # Chance of delicious meals
+  
+  good_kitchen_staff <- chance_event(chance_good_kitchen_staff,
+                                     value_if = 1,
+                                     value_if_not = 0)
+  
+  chance_tasty_meal <- if(good_kitchen_staff == 1){
+    chance_tasty_food_conditional_on_good_kitchen_staff
+  }else{
+    1 - chance_tasty_food_conditional_on_good_kitchen_staff
+  }
+  
+  ## Intervention one
+  
+  # Calculate percent probability that athletes will maintain good nutrition habits
+  # 100% probability means their actual intake will match the amount of nutrients provided
+  
+  maintain_good_nutrition_inter_one <- vv(((good_learning_outcome_inter_one*
+                                              weight_learning_outcome_to_maintain_good_nutrition_inter_one) +
+                                             (chance_athletes_interest_inter_one*
+                                                weight_interest_to_maintain_good_nutrition_inter_one) +
+                                             (chance_athletes_understand_nutrition_importance*
+                                                weight_understand_importance_to_maintain_good_nutrition_inter_one) +
+                                             (chance_athletes_motivation_inter_one*
+                                                weight_motivation_to_maintain_good_nutrition_inter_one) +
+                                             (chance_athletes_persistence_inter_one*
+                                                weight_persistence_to_maintain_good_nutrition_inter_one) +
+                                             (chance_good_nutritionist_inter_one*
+                                                weight_good_nutritionist_to_maintain_good_nutrition) +
+                                             (chance_good_support*
+                                                weight_good_support_to_maintain_good_nutrition_inter_one) +
+                                             (chance_good_food_safety*
+                                                weight_good_food_safety_to_maintain_good_nutrition) +
+                                             (chance_tasty_meal*
+                                                weight_tasty_food_to_maintain_good_nutrition) +
+                                             (chance_good_kitchen_staff*
+                                                weight_good_kitchen_staff_to_maintain_good_nutrition_inter_one) +
+                                             (chance_athletes_good_health*
+                                                weight_good_health_to_maintain_good_nutrition))/
+                                            (weight_learning_outcome_to_maintain_good_nutrition_inter_one +
+                                               weight_interest_to_maintain_good_nutrition_inter_one +
+                                               weight_understand_importance_to_maintain_good_nutrition_inter_one +
+                                               weight_motivation_to_maintain_good_nutrition_inter_one +
+                                               weight_persistence_to_maintain_good_nutrition_inter_one +
+                                               weight_good_nutritionist_to_maintain_good_nutrition +
+                                               weight_good_support_to_maintain_good_nutrition_inter_one +
+                                               weight_good_food_safety_to_maintain_good_nutrition +
+                                               weight_tasty_food_to_maintain_good_nutrition +
+                                               weight_good_kitchen_staff_to_maintain_good_nutrition_inter_one +
+                                               weight_good_health_to_maintain_good_nutrition),
+                                          var_CV, n_year)
+  
+
+  
+  ## Intervention two
+  
+  # Calculate percent probability that athletes will maintain good nutrition habits
+  
+  maintain_good_nutrition_inter_two <- vv(((good_learning_outcome_inter_two*
+                                              weight_learning_outcome_to_maintain_good_nutrition_inter_two) +
+                                             (chance_athletes_interest_inter_two*
+                                                weight_interest_to_maintain_good_nutrition_inter_two) +
+                                             (chance_athletes_understand_nutrition_importance*
+                                                weight_understand_importance_to_maintain_good_nutrition_inter_two) +
+                                             (chance_athletes_motivation_inter_two*
+                                                weight_motivation_to_maintain_good_nutrition_inter_two) +
+                                             (chance_good_nutrition_team_inter_two*
+                                                weight_good_nutrition_team_to_maintain_good_nutrition) +
+                                             (chance_good_support*
+                                                weight_good_support_to_maintain_good_nutrition_inter_two) +
+                                             (chance_good_food_safety*
+                                                weight_good_food_safety_to_maintain_good_nutrition) +
+                                             (chance_tasty_meal*
+                                                weight_tasty_food_to_maintain_good_nutrition) +
+                                             (chance_good_kitchen_staff*
+                                                weight_good_kitchen_staff_to_maintain_good_nutrition_inter_two) +
+                                             (chance_athletes_good_health*
+                                                weight_good_health_to_maintain_good_nutrition))/
+                                            (weight_learning_outcome_to_maintain_good_nutrition_inter_two +
+                                               weight_interest_to_maintain_good_nutrition_inter_two +
+                                               weight_understand_importance_to_maintain_good_nutrition_inter_two +
+                                               weight_motivation_to_maintain_good_nutrition_inter_two +
+                                               weight_good_nutrition_team_to_maintain_good_nutrition +
+                                               weight_good_support_to_maintain_good_nutrition_inter_two +
+                                               weight_good_food_safety_to_maintain_good_nutrition +
+                                               weight_tasty_food_to_maintain_good_nutrition +
+                                               weight_good_kitchen_staff_to_maintain_good_nutrition_inter_two +
+                                               weight_good_health_to_maintain_good_nutrition),
+                                          var_CV, n_year)
+
   
   ################################################################################
   
   ### Calculate actual intake and potential food waste (from leftover/uneaten food only)
+  
+  ## Dietary restriction
+  
+
+  
+  
+
+  
+  
+  
+
+  
   
   
   
@@ -214,7 +355,6 @@ Learning_behaviour_function <- function(x, varnames){
   
   
 }
-
 
 
 
