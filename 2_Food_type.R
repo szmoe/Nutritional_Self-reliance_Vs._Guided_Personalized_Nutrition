@@ -607,8 +607,8 @@ Food_function <- function(x, varnames){
   total_fat_need_gram <- vv(total_fat_need_gram,
                             var_CV, n_year)
   
-  total_kcal_need_yearly <- vv(total_kcal_need_female_yearly +
-                                 total_kcal_need_male_yearly,
+  total_kcal_need_yearly <- vv(total_kcal_need_female +
+                                 total_kcal_need_male,
                                var_CV, n_year)
   
   
@@ -1060,46 +1060,50 @@ Food_function <- function(x, varnames){
 ################################################################################ 
   
   
-  return(list(total_current_Ca_intake_per_year_per_person = sum(total_current_Ca_intake_per_year_per_person),
-              total_current_Fe_intake_per_year_per_person = sum(total_current_Ca_intake_per_year_per_person),
-              yearly_Ca_rdi = sum(yearly_Ca_rdi),
-              yearly_Fe_rdi = sum(yearly_Fe_rdi),
-              total_current_kcal_intake_per_year_all_athlete = sum(total_current_kcal_intake_per_year_all_athlete),
-              total_kcal_need_yearly = sum(total_kcal_need_yearly),
+  return(list(total_current_Ca_intake_per_person = sum(total_current_Ca_intake_per_year_per_person),
+              total_current_Fe_intake_per_person = sum(total_current_Ca_intake_per_year_per_person),
+              total_Ca_rdi = sum(yearly_Ca_rdi),
+              total_Fe_rdi = sum(yearly_Fe_rdi),
+              total_current_kcal_intake_all_athlete = sum(total_current_kcal_intake_per_year_all_athlete),
+              total_kcal_need = sum(total_kcal_need_yearly),
               model_check_current_kcal = sum(model_check_current_kcal),
-              total_current_protein_intake_per_year_all_athlete = sum(total_current_protein_intake_per_year_all_athlete),
+              total_current_protein_intake_all_athlete = sum(total_current_protein_intake_per_year_all_athlete),
               total_protein_need_gram = sum(total_protein_need_gram),
-              total_current_CHO_intake_per_year_all_athlete = sum(total_current_CHO_intake_per_year_all_athlete),
+              total_current_CHO_intake_all_athlete = sum(total_current_CHO_intake_per_year_all_athlete),
               total_carb_need_gram = sum(total_carb_need_gram),
-              total_current_fat_intake_per_year_all_athlete = sum(total_current_fat_intake_per_year_all_athlete),
+              total_current_fat_intake_all_athlete = sum(total_current_fat_intake_per_year_all_athlete),
               total_fat_need_gram = sum(total_fat_need_gram),
-              total_before_after_training_protein_gram_per_year_per_person = sum(total_before_after_training_protein_gram_per_year_per_person),
-              total_training_provided_protein_gram_per_year_per_person = sum(total_training_provided_protein_gram_per_year_per_person),
-              total_protein_provided_gram_per_year_all_athletes = sum(total_protein_provided_gram_per_year_all_athletes),
-              total_carb_provided_gram_per_year_all_athletes = sum(total_carb_provided_gram_per_year_all_athletes),
-              total_fat_oil_provided_per_year_all_athletes = sum(total_fat_oil_provided_per_year_all_athletes),
-              total_kcal_provided_per_year_all_athletes = sum(total_kcal_provided_per_year_all_athletes),
-              total_Ca_provided_per_year_per_person = sum(total_Ca_provided_per_year_per_person),
-              total_Fe_provided_per_year_per_person = sum(total_Fe_provided_per_year_per_person),
-              total_egg_serving_per_year_all_athletes = sum(total_egg_serving_per_year_all_athletes),
-              total_dairy_serving_per_year_all_athletes = sum(total_dairy_serving_per_year_all_athletes),
-              total_sandwich_serving_per_year_all_athletes = sum(total_sandwich_serving_per_year_all_athletes),
-              total_vegetable_mushroom_serving_per_year_all_athletes = sum(total_vegetable_mushroom_serving_per_year_all_athletes),
-              total_bean_nut_serving_per_year_all_athletes = sum(total_bean_nut_serving_per_year_all_athletes),
-              total_fruit_serving_per_year_all_athletes = sum(total_fruit_serving_per_year_all_athletes),
-              total_sports_drink_serving_per_year_all_athletes = sum(total_sports_drink_serving_per_year_all_athletes),
-              total_chicken_serving_per_year_all_athletes = sum(total_chicken_serving_per_year_all_athletes),
-              total_pork_serving_per_year_all_athletes = sum(total_pork_serving_per_year_all_athletes),
-              total_beef_serving_per_year_all_athletes = sum(total_beef_serving_per_year_all_athletes),
-              total_fish_serving_per_year_all_athletes = sum(total_fish_serving_per_year_all_athletes),
-              total_prawn_serving_per_year_all_athletes = sum(total_prawn_serving_per_year_all_athletes),
-              total_rice_noodle_serving_per_year_all_athletes = sum(total_rice_noodle_serving_per_year_all_athletes),
-              total_fat_oil_serving_per_year_all_athletes = sum(total_fat_oil_serving_per_year_all_athletes),
-              total_training_days_per_year = sum(total_training_days_per_year),
-              total_main_meals_per_year_all_athletes = sum(total_main_meals_per_year_all_athletes),
-              total_snack_time_per_year_all_athletes = sum(total_snack_time_per_year_all_athletes)
-              
-              ))
+              total_before_after_training_protein_gram_per_person = sum(total_before_after_training_protein_gram_per_year_per_person),
+              total_training_provided_protein_gram_per_person = sum(total_training_provided_protein_gram_per_year_per_person),
+              total_protein_provided_gram_all_athletes = sum(total_protein_provided_gram_per_year_all_athletes),
+              total_carb_provided_gram_all_athletes = sum(total_carb_provided_gram_per_year_all_athletes),
+              total_fat_oil_provided_all_athletes = sum(total_fat_oil_provided_per_year_all_athletes),
+              total_kcal_provided_all_athletes = sum(total_kcal_provided_per_year_all_athletes),
+              total_Ca_provided_per_person = sum(total_Ca_provided_per_year_per_person),
+              total_Fe_provided_per_person = sum(total_Fe_provided_per_year_per_person),
+              total_egg_serving_all_athletes = sum(total_egg_serving_per_year_all_athletes),
+              total_dairy_serving_all_athletes = sum(total_dairy_serving_per_year_all_athletes),
+              total_sandwich_serving_all_athletes = sum(total_sandwich_serving_per_year_all_athletes),
+              total_vegetable_mushroom_serving_all_athletes = sum(total_vegetable_mushroom_serving_per_year_all_athletes),
+              total_bean_nut_serving_all_athletes = sum(total_bean_nut_serving_per_year_all_athletes),
+              total_fruit_serving_all_athletes = sum(total_fruit_serving_per_year_all_athletes),
+              total_sports_drink_serving_all_athletes = sum(total_sports_drink_serving_per_year_all_athletes),
+              total_chicken_serving_all_athletes = sum(total_chicken_serving_per_year_all_athletes),
+              total_pork_serving_all_athletes = sum(total_pork_serving_per_year_all_athletes),
+              total_beef_serving_all_athletes = sum(total_beef_serving_per_year_all_athletes),
+              total_fish_serving_all_athletes = sum(total_fish_serving_per_year_all_athletes),
+              total_prawn_serving_all_athletes = sum(total_prawn_serving_per_year_all_athletes),
+              total_rice_noodle_serving_all_athletes = sum(total_rice_noodle_serving_per_year_all_athletes),
+              total_fat_oil_serving_all_athletes = sum(total_fat_oil_serving_per_year_all_athletes),
+              total_training_days = sum(total_training_days_per_year),
+              total_main_meals_all_athletes = sum(total_main_meals_per_year_all_athletes),
+              total_snack_time_all_athletes = sum(total_snack_time_per_year_all_athletes),
+              total_prawn_serving_per_person = sum(total_prawn_serving_per_year_per_person),
+              total_beef_serving_per_person = sum(total_beef_serving_per_year_per_person),
+              total_pork_serving_per_person = sum(total_pork_serving_per_year_per_person),
+              total_dairy_serving_per_person = sum(total_dairy_serving_per_year_per_person),
+              total_egg_serving_per_person = sum(total_egg_serving_per_year_per_person)
+           ))
   
 }
 
@@ -1114,32 +1118,32 @@ Food_mc_simulation <- mcSimulation(estimate = estimate_read_csv("2_Food_type.csv
 # Plot distributions histogram
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_current_kcal_intake_per_year_all_athlete", "model_check_current_kcal"),
+                   vars = c("total_current_kcal_intake_all_athlete", "model_check_current_kcal"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Calorie (kcal)',
                    base_size = 7) # model check successful
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_current_kcal_intake_per_year_all_athlete", "total_kcal_need_yearly"),
+                   vars = c("total_current_kcal_intake_all_athlete", "total_kcal_need"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Calorie (kcal)',
                    base_size = 7) # same result as model 1; kcal seems okay despite potentially slightly lower kcal intake
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_current_protein_intake_per_year_all_athlete", "total_protein_need_gram"),
+                   vars = c("total_current_protein_intake_all_athlete", "total_protein_need_gram"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Protein (g)',
                    base_size = 7) # protein intake is low compared to protein need 
                                   # so kcal differences might come from lower protein intake
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_current_CHO_intake_per_year_all_athlete", "total_carb_need_gram"),
+                   vars = c("total_current_CHO_intake_all_athlete", "total_carb_need_gram"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Carbohydrate (g)',
                    base_size = 7) # carb intake can be okay, but range is wider towards lower extreme
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_current_fat_intake_per_year_all_athlete", "total_fat_need_gram"),
+                   vars = c("total_current_fat_intake_all_athlete", "total_fat_need_gram"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Fat (g)',
                    base_size = 7) # fat intake is okay (although I don't separate good vs. bad fats)-prob this is bad fat
@@ -1147,13 +1151,13 @@ plot_distributions(mcSimulation_object = Food_mc_simulation,
 ## So, the problem lies in protein and carb intake. Kcal and fat intake are okay. 
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_current_Ca_intake_per_year_per_person", "yearly_Ca_rdi"),
+                   vars = c("total_current_Ca_intake_per_person", "total_Ca_rdi"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Calcium (mg)',
                    base_size = 7) # large range, need more info- need more detailing of food intake
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_current_Fe_intake_per_year_per_person", "yearly_Fe_rdi"),
+                   vars = c("total_current_Fe_intake_per_person", "total_Fe_rdi"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Iron (mg)',
                    base_size = 7) # Model is to know macronutrient distribution
@@ -1164,15 +1168,15 @@ plot_distributions(mcSimulation_object = Food_mc_simulation,
 ######################################################################################
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_before_after_training_protein_gram_per_year_per_person",
-                            "total_training_provided_protein_gram_per_year_per_person"), 
+                   vars = c("total_before_after_training_protein_gram_per_person",
+                            "total_training_provided_protein_gram_per_person"), 
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Protein (g)',
                    base_size = 7) # protein need and provided protein (before/after training) match- model successful
 # Not an exact match here (seems slightly lower) but okay for me since total protein provided covers the range for protein needs.
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_protein_need_gram", "total_protein_provided_gram_per_year_all_athletes"),
+                   vars = c("total_protein_need_gram", "total_protein_provided_gram_all_athletes"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Protein (g)',
                    base_size = 7) # Not exact match but still okay- model successful
@@ -1181,39 +1185,39 @@ plot_distributions(mcSimulation_object = Food_mc_simulation,
                                
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_carb_provided_gram_per_year_all_athletes", "total_carb_need_gram"),
+                   vars = c("total_carb_provided_gram_all_athletes", "total_carb_need_gram"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Carbohydrate (g)',
                    base_size = 7) # carb need and provided carb match- model successful
 
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_fat_oil_provided_per_year_all_athletes", "total_fat_need_gram"),
+                   vars = c("total_fat_oil_provided_all_athletes", "total_fat_need_gram"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Fat (g)',
                    base_size = 7) # fat need and provided fat match- model successful
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_fat_oil_provided_per_year_all_athletes", "total_fat_need_gram"),
+                   vars = c("total_fat_oil_provided_all_athletes", "total_fat_need_gram"),
                    method = 'boxplot')
 
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_kcal_provided_per_year_all_athletes", "total_kcal_need_yearly"),
+                   vars = c("total_kcal_provided_all_athletes", "total_kcal_need"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Calorie (kcal)',
                    base_size = 7) # kcal need and provided kcal match- model successful
 
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_Ca_provided_per_year_per_person", "yearly_Ca_rdi"),
+                   vars = c("total_Ca_provided_per_person", "total_Ca_rdi"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Calcium (mg)',
                    base_size = 7) # same trend as current Ca intake- need exact type of food for micronutrient simulation i think
 
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
-                   vars = c("total_Fe_provided_per_year_per_person", "yearly_Fe_rdi"),
+                   vars = c("total_Fe_provided_per_person", "total_Fe_rdi"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Iron (mg)',
                    base_size = 7) # Fe provided is a lot higher than Fe needs (need exact type of food)

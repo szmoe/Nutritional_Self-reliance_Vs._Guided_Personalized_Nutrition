@@ -1,17 +1,17 @@
 variable,distribution,lower,median,upper,label
 n_year,const,4,,4,number of years for simulation
 var_CV,tnorm_0_1,0.1,,0.3,Coefficient of variation (%)
-total_kcal_need_male_yearly,posnorm,470000000,,990000000,yearly calorie need of male athletes (kcal)
-total_kcal_need_female_yearly,posnorm,240000000,,510000000,yearly calorie need of female athletes (kcal)
-protein_need_gram_male,posnorm,15000000,,34000000,yearly protein need of male athletes (g)
-protein_need_gram_female,posnorm,8000000,,18000000,yearly protein need of female athletes (g)
-total_protein_need_gram,posnorm,26000000,,48000000,total yearly protein need for all athletes (g)
-carb_need_gram_male,posnorm,69000000,,150000000,yearly carbohydrate need of male athletes (g)
-carb_need_gram_female,posnorm,35000000,,77000000,yearly carbohydrate need of female athletes (g)
-total_carb_need_gram,posnorm,120000000,,210000000,total yearly carbohydrate need for all athletes (g)
-fat_need_gram_male,posnorm,13000000,,31000000,yearly fat need of male athletes (g)
-fat_need_gram_female,posnorm,6700000,,16000000,yearly fat need of female athletes (g)
-total_fat_need_gram,posnorm,22000000,,45000000,total yearly fat need for all athletes (g)
+total_kcal_need_male,posnorm,470000000,,990000000,total calorie need of male athletes (kcal)
+total_kcal_need_female,posnorm,240000000,,510000000,total calorie need of female athletes (kcal)
+protein_need_gram_male,posnorm,15000000,,34000000,total protein need of male athletes (g)
+protein_need_gram_female,posnorm,8000000,,18000000,total protein need of female athletes (g)
+total_protein_need_gram,posnorm,26000000,,48000000,total protein need for all athletes (g)
+carb_need_gram_male,posnorm,69000000,,150000000,total carbohydrate need of male athletes (g)
+carb_need_gram_female,posnorm,35000000,,77000000,total carbohydrate need of female athletes (g)
+total_carb_need_gram,posnorm,120000000,,210000000,total carbohydrate need for all athletes (g)
+fat_need_gram_male,posnorm,13000000,,31000000,total fat need of male athletes (g)
+fat_need_gram_female,posnorm,6700000,,16000000,total fat need of female athletes (g)
+total_fat_need_gram,posnorm,22000000,,45000000,total fat need for all athletes (g)
 ,,,,,
 chicken_raw_100g_kcal,posnorm,152,,223,"calorie per 100 g of raw chicken (breast,drumstick,thigh,wing w/skin,bone) (kcal)"
 chicken_raw_100g_protein,posnorm,17.6,,22.4,"protein per 100 g of raw chicken (breast,drumstick,thigh,wing w/skin,bone) (g)"
