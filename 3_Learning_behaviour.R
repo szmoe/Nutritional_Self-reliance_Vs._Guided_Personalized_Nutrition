@@ -1013,7 +1013,9 @@ Learning_behaviour_function <- function(x, varnames){
   
   
   # Calculate number of days to reach target for each training test
-  # I don't use vv() function here because once reach the target, it's more likely maintain
+  # I don't use vv() function here because once reach the target, it's more likely maintain performance than reach
+  # target again. 
+  # I set 0.7 as threshold for good training condition
 
   days_40_dash_inter_one <- ifelse(optimal_training_condition_inter_one >= 0.7,
     (log(forty_dash_current_sec/forty_dash_target_sec)/log(1 + percent_increment_40_dash_if_optimal_training))*30,
