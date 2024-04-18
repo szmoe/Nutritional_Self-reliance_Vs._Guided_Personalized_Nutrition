@@ -745,11 +745,11 @@ Calorie_function <- function(x, varnames){
 ################################################################################ 
  
   
-  return(list(total_kcal_need_male_yearly = sum(total_kcal_need_male_yearly),
-              total_kcal_need_female_yearly = sum(total_kcal_need_female_yearly),
-              current_kcal_intake_yearly_male = sum(current_kcal_intake_yearly_male),
-              current_kcal_intake_yearly_female = sum(current_kcal_intake_yearly_female),
-              overall_yearly_extra_kcal_need = sum(overall_yearly_extra_kcal_need),
+  return(list(total_kcal_need_male = sum(total_kcal_need_male_yearly),
+              total_kcal_need_female = sum(total_kcal_need_female_yearly),
+              current_kcal_intake_male = sum(current_kcal_intake_yearly_male),
+              current_kcal_intake_female = sum(current_kcal_intake_yearly_female),
+              overall_extra_kcal_need = sum(overall_yearly_extra_kcal_need),
               protein_need_gram_male = sum(protein_need_gram_male),
               protein_need_gram_female = sum(protein_need_gram_female),
               total_protein_need_gram = sum(total_protein_need_gram),
@@ -777,21 +777,21 @@ Calorie_function <- function(x, varnames){
   # Plot distributions histogram
   
   plot_distributions(mcSimulation_object = Calorie_mc_simulation,
-                     vars = c("current_kcal_intake_yearly_male", "total_kcal_need_male_yearly"),
+                     vars = c("current_kcal_intake_male", "total_kcal_need_male"),
                      method = 'smooth_simple_overlay',
                      x_axis_name = 'Calorie (kcal)',
                      base_size = 7)
   
   
   plot_distributions(mcSimulation_object = Calorie_mc_simulation,
-                     vars = c("current_kcal_intake_yearly_female", "total_kcal_need_female_yearly"),
+                     vars = c("current_kcal_intake_female", "total_kcal_need_female"),
                      method = 'smooth_simple_overlay',
                      x_axis_name = 'Calorie (kcal)',
                      base_size = 7)
 
   
   plot_distributions(mcSimulation_object = Calorie_mc_simulation,
-                     vars = "overall_yearly_extra_kcal_need",
+                     vars = "overall_extra_kcal_need",
                      method = 'hist_simple_overlay',
                      x_axis_name = 'Calorie (kcal)',
                      base_size = 7)
