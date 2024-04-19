@@ -472,10 +472,10 @@ Learning_behaviour_function <- function(x, varnames){
   actual_chicken_serving_per_year_all_athletes_inter_one <- vv(total_chicken_serving_all_athletes/n_year,
                                                                var_CV, n_year)
   
-  actual_pork_serving_per_year_all_athletes_inter_one <- vv(total_pork_serving_per_year_adjusted_athletes/n_year,
+  actual_pork_serving_per_year_all_athletes_inter_one <- vv(total_pork_serving_per_year_adjusted_athletes,
                                                             var_CV, n_year)
   
-  actual_beef_serving_per_year_all_athletes_inter_one <- vv(total_beef_serving_per_year_adjusted_athletes/n_year,
+  actual_beef_serving_per_year_all_athletes_inter_one <- vv(total_beef_serving_per_year_adjusted_athletes,
                                                             var_CV, n_year)
   
   actual_fish_serving_per_year_all_athletes_inter_one <- vv(maintain_good_nutrition_inter_one*
