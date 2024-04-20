@@ -1,0 +1,21 @@
+variable,distribution,lower,median,upper,label
+n_year,const,1,,1,number of output
+var_CV,tnorm_0_1,0.1,,0.3,Coefficient of variation (%)
+,,,,,
+good_nutrition_intervention,tnorm_0_1,0.93,,0.96,probability of having good nutrition for match after intervention (%)
+good_nutrition_current,tnorm_0_1,0.3,,0.5,probability of having good nutrition for match before intervention (%)
+,,,,,
+,,,,,
+optimal_training_condition_intervention,tnorm_0_1,0.8,,0.86,probability of physically and mentally feel good/ ready for match after intervention (%)
+optimal_training_condition_current,tnorm_0_1,0.5,,0.7, probability of physically and mentally feel good/ ready for match before intervention (%)
+,,,,,
+past_winning_percent,tnorm_0_1,0.1,,0.9,probability of winning a game in the past (%)
+home_field,tnorm_0_1,0.1,,0.9,probability of playing in home field (%)
+,,,,,
+good_player,tnorm_0_1,0.1,,0.9,probability of having good key players on the team (%)
+backup_player,tnorm_0_1,0.1,,0.9,probability of having good backup players to fill in (%)
+strategy_advantage,tnorm_0_1,0.1,,0.9,probability of having a good strategy against the opponent (%)
+,,,,,
+team_morale,tnorm_0_1,0.1,,0.9,probability of having a good team morale (%)
+chance_better_nutrition,tnorm_0_1,0.5,,0.7,probability of having comparable or better nutrition status than opponent (%)
+chance_better_condition,tnorm_0_1,0.5,,0.7,probability of having comparable or better physical than opponent (%)
