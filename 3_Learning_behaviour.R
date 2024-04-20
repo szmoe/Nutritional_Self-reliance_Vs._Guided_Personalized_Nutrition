@@ -1183,7 +1183,9 @@ Learning_behaviour_function <- function(x, varnames){
               days_10_dash_inter_one = list(days_10_dash_inter_one),
               days_10_dash_inter_two = list(days_10_dash_inter_two),
               days_shuttle_run_inter_one = list(days_shuttle_run_inter_one),
-              days_shuttle_run_inter_two = list(days_shuttle_run_inter_two)
+              days_shuttle_run_inter_two = list(days_shuttle_run_inter_two),
+              optimal_training_condition_inter_two = list(optimal_training_condition_inter_two),
+              optimal_training_condition_inter_one = list(optimal_training_condition_inter_one)
   ))
   
   }

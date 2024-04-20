@@ -7,7 +7,7 @@ good_nutrition_current,tnorm_0_1,0.3,,0.5,probability of having good nutrition f
 ,,,,,
 ,,,,,
 optimal_training_condition_intervention,tnorm_0_1,0.8,,0.86,probability of physically and mentally feel good/ ready for match after intervention (%)
-optimal_training_condition_current,tnorm_0_1,0.5,,0.7, probability of physically and mentally feel good/ ready for match before intervention (%)
+optimal_training_condition_current,tnorm_0_1,0.3,,0.5, probability of physically and mentally feel good/ ready for match before intervention (%)
 ,,,,,
 past_winning_percent,tnorm_0_1,0.1,,0.9,probability of winning a game in the past (%)
 home_field,tnorm_0_1,0.1,,0.9,probability of playing in home field (%)
