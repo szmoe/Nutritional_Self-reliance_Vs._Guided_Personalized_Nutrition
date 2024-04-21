@@ -1,17 +1,10 @@
 variable,distribution,lower,median,upper,label
 n_year,const,4,,4,number of years for simulation
 var_CV,tnorm_0_1,0.1,,0.3,Coefficient of variation (%)
-total_kcal_need_male,posnorm,470000000,,990000000,total calorie need of male athletes (kcal)
-total_kcal_need_female,posnorm,240000000,,510000000,total calorie need of female athletes (kcal)
-protein_need_gram_male,posnorm,15000000,,34000000,total protein need of male athletes (g)
-protein_need_gram_female,posnorm,8000000,,18000000,total protein need of female athletes (g)
-total_protein_need_gram,posnorm,26000000,,48000000,total protein need for all athletes (g)
-carb_need_gram_male,posnorm,69000000,,150000000,total carbohydrate need of male athletes (g)
-carb_need_gram_female,posnorm,35000000,,77000000,total carbohydrate need of female athletes (g)
-total_carb_need_gram,posnorm,120000000,,210000000,total carbohydrate need for all athletes (g)
-fat_need_gram_male,posnorm,13000000,,31000000,total fat need of male athletes (g)
-fat_need_gram_female,posnorm,6700000,,16000000,total fat need of female athletes (g)
-total_fat_need_gram,posnorm,22000000,,45000000,total fat need for all athletes (g)
+total_kcal_need_all_athletes,posnorm,2e+08,,3.5e+08,total yearly calorie need of male athletes (kcal)
+total_protein_need_gram,posnorm,6750000,,1.2e+07,total yearly protein need for all athletes (g)
+total_carb_need_gram,posnorm,3e+07,,52500000,total yearly carbohydrate need for all athletes (g)
+total_fat_need_gram,posnorm,5500000,,1.1e+07,total yearly fat need for all athletes (g)
 ,,,,,
 chicken_raw_100g_kcal,posnorm,152,,223,"calorie per 100 g of raw chicken (breast,drumstick,thigh,wing w/skin,bone) (kcal)"
 chicken_raw_100g_protein,posnorm,17.6,,22.4,"protein per 100 g of raw chicken (breast,drumstick,thigh,wing w/skin,bone) (g)"
@@ -63,7 +56,7 @@ vegetable_mushroom_gram_per_serve,const,80,,80,gram of vegetable/mushroom per se
 ,,,,,
 bean_nut_raw_100g_kcal,posnorm,60,,550,calorie per 100 g of beans/nuts (different species) (kcal)
 bean_nut_raw_100g_protein,posnorm,7.1,,25.6,protein per 100 g of beans/nuts (different species) (g)
-bean_nut_raw_100g_CHO,posnorm,5.2,,40,carbohydrate per 100 g of beans/nuts (different species) (g)
+bean_nut_raw_100g_CHO,posnorm,5.2,,10,carbohydrate per 100 g of beans/nuts (different species) (g)
 bean_nut_raw_100g_fat,posnorm,1.9,,45.7,fat per 100 g of beans/nuts (different species) (g)
 bean_nut_raw_100g_Ca,posnorm,20,,69,calcium per 100 g of beans/nuts (different species) (mg)
 bean_nut_raw_100g_Fe,posnorm,2.9,,4,iron per 100 g of beans/nuts (different species) (mg)
@@ -79,7 +72,7 @@ egg_whole_gram_per_serve,posnorm,50,,70,gram of whole chicken egg (boiled/omelet
 ,,,,,
 dairy_100g_kcal,posnorm,67,,86,calorie per 100 ml of dairy (milk/yogurt) (kcal)
 dairy_100g_protein,posnorm,1.5,,4.8,protein per 100 ml of dairy (milk/yogurt) (g)
-dairy_100g_CHO,posnorm,4.2,,19,carbohydrate per 100 ml of dairy (milk/yogurt) (g)
+dairy_100g_CHO,posnorm,4.2,,10,carbohydrate per 100 ml of dairy (milk/yogurt) (g)
 dairy_100g_fat,posnorm,1.6,,4.1,fat per 100 ml of dairy (milk/yogurt) (g)
 dairy_100g_Ca,posnorm,103,,150,calcium per 100 ml of dairy (milk/yogurt) (mg)
 dairy_100g_Fe,posnorm,0.1,,0.6,iron per 100 ml of dairy (milk/yogurt) (mg)
@@ -87,7 +80,7 @@ dairy_ml_per_serve,posnorm,100,,300,ml of dairy (milk/yogurt) per serving
 ,,,,,
 fruit_100g_kcal,posnorm,24,,300,calorie per 100 g of fresh fruit (different species) (kcal)
 fruit_100g_protein,posnorm,0.5,,2,protein per 100 g of of fresh fruit (different species) (g)
-fruit_100g_CHO,posnorm,5.1,,26.3,carbohydrate per 100 g of of fresh fruit (different species) (g)
+fruit_100g_CHO,posnorm,5.1,,10.3,carbohydrate per 100 g of of fresh fruit (different species) (g)
 fruit_100g_fat,posnorm,0.1,,1.1,fat per 100 g of of fresh fruit (different species) (g)
 fruit_100g_Ca,posnorm,5,,57,calcium per 100 g of of fresh fruit (different species) (mg)
 fruit_100g_Fe,posnorm,0.4,,1.6,iron per 100 g of of fresh fruit (different species) (mg)
@@ -121,8 +114,7 @@ sports_drink_kcal,const,140,,140,calorie per bottle (325ml) of sports drink (kca
 sports_drink_protein,const,1,,1,protein per bottle (325ml) of sports drink (g)
 sports_drink_CHO,const,35,,35,carbohydrate per bottle (325ml) of sports drink (g)
 ,,,,,
-current_kcal_intake_yearly_male,posnorm,380000000,,860000000,current yearly calorie intake of all male athletes (kcal)
-current_kcal_intake_yearly_female,posnorm,230000000,,500000000,current yearly calorie intake of all female athletes (kcal)
+current_kcal_intake_yearly_all_athletes,posnorm,1.8e+08,,3.1e+08,current yearly calorie intake of all athletes (kcal)
 current_chicken_intake_serve_per_meal,posnorm,1,,1.5,current chicken intake per meal (serve)
 current_pork_intake_serve_per_meal,posnorm,1,,1.5,current pork intake per meal (serve)
 current_beef_intake_serve_per_meal,posnorm,1,,1.5,current beef intake per meal (serve)
@@ -134,7 +126,7 @@ current_egg_intake_serve_per_day,posnorm,1,,2,current egg intake per day (serve)
 current_dairy_intake_serve_per_day,posnorm,1,,2,current dairy intake per day (serve)
 current_fruit_intake_serve_per_day,posnorm,1,,1.5,current fruit intake per day (serve)
 current_sandwich_intake_serve_per_day,posnorm,1,,2,current sandwich intake per day (serve)
-current_oil_fat_intake_serve_per_day,posnorm,10,,15,current fat/oil intake per day (serve)
+current_oil_fat_intake_serve_per_day,posnorm,3,,5,current fat/oil intake per day (serve)
 sports_drink_bot_per_day,posnorm,1,,2,current sports drink intake per day (bottle)
 ,,,,,
 normal_training_days,posnorm,151,,181,number of normal training days per year
@@ -161,17 +153,17 @@ chance_two_trainings_day,tnorm_0_1,0.3,,0.5,chance of a day with two training se
 before_training_protein_g,posnorm,20,,40,gram of protein intake before training (g)
 after_training_protein_g_per_kg,const,0.3,,0.3,gram of protein intake after training per kg (g)
 ,,,,, 
-provided_chicken_serve_per_meal,posnorm,1,,2,provided serves of chicken per meal (serve)
-provided_pork_serve_per_meal,posnorm,1,,2,provided serves of pork per meal (serve)
-provided_beef_serve_per_meal,posnorm,1,,2,provided serves of beef per meal (serve)
-provided_fish_serve_per_meal,posnorm,1,,2,provided serves of fish per meal (serve)
-provided_prawn_serve_per_meal,posnorm,1,,2,provided serves of prawn per meal (serve)
+provided_chicken_serve_per_meal,posnorm,0.5,,1,provided serves of chicken per meal (serve)
+provided_pork_serve_per_meal,posnorm,0.5,,1,provided serves of pork per meal (serve)
+provided_beef_serve_per_meal,posnorm,0.5,,1,provided serves of beef per meal (serve)
+provided_fish_serve_per_meal,posnorm,0.5,,1,provided serves of fish per meal (serve)
+provided_prawn_serve_per_meal,posnorm,0.5,,1,provided serves of prawn per meal (serve)
 provided_vegetable_mushroom_serve_per_day,const,3,,3,provided serves of vegetables/mushrooms per day (serve)
-provided_bean_nut_intake_serve_per_day,const,2,,2,provided serves of beans/nuts per day (serve)
+provided_bean_nut_intake_serve_per_day,const,1,,1,provided serves of beans/nuts per day (serve)
 provided_egg_intake_serve_per_day,posnorm,2,,4,provided serves of egg per day (serve)
-provided_dairy_intake_serve_per_day,posnorm,1,,2,provided serves of dairy per day (serve)
+provided_dairy_intake_serve_per_day,posnorm,2,,4,provided serves of dairy per day (serve)
 provided_fruit_intake_serve_per_day,const,2,,2,provided serves of fruit per day (serve)
-provided_sandwich_intake_serve_per_day,posnorm,2,,4,provided serves of sandwich per day (serve)
+provided_sandwich_intake_serve_per_day,posnorm,1,,2,provided serves of sandwich per day (serve)
 ,,,,,
 weight_athlete,posnorm,39,,80,weight range of all athletes (kg)
 

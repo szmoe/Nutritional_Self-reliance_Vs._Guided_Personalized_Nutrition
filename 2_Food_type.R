@@ -504,8 +504,8 @@ Food_function <- function(x, varnames){
    
   # Calculate total calorie for adjusting (calorie of rice/noodle group)
    
-   total_current_rice_noodle_kcal_per_year_per_person <- vv(((current_kcal_intake_yearly_female+
-                                            current_kcal_intake_yearly_male)/number_athlete) - 
+   total_current_rice_noodle_kcal_per_year_per_person <- vv((current_kcal_intake_yearly_all_athletes/
+                                                               number_athlete) - 
                                            (total_current_everyday_food_kcal_per_year_per_person +
                                               total_current_protein_food_kcal_per_year_per_person),
                                          var_CV, n_year)
@@ -594,8 +594,7 @@ Food_function <- function(x, varnames){
   
   # Model check 
   
-  model_check_current_kcal <- vv(current_kcal_intake_yearly_female +
-                                   current_kcal_intake_yearly_male,
+  model_check_current_kcal <- vv(current_kcal_intake_yearly_all_athletes,
                                  var_CV, n_year)
   
   total_protein_need_gram <- vv(total_protein_need_gram,
@@ -607,8 +606,7 @@ Food_function <- function(x, varnames){
   total_fat_need_gram <- vv(total_fat_need_gram,
                             var_CV, n_year)
   
-  total_kcal_need_yearly <- vv(total_kcal_need_female +
-                                 total_kcal_need_male,
+  total_kcal_need_yearly <- vv(total_kcal_need_all_athletes,
                                var_CV, n_year)
   
   
@@ -662,35 +660,35 @@ Food_function <- function(x, varnames){
   # Calculate serve of food for protein before/after training
   
   total_training_provided_protein_gram_per_year_per_person <- if(two_trainings_per_day == 1){
-    ((provided_egg_intake_serve_per_day * egg_whole_per_serve_protein*4) +
-      (provided_dairy_intake_serve_per_day * dairy_per_serve_protein*4) +
-      (provided_sandwich_intake_serve_per_day * sandwich_per_serve_protein*4)) * total_training_days_per_year
+    ((provided_egg_intake_serve_per_day * egg_whole_per_serve_protein) +
+      (provided_dairy_intake_serve_per_day * dairy_per_serve_protein) +
+      (provided_sandwich_intake_serve_per_day * sandwich_per_serve_protein)) * total_training_days_per_year
   } else{
-    ((provided_egg_intake_serve_per_day * egg_whole_per_serve_protein*2) +
-        (provided_dairy_intake_serve_per_day * dairy_per_serve_protein*2) +
-        (provided_sandwich_intake_serve_per_day * sandwich_per_serve_protein*2))*total_training_days_per_year
+    ((provided_egg_intake_serve_per_day * egg_whole_per_serve_protein *0.5) +
+        (provided_dairy_intake_serve_per_day * dairy_per_serve_protein * 0.5) +
+        (provided_sandwich_intake_serve_per_day * sandwich_per_serve_protein* 0.5))*total_training_days_per_year
   }
   
   
   # Total egg servings 
   total_egg_serving_per_year_per_person <- if(two_trainings_per_day == 1){
-    total_training_days_per_year * (provided_egg_intake_serve_per_day *4)
+    total_training_days_per_year * (provided_egg_intake_serve_per_day)
   } else {
-    total_training_days_per_year * (provided_egg_intake_serve_per_day * 2)
+    total_training_days_per_year * (provided_egg_intake_serve_per_day) * 0.5
   }
   
   # Total dairy servings
   total_dairy_serving_per_year_per_person <- if(two_trainings_per_day == 1){
-    total_training_days_per_year * provided_dairy_intake_serve_per_day *4
+    total_training_days_per_year * provided_dairy_intake_serve_per_day
   } else {
-    total_training_days_per_year * provided_dairy_intake_serve_per_day * 2
+    total_training_days_per_year * provided_dairy_intake_serve_per_day *0.5
   }
   
   # Total sandwich servings
   total_sandwich_serving_per_year_per_person <- if(two_trainings_per_day == 1){
-    total_training_days_per_year * provided_sandwich_intake_serve_per_day * 4
+    total_training_days_per_year * provided_sandwich_intake_serve_per_day 
   } else {
-    total_training_days_per_year * provided_sandwich_intake_serve_per_day * 2
+    total_training_days_per_year * provided_sandwich_intake_serve_per_day * 0.5
   }
   
   # Calculate protein gram from fixed serves of vegetable, bean, fruit and sports drink
@@ -759,44 +757,44 @@ Food_function <- function(x, varnames){
   # Calculate total protein (gram) of provided protein foods
   
   total_provided_protein_food_gram_per_year_per_person <- vv((number_provided_chicken_meals_per_year_per_person*
-                                                                provided_chicken_serve_per_meal* 0.5*
+                                                                provided_chicken_serve_per_meal*
                                                                 chicken_raw_per_serve_protein) +
                                                                (number_provided_pork_meals_per_year_per_person*
-                                                                  provided_pork_serve_per_meal* 0.5*
+                                                                  provided_pork_serve_per_meal*
                                                                   pork_raw_per_serve_protein) +
                                                                (number_provided_beef_meals_per_year_per_person*
-                                                                  provided_beef_serve_per_meal* 0.5*
+                                                                  provided_beef_serve_per_meal*
                                                                   beef_raw_per_serve_protein)+
                                                                (number_provided_fish_meals_per_year_per_person*
-                                                                  provided_fish_serve_per_meal* 0.5*
+                                                                  provided_fish_serve_per_meal*
                                                                   fish_raw_per_serve_protein)+
                                                                (number_provided_prawn_meals_per_year_per_person*
-                                                                  provided_prawn_serve_per_meal* 0.5*
+                                                                  provided_prawn_serve_per_meal*
                                                                   prawn_raw_per_serve_protein),
                                                              var_CV, n_year)
   
   # Total chicken serving
-  total_chicken_serving_per_year_per_person <- vv(provided_chicken_serve_per_meal*0.5*
+  total_chicken_serving_per_year_per_person <- vv(provided_chicken_serve_per_meal*
                                                     total_training_days_per_year,
                                                   var_CV, n_year)
   
   # Total pork serving
-  total_pork_serving_per_year_per_person <- vv(provided_pork_serve_per_meal*0.5*
+  total_pork_serving_per_year_per_person <- vv(provided_pork_serve_per_meal*
                                                  total_training_days_per_year,
                                                var_CV, n_year)
   
   # Total beef serving
-  total_beef_serving_per_year_per_person <- vv(provided_beef_serve_per_meal*0.5*
+  total_beef_serving_per_year_per_person <- vv(provided_beef_serve_per_meal*
                                                  total_training_days_per_year,
                                                var_CV, n_year)
   
   # Total fish serving
-  total_fish_serving_per_year_per_person <- vv(provided_fish_serve_per_meal*0.5*
+  total_fish_serving_per_year_per_person <- vv(provided_fish_serve_per_meal*
                                                  total_training_days_per_year,
                                                var_CV, n_year)
   
   # Total prawn serving
-  total_prawn_serving_per_year_per_person <- vv(provided_prawn_serve_per_meal*0.5*
+  total_prawn_serving_per_year_per_person <- vv(provided_prawn_serve_per_meal*
                                                   total_training_days_per_year,
                                                 var_CV, n_year)
   
@@ -889,9 +887,16 @@ Food_function <- function(x, varnames){
                                                           total_fat_from_food_gram_per_year_per_person,
                                                         var_CV, n_year)
   
-  total_fat_oil_serving_per_year_per_person <- vv(fat_from_fat_oil_group_gram_per_year_per_person/
-                                                    oil_fat_gram_per_serve,
-                                                  var_CV, n_year)
+  # Here got a little tricky coz I group food together and some food has higher fat content. And since they
+  # are all group together, they have more or less equal chance of being consumed. So, fat from food has high
+  # upper bound greater than fat need. So, it is either to use zero fat in meal preparation on those days with
+  # high fat food OR I separate food and key in value for each (too much time consuming). And it is not possible
+  # to put lower bound near zero with high upper bound. So, I split the upper bound using ifelse function to make
+  # model work. I cut the value above zero by half and allocate it to value below zero (so, each athlete get 3 serve
+  # of fat on those high fat days, and even on low fat food day, they will get half of the limit)
+  total_fat_oil_serving_per_year_per_person <- ifelse(fat_from_fat_oil_group_gram_per_year_per_person > 0,
+                                                  (fat_from_fat_oil_group_gram_per_year_per_person/
+                                                    oil_fat_gram_per_serve)*0.5, total_training_days_per_year*3)
   
   total_fat_oil_provided_per_year_all_athletes <- vv((fat_from_fat_oil_group_gram_per_year_per_person +
                                                        total_fat_from_food_gram_per_year_per_person)*
@@ -1076,9 +1081,13 @@ Food_function <- function(x, varnames){
               total_before_after_training_protein_gram_per_person = sum(total_before_after_training_protein_gram_per_year_per_person),
               total_training_provided_protein_gram_per_person = sum(total_training_provided_protein_gram_per_year_per_person),
               total_protein_provided_gram_all_athletes = sum(total_protein_provided_gram_per_year_all_athletes),
+              total_protein_provided_gram_per_year_all_athletes = list(total_protein_provided_gram_per_year_all_athletes),
               total_carb_provided_gram_all_athletes = sum(total_carb_provided_gram_per_year_all_athletes),
+              total_carb_provided_gram_per_year_all_athletes = list(total_carb_provided_gram_per_year_all_athletes),
               total_fat_oil_provided_all_athletes = sum(total_fat_oil_provided_per_year_all_athletes),
+              total_fat_oil_provided_per_year_all_athletes = list(total_fat_oil_provided_per_year_all_athletes),
               total_kcal_provided_all_athletes = sum(total_kcal_provided_per_year_all_athletes),
+              total_kcal_provided_per_year_all_athletes = list(total_kcal_provided_per_year_all_athletes),
               total_Ca_provided_per_person = sum(total_Ca_provided_per_year_per_person),
               total_Fe_provided_per_person = sum(total_Fe_provided_per_year_per_person),
               total_egg_serving_all_athletes = sum(total_egg_serving_per_year_all_athletes),
@@ -1127,34 +1136,35 @@ plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_current_kcal_intake_all_athlete", "total_kcal_need"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Calorie (kcal)',
-                   base_size = 7) # same result as model 1; kcal seems okay despite potentially slightly lower kcal intake
+                   base_size = 7) # same result as model 1; kcal seems okay 
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_current_protein_intake_all_athlete", "total_protein_need_gram"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Protein (g)',
-                   base_size = 7) # protein intake is low compared to protein need 
-                                  # so kcal differences might come from lower protein intake
+                   base_size = 7) # protein intake should be okay
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_current_CHO_intake_all_athlete", "total_carb_need_gram"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Carbohydrate (g)',
-                   base_size = 7) # carb intake can be okay, but range is wider towards lower extreme
+                   base_size = 7) # carb intake low
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_current_fat_intake_all_athlete", "total_fat_need_gram"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Fat (g)',
-                   base_size = 7) # fat intake is okay (although I don't separate good vs. bad fats)-prob this is bad fat
+                   base_size = 7) # fat intake high
 
-## So, the problem lies in protein and carb intake. Kcal and fat intake are okay. 
+## So, the problem lies in fat and carb intake. kcal and protein (I put PAL lower bound as lowest value, so that could
+# be the reason)seems okay. 
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_current_Ca_intake_per_person", "total_Ca_rdi"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Calcium (mg)',
-                   base_size = 7) # large range, need more info- need more detailing of food intake
+                   base_size = 7) # Calcium intake low (but still range is too bit, need more details on food type 
+# and intake frequency to have more accurate prediction)
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_current_Fe_intake_per_person", "total_Fe_rdi"),
@@ -1162,6 +1172,7 @@ plot_distributions(mcSimulation_object = Food_mc_simulation,
                    x_axis_name = 'Iron (mg)',
                    base_size = 7) # Model is to know macronutrient distribution
                                   # So, it doesn't work well with micronutrients- need more detailing of food intake
+
 
 ## Ca and Fe current intakes could be okay (need exact food type to be sure)
 
@@ -1172,17 +1183,16 @@ plot_distributions(mcSimulation_object = Food_mc_simulation,
                             "total_training_provided_protein_gram_per_person"), 
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Protein (g)',
-                   base_size = 7) # protein need and provided protein (before/after training) match- model successful
-# Not an exact match here (seems slightly lower) but okay for me since total protein provided covers the range for protein needs.
+                   base_size = 7) # allocate these protein to main meals, rather than giving them lots of sandwich (need more food types)
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_protein_need_gram", "total_protein_provided_gram_all_athletes"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Protein (g)',
-                   base_size = 7) # Not exact match but still okay- model successful
-                                  # it can be coz I separate training days using chance_event
-                                  # Training days are not separated when estimating for total protein needs
-                               
+                   base_size = 7) # Not exact match but okay (this problem can be solved by separating food type)
+# if I decrease protein by a lot, carb and fat won't match. But this is okay- if check on serving, the amount is 
+# what they can consume (might need to use different composition database)- this one is too general.
+# Also this could be okay if I increase lower bound for PAL. on average they may need like 1.8
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_carb_provided_gram_all_athletes", "total_carb_need_gram"),
@@ -1199,6 +1209,10 @@ plot_distributions(mcSimulation_object = Food_mc_simulation,
 
 plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_fat_oil_provided_all_athletes", "total_fat_need_gram"),
+                   method = 'boxplot')
+
+plot_distributions(mcSimulation_object = Food_mc_simulation,
+                   vars = c("total_protein_need_gram", "total_protein_provided_gram_all_athletes"),
                    method = 'boxplot')
 
 
@@ -1220,7 +1234,7 @@ plot_distributions(mcSimulation_object = Food_mc_simulation,
                    vars = c("total_Fe_provided_per_person", "total_Fe_rdi"),
                    method = 'smooth_simple_overlay',
                    x_axis_name = 'Iron (mg)',
-                   base_size = 7) # Fe provided is a lot higher than Fe needs (need exact type of food)
+                   base_size = 7) # Fe okay
 
 
 
