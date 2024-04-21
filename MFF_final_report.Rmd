@@ -1,0 +1,67 @@
+---
+title: "MFF_final_report"
+author: "SM"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format:
+  html:
+    toc: true
+    toc_float: true
+    toc-title: "Contents"
+    toc-depth: 5
+    toc-location: left
+    number_sections: true
+    fig_caption: true
+    code-tools: true
+    code-fold: true
+    code-summary: 'Show code'
+    code-link: true
+    code_highlight: tango
+    code_download: true
+    theme: sandstone
+    highlight: tango
+    smooth-scroll: true
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE,  message = FALSE,  warning = FALSE,  tidy = TRUE)
+library(decisionSupport)
+```
+
+
+# Nutritional Self-reliance vs. Guided Personalized Nutrition to improve nutritional outcome of football players
+
+
+<br> 
+
+![**Figure: Impact Pathway Model**](./Impact_pathway_model.png){width=100%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---

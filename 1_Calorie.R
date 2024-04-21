@@ -739,7 +739,14 @@ Calorie_function <- function(x, varnames){
                             var_CV, n_year)
   
 
+  # Fix the years
+  total_kcal_need_yearly_all_athletes <- vv(total_kcal_need_male_yearly +
+                                                total_kcal_need_female_yearly,
+                                              var_CV, n_year)
   
+  total_kcal_current_yearly_all_athletes <- vv(current_kcal_intake_yearly_male +
+                                                 current_kcal_intake_yearly_female,
+                                               var_CV, n_year)
 
   
 ################################################################################ 
@@ -749,16 +756,22 @@ Calorie_function <- function(x, varnames){
               total_kcal_need_female = sum(total_kcal_need_female_yearly),
               current_kcal_intake_male = sum(current_kcal_intake_yearly_male),
               current_kcal_intake_female = sum(current_kcal_intake_yearly_female),
-              overall_extra_kcal_need = sum(overall_yearly_extra_kcal_need),
+             total_kcal_need_yearly_all_athletes = list(total_kcal_need_yearly_all_athletes),
+             total_kcal_need_yearly_all_athletes = sum(total_kcal_need_yearly_all_athletes),
+             total_kcal_current_yearly_all_athletes = list(total_kcal_current_yearly_all_athletes),
+             total_kcal_current_yearly_all_athletes = sum(total_kcal_current_yearly_all_athletes),
               protein_need_gram_male = sum(protein_need_gram_male),
               protein_need_gram_female = sum(protein_need_gram_female),
               total_protein_need_gram = sum(total_protein_need_gram),
+             total_protein_need_gram = list(total_protein_need_gram),
               carb_need_gram_male = sum(carb_need_gram_male),
               carb_need_gram_female = sum(carb_need_gram_female),
               total_carb_need_gram = sum(total_carb_need_gram),
+             total_carb_need_gram = list(total_carb_need_gram),
               fat_need_gram_male = sum(fat_need_gram_male),
               fat_need_gram_female = sum(fat_need_gram_female),
               total_fat_need_gram = sum(total_fat_need_gram),
+             total_fat_need_gram = list(total_fat_need_gram),
               fat_model_check_one = sum(fat_model_check_one),
               fat_model_check_two = sum(fat_model_check_two),
               target_wt_female = sum(target_wt_female),
@@ -791,8 +804,9 @@ Calorie_function <- function(x, varnames){
 
   
   plot_distributions(mcSimulation_object = Calorie_mc_simulation,
-                     vars = "overall_extra_kcal_need",
-                     method = 'hist_simple_overlay',
+                     vars = c("total_kcal_need_yearly_all_athletes", 
+                              "total_kcal_current_yearly_all_athletes"),
+                     method = 'smooth_simple_overlay',
                      x_axis_name = 'Calorie (kcal)',
                      base_size = 7)
   
